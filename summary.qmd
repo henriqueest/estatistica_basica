@@ -1,7 +1,7 @@
-# Resumo {.unnumbered}
-
-In summary, this book has no content whatsoever.
-
-```{r}
-1 + 1
-```
+---
+title: "Resumo"
+output:
+    pdf_document:
+        includes:
+            in_header: mystyles.sty
+---

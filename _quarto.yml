@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Estatística Básica"
+  title: "Estatística Básica: conceitos e aplicações no R"
   author: "Henrique José de Paula Alves"
   date: "04/15/2026"
   #cover-image: cover.png
@@ -17,21 +17,7 @@ book:
       numbered: true
       chapters:
         - introducao.qmd
-    # - part: crimescontraavida.qmd
-    #   chapters:
-    #     - homicidiodoloso.qmd
-    #     - tentativadehomicidio.qmd
-    #     - lesaocorporalseguidademorte.qmd
-    #     - latrocinio.qmd
-    # - part: crimescontraopatrimonio.qmd
-    #   chapters:
-    #     - furtodeveiculos.qmd
-    #     - roubodeveiculos.qmd
-    #     - roubodecarga.qmd
-    #     - rouboainstituicaofinanceira.qmd
-    # - part: crimecontraliberdadesexual.qmd
-    #   chapters:
-    #     - estupro.qmd
+        - medidas.qmd
     - part: final.qmd
       chapters:
         - consfinais.qmd

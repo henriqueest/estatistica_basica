@@ -1,7 +1,0 @@
----
-title: "Homicídio doloso"
-output:
-    pdf_document:
-        includes:
-            in_header: mystyles.sty
----

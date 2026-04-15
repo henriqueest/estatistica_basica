@@ -20,8 +20,6 @@ Podemos dividir a estatística em três grandes pilares:
 2.  **Probabilidade:** O modelo matemático que quantifica a incerteza.
 3.  **Estatística Inferencial:** O processo de tirar conclusões sobre uma população a partir de uma amostra.
 
-![Figura 1: população e amostra.](images/clipboard-3566943210.png){#fig1 fig-align="center" width="549"}
-
 ### Conceitos Fundamentais
 
 Antes de avançarmos para os cálculos, precisamos definir os objetos de estudo:
@@ -30,6 +28,8 @@ Antes de avançarmos para os cálculos, precisamos definir os objetos de estudo:
 -   **Amostra:** Um subconjunto representativo da população.
 -   **Parâmetro:** Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como $\mu$ ou $\sigma$).
 -   **Estimativa (ou Estatística):** Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.
+
+![Figura 1: população, amostra, parâmetros e estatísticas.](images/fig1.png){#fig1 fig-align="center" width="549"}
 
 ### Classificação de Variáveis
 
@@ -51,15 +51,24 @@ Representam contagens ou mensurações.
 
 -   **Contínuas:** Valores que podem assumir qualquer número real em um intervalo (ex: Renda, Peso, Altura).
 
+![Figura 2: visão geral das variáveis - qualitativas e quantitativas.](images/fig2.png){#fig2 fig-align="center" width="549"}
+
 ### O Fluxo da Análise Estatística
 
 Uma análise rigorosa geralmente segue o ciclo de vida dos dados:
 
-1.  **Planejamento e Amostragem:** Definição do problema e coleta dos dados.
-2.  **Análise Exploratória (EDA):** Uso de gráficos e tabelas para entender a distribuição dos dados e identificar *outliers*.
-3.  **Modelagem:** Aplicação de modelos estatísticos (como modelos lineares ou espaciais).
-4.  **Inferência e Comunicação:** Interpretação dos resultados e divulgação científica.
+1.  **Definição do Problema:** Identificação do objetivo da pesquisa.
 
-------------------------------------------------------------------------
+2.  **Coleta de Dados:** Utilizando métodos como pesquisas e observações.
+
+3.  **Processamento de Dados:** Preparação e limpeza para análise.
+
+4.  **Análise Descritiva:** Uso de gráficos e medidas (onde as variáveis qualitativas e quantitativas da imagem anterior são aplicadas).
+
+5.  **Análise Inferencial:** Testes de hipóteses e modelagem.
+
+6.  **Interpretação e Relatório:** Conclusões e apresentação dos achados.
+
+![Figura 3: fluxo de uma análise estatística.](images/fig3.png){#fgi3 fig-align="center" width="549"}
 
 No próximo capítulo, exploraremos como utilizar o R para realizar a **Análise Exploratória de Dados**, focando em medidas de tendência central e dispersão.

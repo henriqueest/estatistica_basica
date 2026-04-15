@@ -1,0 +1,206 @@
+---
+title: "Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R"
+output:
+    pdf_document:
+        includes:
+            in_header: mystyles.sty
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+Neste capítulo, abordaremos os fundamentos da Análise Exploratória de
+Dados (AED). A AED é uma etapa crucial em qualquer fluxo de análise
+estatística, permitindo compreender a estrutura, a variabilidade e os
+padrões centrais de um conjunto de dados antes de aplicar modelos mais
+complexos.
+
+## Medidas de Tendência Central
+
+As medidas de tendência central buscam um valor único que represente o
+"centro" da distribuição dos dados.
+
+### Média Aritmética ($\bar{x}$)
+
+É a soma de todos os valores dividida pelo número total de observações.
+
+$\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$
+
+Propriedade: É sensível a valores extremos (outliers).
+
+### Mediana ($Md$) 
+
+É o valor que divide o conjunto de dados ordenado em duas partes iguais.
+
+Propriedade: É uma medida robusta, pois não é afetada por outliers.
+
+###  Moda ($Mo$)
+
+É o valor que ocorre com maior frequência no conjunto de dados.
+
+## Medidas de Dispersão 
+
+As medidas de dispersão indicam o quão afastados os valores estão do
+centro, descrevendo a variabilidade.
+
+#### Variância ($s^2$)
+
+Mede o desvio médio quadrático em relação à média.
+
+\
+$s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}$
+
+### Desvio Padrão ($s$) 
+
+É a raiz quadrada da variância. Retorna a medida da dispersão para a
+mesma unidade dos dados originais.
+
+$s = \sqrt{s^2}$
+
+## Implementação no R 
+
+Abaixo, apresentamos como calcular essas medidas utilizando funções
+nativas do R.
+
+```{r label: aed-exemplo, echo: true}
+# Criando um conjunto de dados
+dados <- c(10, 12, 12, 13, 15, 18, 20, 22, 25, 100) # O 100 é um outlier
+# Medidas de tendência central
+media <- mean(dados); media
+mediana <- median(dados); mediana
+# Função para calcular a moda no R
+get_moda <- function(v) {
+
+uniqv <- unique(v)
+
+uniqv[which.max(tabulate(match(v, uniqv)))]
+
+}
+
+moda <- get_moda(dados); moda
+# Medidas de dispersão
+variancia <- var(dados); variancia
+
+desvio_padrao <- sd(dados); desvio_padrao
+```
+
+## Visualização de Dados 
+
+A visualização é fundamental para interpretar a dispersão e a tendência
+central simultaneamente.
+
+```{r }
+#| label: fig-exemplo
+#| echo: true
+#| fig-cap: "Análise de Tendência Central e Dispersão"
+#| fig-subcap: ["Histograma dos Dados", "Boxplot dos Dados"]
+#| layout-ncol: 2
+
+# Exemplo de dados com um outlier
+dados <- c(10, 12, 12, 13, 15, 18, 20, 22, 25, 100)
+
+par(mar = c(4, 4, 2, 1))
+hist(dados, main = "Distribuição", col = "lightblue", border = "white", xlab = "Valores")
+boxplot(dados, main = "Variabilidade", col = "tomato", ylab = "Valores")
+```
+
+![Figura 4: medidas de tendência central e de
+dispersão.](/images/fig4.png){#fig4 fig-align="center" width="549"}
+
+## Medidas Separatrizes no R
+
+As medidas separatrizes permitem dividir um conjunto de dados ordenado
+em partes iguais, facilitando a análise da distribuição, a detecção de
+assimetria e a identificação de valores discrepantes (outliers).
+
+### Definições e Conceitos
+
+As medidas separatrizes mais comuns são:
+
+#### Quartis (\$Q\$)
+
+Dividem os dados em 4 partes iguais (cada uma com 25% dos dados).
+
+-   **\$Q_1\$ (1º Quartil):** 25% dos dados são menores ou iguais a este
+    valor.
+
+-   **\$Q_2\$ (2º Quartil):** É a própria Mediana (50% dos dados).
+
+-   **\$Q_3\$ (3º Quartil):** 75% dos dados são menores ou iguais a este
+    valor.
+
+#### Decis (\$D\$) e Percentis (\$P\$)
+
+-   **Decis:** Dividem os dados em 10 partes iguais (10%, 20%, ...,
+    90%).
+
+-   **Percentis (ou Centis):** Dividem os dados em 100 partes iguais. O
+    Percentil 50 (\$P\_{50}\$) equivale à mediana.
+
+#### Amplitude Interquartílica (\$IQR\$)
+
+É a diferença entre o terceiro e o primeiro quartil (\$IQR = Q_3 -
+Q_1\$). É a base para a construção do Boxplot e uma medida de dispersão
+robusta.
+
+### Implementação no R
+
+No R, a função principal para estas medidas é a quantile().
+
+```{r}
+#| label: separatrizes-exemplo
+
+#| echo: true
+
+# Conjunto de dados de exemplo
+
+vendas <- c(102, 105, 110, 115, 120, 125, 130, 140, 150, 160, 175, 300)
+
+# Calculando os Quartis
+
+quartis <- quantile(vendas, probs = c(0.25, 0.5, 0.75))
+
+print(quartis)
+
+# Calculando Percentis específicos (ex: P10 e P90)
+
+percentis_especificos <- quantile(vendas, probs = c(0.10, 0.90))
+
+print(percentis_especificos)
+
+# Resumo completo (inclui Mín, Q1, Mediana, Média, Q3 e Máx)
+
+summary(vendas)
+
+# Calculando o IQR
+
+amplitude_iq <- IQR(vendas)
+
+print(paste("Amplitude Interquartílica:", amplitude_iq))
+```
+
+### Visualização
+
+#### O Boxplot
+
+O Boxplot (Diagrama de Caixa) é a representação gráfica direta das
+medidas separatrizes.
+
+```{r}
+#| label: fig-boxplot-separatrizes
+
+#| echo: true
+
+#| fig-cap: "Boxplot destacando Quartis e Outliers"
+
+boxplot(vendas,main = "Distribuição de Vendas", col = "mediumseagreen", horizontal = TRUE, xlab = "Valores")
+
+# Adicionando marcações para os quartis
+
+abline(v = quartis, col = "red", lty = 2)
+```
+
+### Resumo Visual das Medidas Separatrizes
+
+![Figura 5: medidas separatrizes.](/images/fig5.png){#fig5
+fig-align="center" width="549"}

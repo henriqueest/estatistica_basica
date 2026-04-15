@@ -1,7 +1,0 @@
----
-title: "Análise de vítimas de crimes contra a vida"
-output:
-    pdf_document:
-        includes:
-            in_header: mystyles.sty
----

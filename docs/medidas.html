@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Henrique José de Paula Alves">
-<meta name="dcterms.date" content="2026-04-15">
 
-<title>Estatística Básica: conceitos e aplicações no R</title>
+<title>3&nbsp; Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R – Estatística Básica: conceitos e aplicações no R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./preface.html" rel="next">
+<link href="./consfinais.html" rel="next">
+<link href="./introducao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -116,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Visão Geral</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./medidas.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visão Geral</span></a>
   </div>
 </li>
@@ -196,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./medidas.html" class="sidebar-item-text sidebar-link">
+  <a href="./medidas.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span></span></a>
   </div>
 </li>
@@ -235,35 +263,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#visão-geral" id="toc-visão-geral" class="nav-link active" data-scroll-target="#visão-geral">Visão Geral</a></li>
+  <li><a href="#medidas-de-tendência-central" id="toc-medidas-de-tendência-central" class="nav-link active" data-scroll-target="#medidas-de-tendência-central"><span class="header-section-number">3.1</span> Medidas de Tendência Central</a>
+  <ul class="collapse">
+  <li><a href="#média-aritmética-barx" id="toc-média-aritmética-barx" class="nav-link" data-scroll-target="#média-aritmética-barx"><span class="header-section-number">3.1.1</span> Média Aritmética (<span class="math inline">\(\bar{x}\)</span>)</a></li>
+  <li><a href="#mediana-md" id="toc-mediana-md" class="nav-link" data-scroll-target="#mediana-md"><span class="header-section-number">3.1.2</span> Mediana (<span class="math inline">\(Md\)</span>)</a></li>
+  <li><a href="#moda-mo" id="toc-moda-mo" class="nav-link" data-scroll-target="#moda-mo"><span class="header-section-number">3.1.3</span> Moda (<span class="math inline">\(Mo\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-dispersão" id="toc-medidas-de-dispersão" class="nav-link" data-scroll-target="#medidas-de-dispersão"><span class="header-section-number">3.2</span> Medidas de Dispersão</a>
+  <ul class="collapse">
+  <li><a href="#desvio-padrão-s" id="toc-desvio-padrão-s" class="nav-link" data-scroll-target="#desvio-padrão-s"><span class="header-section-number">3.2.1</span> Desvio Padrão (<span class="math inline">\(s\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#implementação-no-r" id="toc-implementação-no-r" class="nav-link" data-scroll-target="#implementação-no-r"><span class="header-section-number">3.3</span> Implementação no R</a></li>
+  <li><a href="#visualização-de-dados" id="toc-visualização-de-dados" class="nav-link" data-scroll-target="#visualização-de-dados"><span class="header-section-number">3.4</span> Visualização de Dados</a></li>
+  <li><a href="#medidas-separatrizes-no-r" id="toc-medidas-separatrizes-no-r" class="nav-link" data-scroll-target="#medidas-separatrizes-no-r"><span class="header-section-number">3.5</span> Medidas Separatrizes no R</a>
+  <ul class="collapse">
+  <li><a href="#definições-e-conceitos" id="toc-definições-e-conceitos" class="nav-link" data-scroll-target="#definições-e-conceitos"><span class="header-section-number">3.5.1</span> Definições e Conceitos</a></li>
+  <li><a href="#implementação-no-r-1" id="toc-implementação-no-r-1" class="nav-link" data-scroll-target="#implementação-no-r-1"><span class="header-section-number">3.5.2</span> Implementação no R</a></li>
+  <li><a href="#visualização" id="toc-visualização" class="nav-link" data-scroll-target="#visualização"><span class="header-section-number">3.5.3</span> Visualização</a></li>
+  <li><a href="#resumo-visual-das-medidas-separatrizes" id="toc-resumo-visual-das-medidas-separatrizes" class="nav-link" data-scroll-target="#resumo-visual-das-medidas-separatrizes"><span class="header-section-number">3.5.4</span> Resumo Visual das Medidas Separatrizes</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./medidas.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Estatística Básica: conceitos e aplicações no R</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Henrique José de Paula Alves </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 15, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -273,18 +307,244 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="visão-geral" class="level1 unnumbered">
-<h1 class="unnumbered">Visão Geral</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
+<p>Neste capítulo, abordaremos os fundamentos da Análise Exploratória de Dados (AED). A AED é uma etapa crucial em qualquer fluxo de análise estatística, permitindo compreender a estrutura, a variabilidade e os padrões centrais de um conjunto de dados antes de aplicar modelos mais complexos.</p>
+<section id="medidas-de-tendência-central" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="medidas-de-tendência-central"><span class="header-section-number">3.1</span> Medidas de Tendência Central</h2>
+<p>As medidas de tendência central buscam um valor único que represente o “centro” da distribuição dos dados.</p>
+<section id="média-aritmética-barx" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="média-aritmética-barx"><span class="header-section-number">3.1.1</span> Média Aritmética (<span class="math inline">\(\bar{x}\)</span>)</h3>
+<p>É a soma de todos os valores dividida pelo número total de observações.</p>
+<p><span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}\)</span></p>
+<p>Propriedade: É sensível a valores extremos (outliers).</p>
+</section>
+<section id="mediana-md" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="mediana-md"><span class="header-section-number">3.1.2</span> Mediana (<span class="math inline">\(Md\)</span>)</h3>
+<p>É o valor que divide o conjunto de dados ordenado em duas partes iguais.</p>
+<p>Propriedade: É uma medida robusta, pois não é afetada por outliers.</p>
+</section>
+<section id="moda-mo" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="moda-mo"><span class="header-section-number">3.1.3</span> Moda (<span class="math inline">\(Mo\)</span>)</h3>
+<p>É o valor que ocorre com maior frequência no conjunto de dados.</p>
+</section>
+</section>
+<section id="medidas-de-dispersão" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">3.2</span> Medidas de Dispersão</h2>
+<p>As medidas de dispersão indicam o quão afastados os valores estão do centro, descrevendo a variabilidade.</p>
+<section id="variância-s2" class="level4" data-number="3.2.0.1">
+<h4 data-number="3.2.0.1" class="anchored" data-anchor-id="variância-s2"><span class="header-section-number">3.2.0.1</span> Variância (<span class="math inline">\(s^2\)</span>)</h4>
+<p>Mede o desvio médio quadrático em relação à média.</p>
+<p><br>
+<span class="math inline">\(s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}\)</span></p>
+</section>
+<section id="desvio-padrão-s" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="desvio-padrão-s"><span class="header-section-number">3.2.1</span> Desvio Padrão (<span class="math inline">\(s\)</span>)</h3>
+<p>É a raiz quadrada da variância. Retorna a medida da dispersão para a mesma unidade dos dados originais.</p>
+<p><span class="math inline">\(s = \sqrt{s^2}\)</span></p>
+</section>
+</section>
+<section id="implementação-no-r" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="implementação-no-r"><span class="header-section-number">3.3</span> Implementação no R</h2>
+<p>Abaixo, apresentamos como calcular essas medidas utilizando funções nativas do R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando um conjunto de dados</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">100</span>) <span class="co"># O 100 é um outlier</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de tendência central</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados); media</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 24.7</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mediana <span class="ot">&lt;-</span> <span class="fu">median</span>(dados); mediana</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função para calcular a moda no R</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>get_moda <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>uniqv <span class="ot">&lt;-</span> <span class="fu">unique</span>(v)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>uniqv[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(v, uniqv)))]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>moda <span class="ot">&lt;-</span> <span class="fu">get_moda</span>(dados); moda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de dispersão</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>variancia <span class="ot">&lt;-</span> <span class="fu">var</span>(dados); variancia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 723.7889</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>desvio_padrao <span class="ot">&lt;-</span> <span class="fu">sd</span>(dados); desvio_padrao</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26.90332</code></pre>
+</div>
+</div>
+</section>
+<section id="visualização-de-dados" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="visualização-de-dados"><span class="header-section-number">3.4</span> Visualização de Dados</h2>
+<p>A visualização é fundamental para interpretar a dispersão e a tendência central simultaneamente.</p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exemplo de dados com um outlier</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dados, <span class="at">main =</span> <span class="st">"Distribuição"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"white"</span>, <span class="at">xlab =</span> <span class="st">"Valores"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(dados, <span class="at">main =</span> <span class="st">"Variabilidade"</span>, <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">ylab =</span> <span class="st">"Valores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-exemplo" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-exemplo" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-exemplo-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-exemplo-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="medidas_files/figure-html/fig-exemplo-1.png" class="img-fluid figure-img" data-ref-parent="fig-exemplo" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-exemplo-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Histograma dos Dados
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-exemplo" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-exemplo-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-exemplo-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="medidas_files/figure-html/fig-exemplo-2.png" class="img-fluid figure-img" data-ref-parent="fig-exemplo" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-exemplo-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Boxplot dos Dados
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exemplo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Análise de Tendência Central e Dispersão
+</figcaption>
+</figure>
+</div>
+<div id="fig4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src=".\images/fig4.png" class="img-fluid figure-img" width="549"></p>
+<figcaption>Figura 4: medidas de tendência central e de dispersão.</figcaption>
+</figure>
+</div>
+</section>
+<section id="medidas-separatrizes-no-r" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="medidas-separatrizes-no-r"><span class="header-section-number">3.5</span> Medidas Separatrizes no R</h2>
+<p>As medidas separatrizes permitem dividir um conjunto de dados ordenado em partes iguais, facilitando a análise da distribuição, a detecção de assimetria e a identificação de valores discrepantes (outliers).</p>
+<section id="definições-e-conceitos" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="definições-e-conceitos"><span class="header-section-number">3.5.1</span> Definições e Conceitos</h3>
+<p>As medidas separatrizes mais comuns são:</p>
+<section id="quartis-q" class="level4" data-number="3.5.1.1">
+<h4 data-number="3.5.1.1" class="anchored" data-anchor-id="quartis-q"><span class="header-section-number">3.5.1.1</span> Quartis ($Q$)</h4>
+<p>Dividem os dados em 4 partes iguais (cada uma com 25% dos dados).</p>
+<ul>
+<li><p><strong>$Q_1$ (1º Quartil):</strong> 25% dos dados são menores ou iguais a este valor.</p></li>
+<li><p><strong>$Q_2$ (2º Quartil):</strong> É a própria Mediana (50% dos dados).</p></li>
+<li><p><strong>$Q_3$ (3º Quartil):</strong> 75% dos dados são menores ou iguais a este valor.</p></li>
+</ul>
+</section>
+<section id="decis-d-e-percentis-p" class="level4" data-number="3.5.1.2">
+<h4 data-number="3.5.1.2" class="anchored" data-anchor-id="decis-d-e-percentis-p"><span class="header-section-number">3.5.1.2</span> Decis ($D$) e Percentis ($P$)</h4>
+<ul>
+<li><p><strong>Decis:</strong> Dividem os dados em 10 partes iguais (10%, 20%, …, 90%).</p></li>
+<li><p><strong>Percentis (ou Centis):</strong> Dividem os dados em 100 partes iguais. O Percentil 50 ($P_{50}$) equivale à mediana.</p></li>
+</ul>
+</section>
+<section id="amplitude-interquartílica-iqr" class="level4" data-number="3.5.1.3">
+<h4 data-number="3.5.1.3" class="anchored" data-anchor-id="amplitude-interquartílica-iqr"><span class="header-section-number">3.5.1.3</span> Amplitude Interquartílica ($IQR$)</h4>
+<p>É a diferença entre o terceiro e o primeiro quartil ($IQR = Q_3 - Q_1$). É a base para a construção do Boxplot e uma medida de dispersão robusta.</p>
+</section>
+</section>
+<section id="implementação-no-r-1" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="implementação-no-r-1"><span class="header-section-number">3.5.2</span> Implementação no R</h3>
+<p>No R, a função principal para estas medidas é a quantile().</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Conjunto de dados de exemplo</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>vendas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">105</span>, <span class="dv">110</span>, <span class="dv">115</span>, <span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">130</span>, <span class="dv">140</span>, <span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">175</span>, <span class="dv">300</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando os Quartis</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>quartis <span class="ot">&lt;-</span> <span class="fu">quantile</span>(vendas, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quartis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   25%    50%    75% 
+113.75 127.50 152.50 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando Percentis específicos (ex: P10 e P90)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>percentis_especificos <span class="ot">&lt;-</span> <span class="fu">quantile</span>(vendas, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.90</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(percentis_especificos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  10%   90% 
+105.5 173.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumo completo (inclui Mín, Q1, Mediana, Média, Q3 e Máx)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(vendas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  102.0   113.8   127.5   144.3   152.5   300.0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculando o IQR</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>amplitude_iq <span class="ot">&lt;-</span> <span class="fu">IQR</span>(vendas)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Amplitude Interquartílica:"</span>, amplitude_iq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Amplitude Interquartílica: 38.75"</code></pre>
+</div>
+</div>
+</section>
+<section id="visualização" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="visualização"><span class="header-section-number">3.5.3</span> Visualização</h3>
+<section id="o-boxplot" class="level4" data-number="3.5.3.1">
+<h4 data-number="3.5.3.1" class="anchored" data-anchor-id="o-boxplot"><span class="header-section-number">3.5.3.1</span> O Boxplot</h4>
+<p>O Boxplot (Diagrama de Caixa) é a representação gráfica direta das medidas separatrizes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Boxplot destacando Quartis e Outliers"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(vendas,<span class="at">main =</span> <span class="st">"Distribuição de Vendas"</span>, <span class="at">col =</span> <span class="st">"mediumseagreen"</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Valores"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionando marcações para os quartis</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> quartis, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-boxplot-separatrizes" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-separatrizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="medidas_files/figure-html/fig-boxplot-separatrizes-1.png" id="fig-boxplot-separatrizes" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-boxplot-separatrizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resumo-visual-das-medidas-separatrizes" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="resumo-visual-das-medidas-separatrizes"><span class="header-section-number">3.5.4</span> Resumo Visual das Medidas Separatrizes</h3>
+<div id="fig5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src=".\images/fig5.png" class="img-fluid figure-img" width="549"></p>
+<figcaption>Figura 5: medidas separatrizes.</figcaption>
+</figure>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -851,10 +1111,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./introducao.html" class="pagination-link" aria-label="Introdução: conceitos básicos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introdução: conceitos básicos</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./preface.html" class="pagination-link" aria-label="Prefácio">
-        <span class="nav-page-text">Prefácio</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./consfinais.html" class="pagination-link" aria-label="Considerações finais">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Considerações finais</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

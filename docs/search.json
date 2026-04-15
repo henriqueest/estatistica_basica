@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Estatística Básica",
+    "title": "Estatística Básica: conceitos e aplicações no R",
     "section": "",
     "text": "Visão Geral\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
     "crumbs": [
@@ -20,35 +20,91 @@
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "Resumo",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
-    "crumbs": [
-      "Resumo"
-    ]
-  },
-  {
     "objectID": "introducao.html",
     "href": "introducao.html",
-    "title": "1  Introdução: conceitos básicos",
+    "title": "2  Introdução: conceitos básicos",
     "section": "",
-    "text": "1.1 Introdução à Estatística\nNeste capítulo inicial, estabeleceremos as bases fundamentais da estatística, diferenciando a análise puramente descritiva da inferência, e definindo os tipos de dados com os quais trabalharemos ao longo deste livro.",
+    "text": "2.1 Introdução à Estatística\nNeste capítulo inicial, estabeleceremos as bases fundamentais da estatística, diferenciando a análise puramente descritiva da inferência, e definindo os tipos de dados com os quais trabalharemos ao longo deste livro.",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução: conceitos básicos</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução: conceitos básicos</span>"
     ]
   },
   {
     "objectID": "introducao.html#sec-intro",
     "href": "introducao.html#sec-intro",
-    "title": "1  Introdução: conceitos básicos",
+    "title": "2  Introdução: conceitos básicos",
     "section": "",
-    "text": "1.1.1 O que é Estatística?\nA estatística pode ser definida como a ciência que utiliza a probabilidade para lidar com a incerteza. Em um mundo inundado por dados, ela fornece as ferramentas para transformar observações brutas em conhecimento científico e suporte à decisão.\nPodemos dividir a estatística em três grandes pilares:\n\nEstatística Descritiva: Etapa de organização, resumo e visualização dos dados.\nProbabilidade: O modelo matemático que quantifica a incerteza.\nEstatística Inferencial: O processo de tirar conclusões sobre uma população a partir de uma amostra.\n\n\n\n\nFigura 1: população e amostra.\n\n\n\n\n1.1.2 Conceitos Fundamentais\nAntes de avançarmos para os cálculos, precisamos definir os objetos de estudo:\n\nPopulação: O conjunto total de elementos que compartilham pelo menos uma característica comum (ex: todos os domicílios do Brasil).\nAmostra: Um subconjunto representativo da população.\nParâmetro: Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como \\(\\mu\\) ou \\(\\sigma\\)).\nEstimativa (ou Estatística): Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.\n\n\n\n1.1.3 Classificação de Variáveis\nA escolha da técnica estatística ou do modelo depende inteiramente da natureza da variável. As variáveis podem ser classificadas conforme o esquema abaixo:\n\n1.1.3.1 Qualitativas (ou Categóricas)\nRepresentam atributos ou qualidades que não possuem valor numérico intrínseco.\n\nNominais: Não existe uma ordem natural (ex: Sexo, Estado Civil, Cor/Raça).\nOrdinais: Existe uma hierarquia ou ordenação (ex: Nível de escolaridade, Classe socioeconômica).\n\n\n\n1.1.3.2 Quantitativas (ou Numéricas)\nRepresentam contagens ou mensurações.\n\nDiscretas: Valores provenientes de contagem, geralmente números inteiros (ex: Número de filhos, total de crimes em uma região).\nContínuas: Valores que podem assumir qualquer número real em um intervalo (ex: Renda, Peso, Altura).\n\n\n\n\n1.1.4 O Fluxo da Análise Estatística\nUma análise rigorosa geralmente segue o ciclo de vida dos dados:\n\nPlanejamento e Amostragem: Definição do problema e coleta dos dados.\nAnálise Exploratória (EDA): Uso de gráficos e tabelas para entender a distribuição dos dados e identificar outliers.\nModelagem: Aplicação de modelos estatísticos (como modelos lineares ou espaciais).\nInferência e Comunicação: Interpretação dos resultados e divulgação científica.\n\n\nNo próximo capítulo, exploraremos como utilizar o R para realizar a Análise Exploratória de Dados, focando em medidas de tendência central e dispersão.",
+    "text": "2.1.1 O que é Estatística?\nA estatística pode ser definida como a ciência que utiliza a probabilidade para lidar com a incerteza. Em um mundo inundado por dados, ela fornece as ferramentas para transformar observações brutas em conhecimento científico e suporte à decisão.\nPodemos dividir a estatística em três grandes pilares:\n\nEstatística Descritiva: Etapa de organização, resumo e visualização dos dados.\nProbabilidade: O modelo matemático que quantifica a incerteza.\nEstatística Inferencial: O processo de tirar conclusões sobre uma população a partir de uma amostra.\n\n\n\n2.1.2 Conceitos Fundamentais\nAntes de avançarmos para os cálculos, precisamos definir os objetos de estudo:\n\nPopulação: O conjunto total de elementos que compartilham pelo menos uma característica comum (ex: todos os domicílios do Brasil).\nAmostra: Um subconjunto representativo da população.\nParâmetro: Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como \\(\\mu\\) ou \\(\\sigma\\)).\nEstimativa (ou Estatística): Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.\n\n\n\n\nFigura 1: população, amostra, parâmetros e estatísticas.\n\n\n\n\n2.1.3 Classificação de Variáveis\nA escolha da técnica estatística ou do modelo depende inteiramente da natureza da variável. As variáveis podem ser classificadas conforme o esquema abaixo:\n\n2.1.3.1 Qualitativas (ou Categóricas)\nRepresentam atributos ou qualidades que não possuem valor numérico intrínseco.\n\nNominais: Não existe uma ordem natural (ex: Sexo, Estado Civil, Cor/Raça).\nOrdinais: Existe uma hierarquia ou ordenação (ex: Nível de escolaridade, Classe socioeconômica).\n\n\n\n2.1.3.2 Quantitativas (ou Numéricas)\nRepresentam contagens ou mensurações.\n\nDiscretas: Valores provenientes de contagem, geralmente números inteiros (ex: Número de filhos, total de crimes em uma região).\nContínuas: Valores que podem assumir qualquer número real em um intervalo (ex: Renda, Peso, Altura).\n\n\n\n\nFigura 2: visão geral das variáveis - qualitativas e quantitativas.\n\n\n\n\n\n2.1.4 O Fluxo da Análise Estatística\nUma análise rigorosa geralmente segue o ciclo de vida dos dados:\n\nDefinição do Problema: Identificação do objetivo da pesquisa.\nColeta de Dados: Utilizando métodos como pesquisas e observações.\nProcessamento de Dados: Preparação e limpeza para análise.\nAnálise Descritiva: Uso de gráficos e medidas (onde as variáveis qualitativas e quantitativas da imagem anterior são aplicadas).\nAnálise Inferencial: Testes de hipóteses e modelagem.\nInterpretação e Relatório: Conclusões e apresentação dos achados.\n\n\n\n\nFigura 3: fluxo de uma análise estatística.\n\n\nNo próximo capítulo, exploraremos como utilizar o R para realizar a Análise Exploratória de Dados, focando em medidas de tendência central e dispersão.",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução: conceitos básicos</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução: conceitos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "medidas.html",
+    "href": "medidas.html",
+    "title": "3  Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R",
+    "section": "",
+    "text": "3.1 Medidas de Tendência Central\nNeste capítulo, abordaremos os fundamentos da Análise Exploratória de Dados (AED). A AED é uma etapa crucial em qualquer fluxo de análise estatística, permitindo compreender a estrutura, a variabilidade e os padrões centrais de um conjunto de dados antes de aplicar modelos mais complexos.\nAs medidas de tendência central buscam um valor único que represente o “centro” da distribuição dos dados.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span>"
+    ]
+  },
+  {
+    "objectID": "medidas.html#medidas-de-tendência-central",
+    "href": "medidas.html#medidas-de-tendência-central",
+    "title": "3  Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R",
+    "section": "",
+    "text": "3.1.1 Média Aritmética (\\(\\bar{x}\\))\nÉ a soma de todos os valores dividida pelo número total de observações.\n\\(\\bar{x} = \\frac{\\sum_{i=1}^{n} x_i}{n}\\)\nPropriedade: É sensível a valores extremos (outliers).\n\n\n3.1.2 Mediana (\\(Md\\))\nÉ o valor que divide o conjunto de dados ordenado em duas partes iguais.\nPropriedade: É uma medida robusta, pois não é afetada por outliers.\n\n\n3.1.3 Moda (\\(Mo\\))\nÉ o valor que ocorre com maior frequência no conjunto de dados.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span>"
+    ]
+  },
+  {
+    "objectID": "medidas.html#medidas-de-dispersão",
+    "href": "medidas.html#medidas-de-dispersão",
+    "title": "3  Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R",
+    "section": "3.2 Medidas de Dispersão",
+    "text": "3.2 Medidas de Dispersão\nAs medidas de dispersão indicam o quão afastados os valores estão do centro, descrevendo a variabilidade.\n\n3.2.0.1 Variância (\\(s^2\\))\nMede o desvio médio quadrático em relação à média.\n\n\\(s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n-1}\\)\n\n\n3.2.1 Desvio Padrão (\\(s\\))\nÉ a raiz quadrada da variância. Retorna a medida da dispersão para a mesma unidade dos dados originais.\n\\(s = \\sqrt{s^2}\\)",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span>"
+    ]
+  },
+  {
+    "objectID": "medidas.html#implementação-no-r",
+    "href": "medidas.html#implementação-no-r",
+    "title": "3  Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R",
+    "section": "3.3 Implementação no R",
+    "text": "3.3 Implementação no R\nAbaixo, apresentamos como calcular essas medidas utilizando funções nativas do R.\n\n# Criando um conjunto de dados\ndados &lt;- c(10, 12, 12, 13, 15, 18, 20, 22, 25, 100) # O 100 é um outlier\n# Medidas de tendência central\nmedia &lt;- mean(dados); media\n\n[1] 24.7\n\nmediana &lt;- median(dados); mediana\n\n[1] 16.5\n\n# Função para calcular a moda no R\nget_moda &lt;- function(v) {\n\nuniqv &lt;- unique(v)\n\nuniqv[which.max(tabulate(match(v, uniqv)))]\n\n}\n\nmoda &lt;- get_moda(dados); moda\n\n[1] 12\n\n# Medidas de dispersão\nvariancia &lt;- var(dados); variancia\n\n[1] 723.7889\n\ndesvio_padrao &lt;- sd(dados); desvio_padrao\n\n[1] 26.90332",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span>"
+    ]
+  },
+  {
+    "objectID": "medidas.html#visualização-de-dados",
+    "href": "medidas.html#visualização-de-dados",
+    "title": "3  Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R",
+    "section": "3.4 Visualização de Dados",
+    "text": "3.4 Visualização de Dados\nA visualização é fundamental para interpretar a dispersão e a tendência central simultaneamente.\n# Exemplo de dados com um outlier\ndados &lt;- c(10, 12, 12, 13, 15, 18, 20, 22, 25, 100)\n\npar(mar = c(4, 4, 2, 1))\nhist(dados, main = \"Distribuição\", col = \"lightblue\", border = \"white\", xlab = \"Valores\")\nboxplot(dados, main = \"Variabilidade\", col = \"tomato\", ylab = \"Valores\")\n\n\n\n\n\n\n\n\n\n\n\n(a) Histograma dos Dados\n\n\n\n\n\n\n\n\n\n\n\n(b) Boxplot dos Dados\n\n\n\n\n\n\n\nFigure 3.1: Análise de Tendência Central e Dispersão\n\n\n\n\n\n\nFigura 4: medidas de tendência central e de dispersão.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span>"
+    ]
+  },
+  {
+    "objectID": "medidas.html#medidas-separatrizes-no-r",
+    "href": "medidas.html#medidas-separatrizes-no-r",
+    "title": "3  Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R",
+    "section": "3.5 Medidas Separatrizes no R",
+    "text": "3.5 Medidas Separatrizes no R\nAs medidas separatrizes permitem dividir um conjunto de dados ordenado em partes iguais, facilitando a análise da distribuição, a detecção de assimetria e a identificação de valores discrepantes (outliers).\n\n3.5.1 Definições e Conceitos\nAs medidas separatrizes mais comuns são:\n\n3.5.1.1 Quartis ($Q$)\nDividem os dados em 4 partes iguais (cada uma com 25% dos dados).\n\n$Q_1$ (1º Quartil): 25% dos dados são menores ou iguais a este valor.\n$Q_2$ (2º Quartil): É a própria Mediana (50% dos dados).\n$Q_3$ (3º Quartil): 75% dos dados são menores ou iguais a este valor.\n\n\n\n3.5.1.2 Decis ($D$) e Percentis ($P$)\n\nDecis: Dividem os dados em 10 partes iguais (10%, 20%, …, 90%).\nPercentis (ou Centis): Dividem os dados em 100 partes iguais. O Percentil 50 ($P_{50}$) equivale à mediana.\n\n\n\n3.5.1.3 Amplitude Interquartílica ($IQR$)\nÉ a diferença entre o terceiro e o primeiro quartil ($IQR = Q_3 - Q_1$). É a base para a construção do Boxplot e uma medida de dispersão robusta.\n\n\n\n3.5.2 Implementação no R\nNo R, a função principal para estas medidas é a quantile().\n\n#| echo: true\n\n# Conjunto de dados de exemplo\n\nvendas &lt;- c(102, 105, 110, 115, 120, 125, 130, 140, 150, 160, 175, 300)\n\n# Calculando os Quartis\n\nquartis &lt;- quantile(vendas, probs = c(0.25, 0.5, 0.75))\n\nprint(quartis)\n\n   25%    50%    75% \n113.75 127.50 152.50 \n\n# Calculando Percentis específicos (ex: P10 e P90)\n\npercentis_especificos &lt;- quantile(vendas, probs = c(0.10, 0.90))\n\nprint(percentis_especificos)\n\n  10%   90% \n105.5 173.5 \n\n# Resumo completo (inclui Mín, Q1, Mediana, Média, Q3 e Máx)\n\nsummary(vendas)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  102.0   113.8   127.5   144.3   152.5   300.0 \n\n# Calculando o IQR\n\namplitude_iq &lt;- IQR(vendas)\n\nprint(paste(\"Amplitude Interquartílica:\", amplitude_iq))\n\n[1] \"Amplitude Interquartílica: 38.75\"\n\n\n\n\n3.5.3 Visualização\n\n3.5.3.1 O Boxplot\nO Boxplot (Diagrama de Caixa) é a representação gráfica direta das medidas separatrizes.\n\n#| echo: true\n\n#| fig-cap: \"Boxplot destacando Quartis e Outliers\"\n\nboxplot(vendas,main = \"Distribuição de Vendas\", col = \"mediumseagreen\", horizontal = TRUE, xlab = \"Valores\")\n\n# Adicionando marcações para os quartis\n\nabline(v = quartis, col = \"red\", lty = 2)\n\n\n\n\n\n\n\nFigure 3.2\n\n\n\n\n\n\n\n\n3.5.4 Resumo Visual das Medidas Separatrizes\n\n\n\nFigura 5: medidas separatrizes.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span>"
     ]
   }
 ]

@@ -28,17 +28,17 @@ $\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$
 
 Propriedade: É sensível a valores extremos (outliers).
 
-### Mediana ($Md$) 
+### Mediana ($Md$)
 
 É o valor que divide o conjunto de dados ordenado em duas partes iguais.
 
 Propriedade: É uma medida robusta, pois não é afetada por outliers.
 
-###  Moda ($Mo$)
+### Moda ($Mo$)
 
 É o valor que ocorre com maior frequência no conjunto de dados.
 
-## Medidas de Dispersão 
+## Medidas de Dispersão
 
 As medidas de dispersão indicam o quão afastados os valores estão do
 centro, descrevendo a variabilidade.
@@ -50,14 +50,14 @@ Mede o desvio médio quadrático em relação à média.
 \
 $s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}$
 
-### Desvio Padrão ($s$) 
+### Desvio Padrão ($s$)
 
 É a raiz quadrada da variância. Retorna a medida da dispersão para a
 mesma unidade dos dados originais.
 
 $s = \sqrt{s^2}$
 
-## Implementação no R 
+## Implementação no R
 
 Abaixo, apresentamos como calcular essas medidas utilizando funções
 nativas do R.
@@ -84,7 +84,7 @@ variancia <- var(dados); variancia
 desvio_padrao <- sd(dados); desvio_padrao
 ```
 
-## Visualização de Dados 
+## Visualização de Dados
 
 A visualização é fundamental para interpretar a dispersão e a tendência
 central simultaneamente.
@@ -105,7 +105,8 @@ boxplot(dados, main = "Variabilidade", col = "tomato", ylab = "Valores")
 ```
 
 ![Figura 4: medidas de tendência central e de
-dispersão.](/images/fig4.png){#fig4 fig-align="center" width="549"}
+dispersão.](/images/fig4.png){#fig4 fig-align="center"
+width="549"}
 
 ## Medidas Separatrizes no R
 

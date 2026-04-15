@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Prefácio – Estatística Básica: conceitos e aplicações no R</title>
+<title>3&nbsp; Medidas Descritivas – Estatística Básica: conceitos e aplicações no R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -63,8 +29,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./consfinais.html" rel="next">
+<link href="./introducao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,6 +69,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -115,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preface.html">Prefácio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -168,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link active">
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
@@ -195,14 +190,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./medidas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados: Medidas de Tendência Central, de Dispersão e Separatrizes no R</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./cap2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></span></a>
+  <a href="./cap2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./consfinais.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Considerações finais</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Considerações finais</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -235,15 +224,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">3.1</span> Introdução</a></li>
+  <li><a href="#estrutura-do-resumo-estatístico" id="toc-estrutura-do-resumo-estatístico" class="nav-link" data-scroll-target="#estrutura-do-resumo-estatístico"><span class="header-section-number">3.2</span> Estrutura do Resumo Estatístico</a></li>
+  <li><a href="#número-de-observações-e-valores-ausentes" id="toc-número-de-observações-e-valores-ausentes" class="nav-link" data-scroll-target="#número-de-observações-e-valores-ausentes"><span class="header-section-number">3.3</span> Número de Observações e Valores Ausentes</a>
+  <ul class="collapse">
+  <li><a href="#número-de-observações-n" id="toc-número-de-observações-n" class="nav-link" data-scroll-target="#número-de-observações-n"><span class="header-section-number">3.3.1</span> Número de observações (<span class="math inline">\(n\)</span>)</a></li>
+  <li><a href="#número-de-valores-ausentes-nas" id="toc-número-de-valores-ausentes-nas" class="nav-link" data-scroll-target="#número-de-valores-ausentes-nas"><span class="header-section-number">3.3.2</span> Número de valores ausentes (NAs)</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="header-section-number">3.4</span> Medidas de Posição</a>
+  <ul class="collapse">
+  <li><a href="#mínimo-e-máximo" id="toc-mínimo-e-máximo" class="nav-link" data-scroll-target="#mínimo-e-máximo"><span class="header-section-number">3.4.1</span> Mínimo e Máximo</a></li>
+  <li><a href="#quartis" id="toc-quartis" class="nav-link" data-scroll-target="#quartis"><span class="header-section-number">3.4.2</span> Quartis</a></li>
+  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="header-section-number">3.4.3</span> Mediana</a></li>
+  <li><a href="#média" id="toc-média" class="nav-link" data-scroll-target="#média"><span class="header-section-number">3.4.4</span> Média</a></li>
+  <li><a href="#soma" id="toc-soma" class="nav-link" data-scroll-target="#soma"><span class="header-section-number">3.4.5</span> Soma</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-dispersão" id="toc-medidas-de-dispersão" class="nav-link" data-scroll-target="#medidas-de-dispersão"><span class="header-section-number">3.5</span> Medidas de Dispersão</a>
+  <ul class="collapse">
+  <li><a href="#variância" id="toc-variância" class="nav-link" data-scroll-target="#variância"><span class="header-section-number">3.5.1</span> 5.1 Variância</a></li>
+  <li><a href="#desvio-padrão" id="toc-desvio-padrão" class="nav-link" data-scroll-target="#desvio-padrão"><span class="header-section-number">3.5.2</span> 5.2 Desvio Padrão</a></li>
+  </ul></li>
+  <li><a href="#erro-padrão-e-intervalo-de-confiança" id="toc-erro-padrão-e-intervalo-de-confiança" class="nav-link" data-scroll-target="#erro-padrão-e-intervalo-de-confiança"><span class="header-section-number">3.6</span> Erro Padrão e Intervalo de Confiança</a>
+  <ul class="collapse">
+  <li><a href="#erro-padrão-da-média-se-mean" id="toc-erro-padrão-da-média-se-mean" class="nav-link" data-scroll-target="#erro-padrão-da-média-se-mean"><span class="header-section-number">3.6.1</span> Erro Padrão da Média (SE Mean)</a></li>
+  <li><a href="#intervalo-de-confiança-da-média" id="toc-intervalo-de-confiança-da-média" class="nav-link" data-scroll-target="#intervalo-de-confiança-da-média"><span class="header-section-number">3.6.2</span> Intervalo de Confiança da Média</a></li>
+  </ul></li>
+  <li><a href="#medidas-de-forma-da-distribuição" id="toc-medidas-de-forma-da-distribuição" class="nav-link" data-scroll-target="#medidas-de-forma-da-distribuição"><span class="header-section-number">3.7</span> Medidas de Forma da Distribuição</a>
+  <ul class="collapse">
+  <li><a href="#assimetria-skewness" id="toc-assimetria-skewness" class="nav-link" data-scroll-target="#assimetria-skewness"><span class="header-section-number">3.7.1</span> Assimetria (Skewness)</a></li>
+  <li><a href="#curtose-excesso-de-curtose" id="toc-curtose-excesso-de-curtose" class="nav-link" data-scroll-target="#curtose-excesso-de-curtose"><span class="header-section-number">3.7.2</span> Curtose (Excesso de Curtose)</a></li>
+  </ul></li>
+  <li><a href="#interpretação-conjunta" id="toc-interpretação-conjunta" class="nav-link" data-scroll-target="#interpretação-conjunta"><span class="header-section-number">3.8</span> Interpretação Conjunta</a></li>
+  <li><a href="#aplicações-práticas" id="toc-aplicações-práticas" class="nav-link" data-scroll-target="#aplicações-práticas"><span class="header-section-number">3.9</span> Aplicações Práticas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Prefácio</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></h1>
 </div>
 
 
@@ -260,15 +286,224 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="introdução" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">3.1</span> Introdução</h2>
+<p>A análise exploratória de dados tem como objetivo sintetizar, descrever e compreender as principais características de um conjunto de dados. Uma forma clássica de fazer isso é por meio de um <strong>resumo estatístico</strong>, no qual cada variável (coluna) é descrita por um conjunto padronizado de medidas.</p>
+<p>Essas medidas permitem identificar:</p>
+<ul>
+<li>Tendência central (onde os dados se concentram);</li>
+<li>Dispersão (o quanto os dados variam);</li>
+<li>Forma da distribuição (simetria e caudas);</li>
+<li>Presença de valores ausentes.</li>
+</ul>
+<div id="fig6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/fig6.png" class="img-fluid figure-img" width="549"></p>
+<figcaption>Figura 6: sumário das principais medidas descritivas.</figcaption>
+</figure>
 </div>
-</div>
+<p>Neste capítulo, estudamos um conjunto completo de estatísticas frequentemente organizadas em um <em>data frame resumo</em>, contendo uma linha para cada medida e uma coluna para cada variável.</p>
+<hr>
+</section>
+<section id="estrutura-do-resumo-estatístico" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="estrutura-do-resumo-estatístico"><span class="header-section-number">3.2</span> Estrutura do Resumo Estatístico</h2>
+<p>Considere um conjunto de dados com <span class="math inline">\(p\)</span> variáveis. O resumo estatístico é uma tabela onde:</p>
+<ul>
+<li>Cada <strong>coluna</strong> representa uma variável;</li>
+<li>Cada <strong>linha</strong> representa uma medida descritiva.</li>
+</ul>
+<p>As medidas analisadas são:</p>
+<ul>
+<li>Número de observações (<span class="math inline">\(n\)</span>)</li>
+<li>Número de valores ausentes (NAs)</li>
+<li>Mínimo e máximo</li>
+<li>Quartis</li>
+<li>Média, mediana e soma</li>
+<li>Erro padrão e intervalo de confiança da média</li>
+<li>Variância e desvio padrão</li>
+<li>Assimetria (skewness)</li>
+<li>Curtose (kurtosis)</li>
+</ul>
+<hr>
+</section>
+<section id="número-de-observações-e-valores-ausentes" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="número-de-observações-e-valores-ausentes"><span class="header-section-number">3.3</span> Número de Observações e Valores Ausentes</h2>
+<section id="número-de-observações-n" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="número-de-observações-n"><span class="header-section-number">3.3.1</span> Número de observações (<span class="math inline">\(n\)</span>)</h3>
+<p>É o total de valores válidos (não ausentes) em uma variável.</p>
+<p><span class="math display">\[
+n = \text{número de observações disponíveis}
+\]</span></p>
+</section>
+<section id="número-de-valores-ausentes-nas" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="número-de-valores-ausentes-nas"><span class="header-section-number">3.3.2</span> Número de valores ausentes (NAs)</h3>
+<p>Representa a quantidade de dados faltantes:</p>
+<p><span class="math display">\[
+\text{NAs} = \text{total de valores ausentes}
+\]</span></p>
+<p>Essas medidas são fundamentais para avaliar a <strong>qualidade dos dados</strong>. Um grande número de valores ausentes pode comprometer análises posteriores.</p>
+<hr>
+</section>
+</section>
+<section id="medidas-de-posição" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">3.4</span> Medidas de Posição</h2>
+<section id="mínimo-e-máximo" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="mínimo-e-máximo"><span class="header-section-number">3.4.1</span> Mínimo e Máximo</h3>
+<ul>
+<li><p><strong>Mínimo</strong>: menor valor observado<br>
+<span class="math display">\[
+\min(x)
+\]</span></p></li>
+<li><p><strong>Máximo</strong>: maior valor observado<br>
+<span class="math display">\[
+\max(x)
+\]</span></p></li>
+</ul>
+<p>Essas medidas permitem identificar a amplitude dos dados e possíveis valores extremos.</p>
+<hr>
+</section>
+<section id="quartis" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="quartis"><span class="header-section-number">3.4.2</span> Quartis</h3>
+<p>Os quartis dividem os dados ordenados em quatro partes iguais:</p>
+<ul>
+<li><strong>1º Quartil (Q1)</strong>: 25% dos dados estão abaixo<br>
+</li>
+<li><strong>3º Quartil (Q3)</strong>: 75% dos dados estão abaixo</li>
+</ul>
+<p>São úteis para análise de dispersão e identificação de outliers.</p>
+<hr>
+</section>
+<section id="mediana" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="mediana"><span class="header-section-number">3.4.3</span> Mediana</h3>
+<p>Valor central dos dados ordenados:</p>
+<p><span class="math display">\[
+\text{Mediana} =
+\begin{cases}
+x_{\left(\frac{n+1}{2}\right)}, &amp; \text{se } n \text{ ímpar} \\
+\frac{x_{(n/2)} + x_{(n/2+1)}}{2}, &amp; \text{se } n \text{ par}
+\end{cases}
+\]</span></p>
+<p>A mediana é uma medida robusta, pouco afetada por valores extremos.</p>
+<hr>
+</section>
+<section id="média" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="média"><span class="header-section-number">3.4.4</span> Média</h3>
+<p><span class="math display">\[
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\]</span></p>
+<p>Representa o centro de gravidade dos dados, mas é sensível a outliers.</p>
+<hr>
+</section>
+<section id="soma" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="soma"><span class="header-section-number">3.4.5</span> Soma</h3>
+<p><span class="math display">\[
+\text{Soma} = \sum_{i=1}^{n} x_i
+\]</span></p>
+<p>Útil em contextos acumulativos, como faturamento total ou produção.</p>
+<hr>
+</section>
+</section>
+<section id="medidas-de-dispersão" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">3.5</span> Medidas de Dispersão</h2>
+<section id="variância" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="variância"><span class="header-section-number">3.5.1</span> 5.1 Variância</h3>
+<p><span class="math display">\[
+s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]</span></p>
+</section>
+<section id="desvio-padrão" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="desvio-padrão"><span class="header-section-number">3.5.2</span> 5.2 Desvio Padrão</h3>
+<p><span class="math display">\[
+s = \sqrt{s^2}
+\]</span></p>
+<p>Essas medidas indicam o grau de variabilidade dos dados.</p>
+<hr>
+</section>
+</section>
+<section id="erro-padrão-e-intervalo-de-confiança" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="erro-padrão-e-intervalo-de-confiança"><span class="header-section-number">3.6</span> Erro Padrão e Intervalo de Confiança</h2>
+<section id="erro-padrão-da-média-se-mean" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="erro-padrão-da-média-se-mean"><span class="header-section-number">3.6.1</span> Erro Padrão da Média (SE Mean)</h3>
+<p><span class="math display">\[
+SE = \frac{s}{\sqrt{n}}
+\]</span></p>
+<p>Mede a precisão da média amostral como estimativa da média populacional.</p>
+<hr>
+</section>
+<section id="intervalo-de-confiança-da-média" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="intervalo-de-confiança-da-média"><span class="header-section-number">3.6.2</span> Intervalo de Confiança da Média</h3>
+<p>Para um nível de confiança <span class="math inline">\((1 - \alpha)\)</span>:</p>
+<p><span class="math display">\[
+\bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}
+\]</span></p>
+<ul>
+<li><strong>LCL (Lower Confidence Limit)</strong>: limite inferior<br>
+</li>
+<li><strong>UCL (Upper Confidence Limit)</strong>: limite superior</li>
+</ul>
+<p>Permite inferir um intervalo plausível para a média populacional.</p>
+<hr>
+</section>
+</section>
+<section id="medidas-de-forma-da-distribuição" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="medidas-de-forma-da-distribuição"><span class="header-section-number">3.7</span> Medidas de Forma da Distribuição</h2>
+<section id="assimetria-skewness" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="assimetria-skewness"><span class="header-section-number">3.7.1</span> Assimetria (Skewness)</h3>
+<p><span class="math display">\[
+\text{Skewness} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^3
+\]</span></p>
+<p>Interpretação:</p>
+<ul>
+<li>Skewness = 0 → distribuição simétrica<br>
+</li>
+<li>Skewness &gt; 0 → cauda à direita<br>
+</li>
+<li>Skewness &lt; 0 → cauda à esquerda</li>
+</ul>
+<hr>
+</section>
+<section id="curtose-excesso-de-curtose" class="level3" data-number="3.7.2">
+<h3 data-number="3.7.2" class="anchored" data-anchor-id="curtose-excesso-de-curtose"><span class="header-section-number">3.7.2</span> Curtose (Excesso de Curtose)</h3>
+<p><span class="math display">\[
+\text{Kurtosis} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^4 - 3
+\]</span></p>
+<p>Interpretação:</p>
+<ul>
+<li>Kurtosis ≈ 0 → distribuição normal<br>
+</li>
+<li>Kurtosis &gt; 0 → caudas pesadas<br>
+</li>
+<li>Kurtosis &lt; 0 → caudas leves</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="interpretação-conjunta" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="interpretação-conjunta"><span class="header-section-number">3.8</span> Interpretação Conjunta</h2>
+<p>Ao analisar essas medidas em conjunto, é possível:</p>
+<ul>
+<li>Detectar <strong>outliers</strong>;</li>
+<li>Avaliar <strong>dispersão</strong>;</li>
+<li>Identificar <strong>assimetria</strong>;</li>
+<li>Entender o <strong>formato da distribuição</strong>;</li>
+<li>Verificar a <strong>qualidade dos dados</strong>.</li>
+</ul>
+<hr>
+</section>
+<section id="aplicações-práticas" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="aplicações-práticas"><span class="header-section-number">3.9</span> Aplicações Práticas</h2>
+<p>Esse conjunto de estatísticas é amplamente utilizado em:</p>
+<ul>
+<li>Análise exploratória de dados (EDA);</li>
+<li>Relatórios estatísticos;</li>
+<li>Controle de qualidade;</li>
+<li>Economia e finanças;</li>
+<li>Ciências sociais e biomédicas.</li>
+</ul>
+<hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -834,13 +1069,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Visão Geral">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visão Geral</span>
+      <a href="./introducao.html" class="pagination-link" aria-label="Introdução: conceitos básicos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introdução: conceitos básicos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Resumo">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./consfinais.html" class="pagination-link" aria-label="Considerações finais">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Considerações finais</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

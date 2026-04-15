@@ -17,7 +17,8 @@ book:
       numbered: true
       chapters:
         - introducao.qmd
-        - medidas.qmd
+        # - medidas.qmd
+        - cap2.qmd
     - part: final.qmd
       chapters:
         - consfinais.qmd

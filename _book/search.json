@@ -1,0 +1,54 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Estatística Básica",
+    "section": "",
+    "text": "Visão Geral\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Visão Geral"
+    ]
+  },
+  {
+    "objectID": "preface.html",
+    "href": "preface.html",
+    "title": "Prefácio",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Prefácio"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Resumo",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Resumo"
+    ]
+  },
+  {
+    "objectID": "introducao.html",
+    "href": "introducao.html",
+    "title": "1  Introdução: conceitos básicos",
+    "section": "",
+    "text": "1.1 Introdução à Estatística\nNeste capítulo inicial, estabeleceremos as bases fundamentais da estatística, diferenciando a análise puramente descritiva da inferência, e definindo os tipos de dados com os quais trabalharemos ao longo deste livro.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução: conceitos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "introducao.html#sec-intro",
+    "href": "introducao.html#sec-intro",
+    "title": "1  Introdução: conceitos básicos",
+    "section": "",
+    "text": "1.1.1 O que é Estatística?\nA estatística pode ser definida como a ciência que utiliza a probabilidade para lidar com a incerteza. Em um mundo inundado por dados, ela fornece as ferramentas para transformar observações brutas em conhecimento científico e suporte à decisão.\nPodemos dividir a estatística em três grandes pilares:\n\nEstatística Descritiva: Etapa de organização, resumo e visualização dos dados.\nProbabilidade: O modelo matemático que quantifica a incerteza.\nEstatística Inferencial: O processo de tirar conclusões sobre uma população a partir de uma amostra.\n\n\n\n\nFigura 1: população e amostra.\n\n\n\n\n1.1.2 Conceitos Fundamentais\nAntes de avançarmos para os cálculos, precisamos definir os objetos de estudo:\n\nPopulação: O conjunto total de elementos que compartilham pelo menos uma característica comum (ex: todos os domicílios do Brasil).\nAmostra: Um subconjunto representativo da população.\nParâmetro: Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como \\(\\mu\\) ou \\(\\sigma\\)).\nEstimativa (ou Estatística): Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.\n\n\n\n1.1.3 Classificação de Variáveis\nA escolha da técnica estatística ou do modelo depende inteiramente da natureza da variável. As variáveis podem ser classificadas conforme o esquema abaixo:\n\n1.1.3.1 Qualitativas (ou Categóricas)\nRepresentam atributos ou qualidades que não possuem valor numérico intrínseco.\n\nNominais: Não existe uma ordem natural (ex: Sexo, Estado Civil, Cor/Raça).\nOrdinais: Existe uma hierarquia ou ordenação (ex: Nível de escolaridade, Classe socioeconômica).\n\n\n\n1.1.3.2 Quantitativas (ou Numéricas)\nRepresentam contagens ou mensurações.\n\nDiscretas: Valores provenientes de contagem, geralmente números inteiros (ex: Número de filhos, total de crimes em uma região).\nContínuas: Valores que podem assumir qualquer número real em um intervalo (ex: Renda, Peso, Altura).\n\n\n\n\n1.1.4 O Fluxo da Análise Estatística\nUma análise rigorosa geralmente segue o ciclo de vida dos dados:\n\nPlanejamento e Amostragem: Definição do problema e coleta dos dados.\nAnálise Exploratória (EDA): Uso de gráficos e tabelas para entender a distribuição dos dados e identificar outliers.\nModelagem: Aplicação de modelos estatísticos (como modelos lineares ou espaciais).\nInferência e Comunicação: Interpretação dos resultados e divulgação científica.\n\n\nNo próximo capítulo, exploraremos como utilizar o R para realizar a Análise Exploratória de Dados, focando em medidas de tendência central e dispersão.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução: conceitos básicos</span>"
+    ]
+  }
+]

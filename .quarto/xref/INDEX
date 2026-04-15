@@ -1,0 +1,62 @@
+{
+  "index.qmd": {
+    "index.html": "3ac4a9db"
+  },
+  "preface.qmd": {
+    "preface.html": "bda9507a"
+  },
+  "metodologia.qmd": {
+    "metodologia.html": "d4d7431a"
+  },
+  "crimescontraavida.qmd": {
+    "crimescontraavida.html": "bac7f05d"
+  },
+  "homicidiodoloso.qmd": {
+    "homicidiodoloso.html": "f427c346"
+  },
+  "tentativadehomicidio.qmd": {
+    "tentativadehomicidio.html": "0cb8229a"
+  },
+  "lesaocorporalseguidademorte.qmd": {
+    "lesaocorporalseguidademorte.html": "27fda3cd"
+  },
+  "latrocinio.qmd": {
+    "latrocinio.html": "3994efd1"
+  },
+  "crimescontraopatrimonio.qmd": {
+    "crimescontraopatrimonio.html": "22176721"
+  },
+  "furtodeveiculos.qmd": {
+    "furtodeveiculos.html": "a71632e3"
+  },
+  "roubodeveiculos.qmd": {
+    "roubodeveiculos.html": "8d93a414"
+  },
+  "roubodecarga.qmd": {
+    "roubodecarga.html": "759bca7d"
+  },
+  "rouboainstituicaofinanceira.qmd": {
+    "rouboainstituicaofinanceira.html": "8a185e17"
+  },
+  "estupro.qmd": {
+    "estupro.html": "69dc3e09"
+  },
+  "final.qmd": {
+    "final.html": "ec7c60e0"
+  },
+  "consfinais.qmd": {
+    "consfinais.html": "96bee871"
+  },
+  "references.qmd": {
+    "references.html": "39586ab2"
+  },
+  "crimecontraliberdadesexual.qmd": {
+    "crimecontraliberdadesexual.html": "8e0c1cd3"
+  },
+  "introducao.qmd": {
+    "introducao.html": "571b003b"
+  },
+  "summary.qmd": {
+    "summary.html": "ea7071b8"
+  }
+}

@@ -1,0 +1,138 @@
+/*-- scss:defaults --*/
+// 🎨 PALETA DASHBOARD
+$body-bg: transparent;
+$body-color: #e5e7eb;   // texto claro
+$link-color: #3b82f6;   // azul moderno
+
+
+/* 🌄 FUNDO GERAL ESCURO */
+body {
+  background: linear-gradient(
+    rgba(15, 23, 42, 0.9),
+    rgba(15, 23, 42, 0.95)
+  ),
+  url("fundo.png");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+/* 📦 BASE DOS CARDS */
+.page,
+.page-columns {
+  background: transparent !important;
+}
+
+
+/* 🧠 CARD PRINCIPAL */
+.content {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111827;
+  border-radius: 16px;
+  padding: 30px;
+
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.25),
+    0 2px 10px rgba(0,0,0,0.1);
+}
+
+
+/* 🧭 SIDEBAR ESTILO APP */
+.sidebar {
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(8px);
+
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 20px;
+}
+
+
+/* 📑 TOC (lado direito) */
+.toc {
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(6px);
+
+  border-radius: 12px;
+  padding: 15px;
+}
+
+
+/* 🔝 HEADER / TÍTULO */
+.quarto-title-block {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #111827;
+
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+
+/* 🔗 LINKS */
+a {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #60a5fa;
+}
+
+
+/* 📘 SIDEBAR LINKS */
+.sidebar a {
+  color: #cbd5f5;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  color: #ffffff;
+}
+
+.sidebar a.active {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+
+/* 🔍 BARRA DE BUSCA */
+.sidebar input {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+}
+
+
+/* 🧾 TÍTULOS */
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+
+/* 📊 CÓDIGO */
+pre, code {
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+}
+
+
+/* ✨ EFEITO HOVER (fica MUITO bom) */
+.content:hover {
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .content {
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  .sidebar {
+    backdrop-filter: none;
+  }
+}

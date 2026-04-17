@@ -6,7 +6,7 @@ format:
     include-before-body:
       text: |
         <div style="float: right; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; z-index: 999; position: relative;">
-          <img src="images/fig3.png" style="width: 300px; height: 178px; opacity: 1 !important; filter: none !important; -webkit-filter: none !important;">
+          <img src="images/fig1.png" style="width: 300px; height: 178px; opacity: 1 !important; filter: none !important; -webkit-filter: none !important;">
         </div>
 ---
 
@@ -33,7 +33,7 @@ Antes de avançarmos para os cálculos, precisamos definir os objetos de estudo:
 -   **Parâmetro:** Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como $\mu$ ou $\sigma$).
 -   **Estimativa (ou Estatística):** Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.
 
-![Figura 1: população, amostra, parâmetros e estatísticas.](images/fig1.png){#fig1 fig-align="center" width="549"}
+![Figura 1: população, amostra, parâmetros e estatísticas.](images/fig2.png){#fig1 fig-align="center" width="549"}
 
 ### Classificação de Variáveis
 
@@ -55,7 +55,7 @@ Representam contagens ou mensurações.
 
 -   **Contínuas:** Valores que podem assumir qualquer número real em um intervalo (ex: Renda, Peso, Altura).
 
-![Figura 2: visão geral das variáveis - qualitativas e quantitativas.](images/fig2.png){#fig2 fig-align="center" width="549"}
+![Figura 2: visão geral das variáveis - qualitativas e quantitativas.](images/fig3.png){#fig2 fig-align="center" width="549"}
 
 ### O Fluxo da Análise Estatística
 
@@ -71,8 +71,6 @@ Uma análise rigorosa geralmente segue o ciclo de vida dos dados:
 
 5.  **Análise Inferencial:** Testes de hipóteses e modelagem.
 
-6.  **Interpretação e Relatório:** Conclusões e apresentação dos achados.
-
-![Figura 3: fluxo de uma análise estatística.](images/fig3.png){#fgi3 fig-align="center" width="549"}
+6.  **Interpretação e Relatório:** Conclusões e apresentação dos resultados (achados).
 
 No próximo capítulo, exploraremos como utilizar o R para realizar a **Análise Exploratória de Dados**, focando em medidas de tendência central e dispersão.

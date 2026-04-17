@@ -2,24 +2,28 @@
    ESTILOS PARA QUARTO R (.qmd)
    ========================================= */
 
-/* Estilo Geral dos Blocos */
+/* Estilo Geral dos Blocos com Margens Laterais */
 .definicao, .teorema, .exemplo {
     border-radius: 6px;
     overflow: hidden;
-    margin: 1.5em 0;
-    padding: 0 !important; /* Remove o padding do container pai */
+    /* Margem: 1.5em (cima/baixo) e 2em (esquerda/direita) */
+    margin: 1.5em 4em; 
+    padding: 0 !important; 
     border: none;
+    /* Garante que o bloco não "quebre" em telas pequenas */
+    max-width: 100%; 
 }
 
 /* --- DEFINIÇÃO --- */
 .definicao {
-    background-color: #92ac92; /* Fundo do corpo (verde claro) */
-    color: white;
+    background-color: #4A6984; /* Fundo do corpo (verde claro) */
+    color: #FAF0E6;
 }
 
 /* Estiliza o Título (a primeira linha ou elemento com classe -title) */
 .definicao-title {
-    background-color: #1a531e; /* Verde escuro */
+    background-color: #12264D; /* Verde escuro */
+    color: #E3DAC9;
     padding: 10px 15px;
     font-weight: bold;
     display: block;

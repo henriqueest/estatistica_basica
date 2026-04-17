@@ -1,0 +1,61 @@
+/* =========================================
+   ESTILOS PARA QUARTO R (.qmd)
+   ========================================= */
+
+/* Estilo Geral dos Blocos */
+.definicao, .teorema, .exemplo {
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1.5em 0;
+    padding: 0 !important; /* Remove o padding do container pai */
+    border: none;
+}
+
+/* --- DEFINIÇÃO --- */
+.definicao {
+    background-color: #92ac92; /* Fundo do corpo (verde claro) */
+    color: white;
+}
+
+/* Estiliza o Título (a primeira linha ou elemento com classe -title) */
+.definicao-title {
+    background-color: #1a531e; /* Verde escuro */
+    padding: 10px 15px;
+    font-weight: bold;
+    display: block;
+    margin: 0;
+}
+
+/* --- TEOREMA --- */
+.teorema {
+    background-color: #8da9c4; /* Azul claro */
+    color: white;
+}
+
+.teorema-title {
+    background-color: #1D3557; /* Azul escuro */
+    padding: 10px 15px;
+    font-weight: bold;
+    display: block;
+    margin: 0;
+}
+
+/* --- EXEMPLO --- */
+.exemplo {
+    background-color: #d8b382; /* Bege/Laranja claro */
+    color: white;
+}
+
+.exemplo-title {
+    background-color: #c97b00; /* Laranja escuro */
+    padding: 10px 15px;
+    font-weight: bold;
+    display: block;
+    margin: 0;
+}
+
+/* Ajuste do conteúdo interno para não ficar colado nas bordas */
+.definicao p, .teorema p, .exemplo p,
+.definicao .math, .teorema .math, .exemplo .math {
+    padding: 5px 15px;
+}

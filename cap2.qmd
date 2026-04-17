@@ -55,65 +55,113 @@ As medidas analisadas são:
 -   Assimetria (skewness)
 -   Curtose (kurtosis)
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.1
+:::
 
-## Número de Observações e Valores Ausentes
-
-### Número de observações ($n$)
-
-É o total de valores válidos (não ausentes) em uma variável.
+O número de observações corresponde à quantidade de valores válidos (não
+ausentes) em uma variável.
 
 $$
 n = \text{número de observações disponíveis}
+$$ Essa medida indica o volume efetivo de dados utilizados na análise,
+influenciando diretamente a confiabilidade dos resultados.
+::::
+
+O número de observações, usualmente representado por $n$, indica a
+quantidade de dados efetivamente disponíveis para análise. Essa medida é
+fundamental, pois influencia diretamente a confiabilidade das
+estimativas estatísticas e a robustez das conclusões obtidas. Em geral,
+quanto maior o valor de $n$, maior tende a ser a estabilidade dos
+resultados.
+
+:::: definicao
+::: definicao-title
+Definição 3.2.2
+:::
+
+Valores ausentes representam dados não observados ou não registrados em
+uma variável.
+
+$$
+\text{NAs} = \text{número total de valores ausentes}
 $$
 
-### Número de valores ausentes (NAs)
+A presença de valores ausentes pode reduzir o tamanho efetivo da amostra
+e introduzir vieses na análise.
+::::
 
-Representa a quantidade de dados faltantes:
-
-$$
-\text{NAs} = \text{total de valores ausentes}
-$$
+Valores ausentes correspondem a informações não registradas ou
+indisponíveis em um conjunto de dados. A presença desses valores pode
+comprometer análises estatísticas, reduzindo o tamanho efetivo da
+amostra e potencialmente introduzindo vieses. Por isso, é essencial
+identificá-los e tratá-los adequadamente antes de proceder com a
+análise.
 
 Essas medidas são fundamentais para avaliar a **qualidade dos dados**.
 Um grande número de valores ausentes pode comprometer análises
 posteriores.
 
-------------------------------------------------------------------------
+### Medidas de Posição
 
-## Medidas de Posição
+:::: definicao
+::: definicao-title
+Definição 3.2.1.1
+:::
 
-### Mínimo e Máximo
+O valor mínimo corresponde ao menor valor observado em um conjunto de
+dados.
 
--   **Mínimo**: menor valor observado\
-    $$
-    \min(x)
-    $$
+$$
+\min(x)
+$$
 
--   **Máximo**: maior valor observado\
-    $$
-    \max(x)
-    $$
+Define o limite inferior dos dados e auxilia na identificação de valores
+extremos.
+::::
+
+:::: definicao
+::: definicao-title
+Definição 3.2.1.2
+:::
+
+O valor máximo corresponde ao maior valor observado em um conjunto de
+dados.
+
+$$
+\max(x)
+$$
+
+Define o limite superior da amostra.
+::::
 
 Essas medidas permitem identificar a amplitude dos dados e possíveis
 valores extremos.
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.1.3
+:::
+Os quartis são medidas que dividem os dados ordenados em quatro partes
+iguais.
 
-### Quartis
+$$
+Q_1, Q_2, Q_3
+$$
 
-Os quartis dividem os dados ordenados em quatro partes iguais:
-
--   **1º Quartil (Q1)**: 25% dos dados estão abaixo\
--   **3º Quartil (Q3)**: 75% dos dados estão abaixo
+O primeiro quartil (Q1) corresponde a 25% dos dados, o segundo (mediana)
+a 50% e o terceiro (Q3) a 75%.
+::::
 
 São úteis para análise de dispersão e identificação de outliers.
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.1.4
+:::
 
-### Mediana
-
-Valor central dos dados ordenados:
+A mediana é o valor central de um conjunto de dados ordenados.
 
 $$
 \text{Mediana} =
@@ -123,82 +171,110 @@ x_{\left(\frac{n+1}{2}\right)}, & \text{se } n \text{ ímpar} \\
 \end{cases}
 $$
 
-A mediana é uma medida robusta, pouco afetada por valores extremos.
+É uma medida robusta, pouco sensível a valores extremos.
+::::
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.1.5
+:::
 
-### Média
+A média aritmética representa o valor médio dos dados.
 
 $$
 \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
 $$
 
-Representa o centro de gravidade dos dados, mas é sensível a outliers.
+É amplamente utilizada, porém sensível à presença de outliers.
+::::
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.1.6
+:::
 
-### Soma
+A soma corresponde ao total acumulado dos valores observados.
 
 $$
-\text{Soma} = \sum_{i=1}^{n} x_i
+\sum_{i=1}^{n} x_i
 $$
 
-Útil em contextos acumulativos, como faturamento total ou produção.
+É útil em análises de quantidades totais.
+::::
 
-------------------------------------------------------------------------
+### Medidas de Dispersão
 
-## Medidas de Dispersão
+:::: definicao
+::: definicao-title
+Definição 3.2.2.1
+:::
 
-### 5.1 Variância
+A variância mede a dispersão dos dados em torno da média.
 
 $$
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
 $$
 
-### 5.2 Desvio Padrão
+Valores maiores indicam maior variabilidade.
+::::
+
+:::: definicao
+::: definicao-title
+Definição 3.2.2.2
+:::
+
+O desvio padrão é a raiz quadrada da variância.
 
 $$
 s = \sqrt{s^2}
 $$
 
-Essas medidas indicam o grau de variabilidade dos dados.
+Expressa a dispersão na mesma unidade da variável.
+::::
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.2.3
+:::
 
-## Erro Padrão e Intervalo de Confiança
-
-### Erro Padrão da Média (SE Mean)
+O erro padrão da média mede a variabilidade da média amostral.
 
 $$
 SE = \frac{s}{\sqrt{n}}
 $$
 
-Mede a precisão da média amostral como estimativa da média populacional.
+Indica a precisão da estimativa da média populacional.
+::::
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.2.4
+:::
 
-### Intervalo de Confiança da Média
-
-Para um nível de confiança $(1 - \alpha)$:
+O intervalo de confiança fornece uma faixa de valores plausíveis para a
+média populacional.
 
 $$
 \bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}
 $$
 
--   **LCL (Lower Confidence Limit)**: limite inferior\
--   **UCL (Upper Confidence Limit)**: limite superior
+Permite inferência estatística com um nível de confiança especificado.
+::::
 
-Permite inferir um intervalo plausível para a média populacional.
+### Medidas de Forma da Distribuição
 
-------------------------------------------------------------------------
-
-## Medidas de Forma da Distribuição
-
-### Assimetria (Skewness)
+:::: definicao
+::: definicao-title
+Definição 3.2.3.1
+:::
+A assimetria mede o grau de inclinação da distribuição dos dados.
 
 $$
 \text{Skewness} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^3
 $$
+
+Indica se a distribuição é simétrica ou possui caudas assimétricas.
+:::
 
 Interpretação:
 
@@ -206,21 +282,25 @@ Interpretação:
 -   Skewness \> 0 → cauda à direita\
 -   Skewness \< 0 → cauda à esquerda
 
-------------------------------------------------------------------------
+:::: definicao
+::: definicao-title
+Definição 3.2.3.2
+:::
 
-### Curtose (Excesso de Curtose)
+A curtose avalia o peso das caudas da distribuição.
 
 $$
 \text{Kurtosis} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^4 - 3
 $$
+
+Permite identificar distribuições com caudas pesadas ou leves.
+:::
 
 Interpretação:
 
 -   Kurtosis ≈ 0 → distribuição normal\
 -   Kurtosis \> 0 → caudas pesadas\
 -   Kurtosis \< 0 → caudas leves
-
-------------------------------------------------------------------------
 
 ## Interpretação Conjunta
 
@@ -232,8 +312,6 @@ Ao analisar essas medidas em conjunto, é possível:
 -   Entender o **formato da distribuição**;
 -   Verificar a **qualidade dos dados**.
 
-------------------------------------------------------------------------
-
 ## Aplicações Práticas
 
 Esse conjunto de estatísticas é amplamente utilizado em:
@@ -242,6 +320,4 @@ Esse conjunto de estatísticas é amplamente utilizado em:
 -   Relatórios estatísticos;
 -   Controle de qualidade;
 -   Economia e finanças;
--   Ciências sociais e biomédicas.
-
-------------------------------------------------------------------------
+-   Ciências sociais e biomédicas. ::::

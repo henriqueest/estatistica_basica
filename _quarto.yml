@@ -36,6 +36,7 @@ book:
 
 format:
   html:
+    css: styles.css
     theme: 
       light: theme-dark.scss
       dark: cosmo
@@ -45,6 +46,8 @@ format:
   #   keep-tex: true
   #   
     code-copy: true
+
+
 
 engine: knitr   
     

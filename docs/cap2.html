@@ -99,6 +99,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -230,37 +231,14 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">3.1</span> Introdução</a></li>
-  <li><a href="#medidas" id="toc-medidas" class="nav-link" data-scroll-target="#medidas"><span class="header-section-number">3.2</span> Medidas</a></li>
-  <li><a href="#número-de-observações-e-valores-ausentes" id="toc-número-de-observações-e-valores-ausentes" class="nav-link" data-scroll-target="#número-de-observações-e-valores-ausentes"><span class="header-section-number">3.3</span> Número de Observações e Valores Ausentes</a>
+  <li><a href="#medidas" id="toc-medidas" class="nav-link" data-scroll-target="#medidas"><span class="header-section-number">3.2</span> Medidas</a>
   <ul class="collapse">
-  <li><a href="#número-de-observações-n" id="toc-número-de-observações-n" class="nav-link" data-scroll-target="#número-de-observações-n"><span class="header-section-number">3.3.1</span> Número de observações (<span class="math inline">\(n\)</span>)</a></li>
-  <li><a href="#número-de-valores-ausentes-nas" id="toc-número-de-valores-ausentes-nas" class="nav-link" data-scroll-target="#número-de-valores-ausentes-nas"><span class="header-section-number">3.3.2</span> Número de valores ausentes (NAs)</a></li>
+  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="header-section-number">3.2.1</span> Medidas de Posição</a></li>
+  <li><a href="#medidas-de-dispersão" id="toc-medidas-de-dispersão" class="nav-link" data-scroll-target="#medidas-de-dispersão"><span class="header-section-number">3.2.2</span> Medidas de Dispersão</a></li>
+  <li><a href="#medidas-de-forma-da-distribuição" id="toc-medidas-de-forma-da-distribuição" class="nav-link" data-scroll-target="#medidas-de-forma-da-distribuição"><span class="header-section-number">3.2.3</span> Medidas de Forma da Distribuição</a></li>
   </ul></li>
-  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="header-section-number">3.4</span> Medidas de Posição</a>
-  <ul class="collapse">
-  <li><a href="#mínimo-e-máximo" id="toc-mínimo-e-máximo" class="nav-link" data-scroll-target="#mínimo-e-máximo"><span class="header-section-number">3.4.1</span> Mínimo e Máximo</a></li>
-  <li><a href="#quartis" id="toc-quartis" class="nav-link" data-scroll-target="#quartis"><span class="header-section-number">3.4.2</span> Quartis</a></li>
-  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="header-section-number">3.4.3</span> Mediana</a></li>
-  <li><a href="#média" id="toc-média" class="nav-link" data-scroll-target="#média"><span class="header-section-number">3.4.4</span> Média</a></li>
-  <li><a href="#soma" id="toc-soma" class="nav-link" data-scroll-target="#soma"><span class="header-section-number">3.4.5</span> Soma</a></li>
-  </ul></li>
-  <li><a href="#medidas-de-dispersão" id="toc-medidas-de-dispersão" class="nav-link" data-scroll-target="#medidas-de-dispersão"><span class="header-section-number">3.5</span> Medidas de Dispersão</a>
-  <ul class="collapse">
-  <li><a href="#variância" id="toc-variância" class="nav-link" data-scroll-target="#variância"><span class="header-section-number">3.5.1</span> 5.1 Variância</a></li>
-  <li><a href="#desvio-padrão" id="toc-desvio-padrão" class="nav-link" data-scroll-target="#desvio-padrão"><span class="header-section-number">3.5.2</span> 5.2 Desvio Padrão</a></li>
-  </ul></li>
-  <li><a href="#erro-padrão-e-intervalo-de-confiança" id="toc-erro-padrão-e-intervalo-de-confiança" class="nav-link" data-scroll-target="#erro-padrão-e-intervalo-de-confiança"><span class="header-section-number">3.6</span> Erro Padrão e Intervalo de Confiança</a>
-  <ul class="collapse">
-  <li><a href="#erro-padrão-da-média-se-mean" id="toc-erro-padrão-da-média-se-mean" class="nav-link" data-scroll-target="#erro-padrão-da-média-se-mean"><span class="header-section-number">3.6.1</span> Erro Padrão da Média (SE Mean)</a></li>
-  <li><a href="#intervalo-de-confiança-da-média" id="toc-intervalo-de-confiança-da-média" class="nav-link" data-scroll-target="#intervalo-de-confiança-da-média"><span class="header-section-number">3.6.2</span> Intervalo de Confiança da Média</a></li>
-  </ul></li>
-  <li><a href="#medidas-de-forma-da-distribuição" id="toc-medidas-de-forma-da-distribuição" class="nav-link" data-scroll-target="#medidas-de-forma-da-distribuição"><span class="header-section-number">3.7</span> Medidas de Forma da Distribuição</a>
-  <ul class="collapse">
-  <li><a href="#assimetria-skewness" id="toc-assimetria-skewness" class="nav-link" data-scroll-target="#assimetria-skewness"><span class="header-section-number">3.7.1</span> Assimetria (Skewness)</a></li>
-  <li><a href="#curtose-excesso-de-curtose" id="toc-curtose-excesso-de-curtose" class="nav-link" data-scroll-target="#curtose-excesso-de-curtose"><span class="header-section-number">3.7.2</span> Curtose (Excesso de Curtose)</a></li>
-  </ul></li>
-  <li><a href="#interpretação-conjunta" id="toc-interpretação-conjunta" class="nav-link" data-scroll-target="#interpretação-conjunta"><span class="header-section-number">3.8</span> Interpretação Conjunta</a></li>
-  <li><a href="#aplicações-práticas" id="toc-aplicações-práticas" class="nav-link" data-scroll-target="#aplicações-práticas"><span class="header-section-number">3.9</span> Aplicações Práticas</a></li>
+  <li><a href="#interpretação-conjunta" id="toc-interpretação-conjunta" class="nav-link" data-scroll-target="#interpretação-conjunta"><span class="header-section-number">3.3</span> Interpretação Conjunta</a></li>
+  <li><a href="#aplicações-práticas" id="toc-aplicações-práticas" class="nav-link" data-scroll-target="#aplicações-práticas"><span class="header-section-number">3.4</span> Aplicações Práticas</a></li>
   </ul>
 </nav>
     </div>
@@ -330,58 +308,67 @@ window.Quarto = {
 <li>Assimetria (skewness)</li>
 <li>Curtose (kurtosis)</li>
 </ul>
-<hr>
-</section>
-<section id="número-de-observações-e-valores-ausentes" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="número-de-observações-e-valores-ausentes"><span class="header-section-number">3.3</span> Número de Observações e Valores Ausentes</h2>
-<section id="número-de-observações-n" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="número-de-observações-n"><span class="header-section-number">3.3.1</span> Número de observações (<span class="math inline">\(n\)</span>)</h3>
-<p>É o total de valores válidos (não ausentes) em uma variável.</p>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1</p>
+</div>
+<p>O número de observações corresponde à quantidade de valores válidos (não ausentes) em uma variável.</p>
 <p><span class="math display">\[
 n = \text{número de observações disponíveis}
-\]</span></p>
-</section>
-<section id="número-de-valores-ausentes-nas" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="número-de-valores-ausentes-nas"><span class="header-section-number">3.3.2</span> Número de valores ausentes (NAs)</h3>
-<p>Representa a quantidade de dados faltantes:</p>
+\]</span> Essa medida indica o volume efetivo de dados utilizados na análise, influenciando diretamente a confiabilidade dos resultados.</p>
+</div>
+<p>O número de observações, usualmente representado por <span class="math inline">\(n\)</span>, indica a quantidade de dados efetivamente disponíveis para análise. Essa medida é fundamental, pois influencia diretamente a confiabilidade das estimativas estatísticas e a robustez das conclusões obtidas. Em geral, quanto maior o valor de <span class="math inline">\(n\)</span>, maior tende a ser a estabilidade dos resultados.</p>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.2</p>
+</div>
+<p>Valores ausentes representam dados não observados ou não registrados em uma variável.</p>
 <p><span class="math display">\[
-\text{NAs} = \text{total de valores ausentes}
+\text{NAs} = \text{número total de valores ausentes}
 \]</span></p>
+<p>A presença de valores ausentes pode reduzir o tamanho efetivo da amostra e introduzir vieses na análise.</p>
+</div>
+<p>Valores ausentes correspondem a informações não registradas ou indisponíveis em um conjunto de dados. A presença desses valores pode comprometer análises estatísticas, reduzindo o tamanho efetivo da amostra e potencialmente introduzindo vieses. Por isso, é essencial identificá-los e tratá-los adequadamente antes de proceder com a análise.</p>
 <p>Essas medidas são fundamentais para avaliar a <strong>qualidade dos dados</strong>. Um grande número de valores ausentes pode comprometer análises posteriores.</p>
-<hr>
-</section>
-</section>
-<section id="medidas-de-posição" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">3.4</span> Medidas de Posição</h2>
-<section id="mínimo-e-máximo" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="mínimo-e-máximo"><span class="header-section-number">3.4.1</span> Mínimo e Máximo</h3>
-<ul>
-<li><p><strong>Mínimo</strong>: menor valor observado<br>
-<span class="math display">\[
+<section id="medidas-de-posição" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">3.2.1</span> Medidas de Posição</h3>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1.1</p>
+</div>
+<p>O valor mínimo corresponde ao menor valor observado em um conjunto de dados.</p>
+<p><span class="math display">\[
 \min(x)
-\]</span></p></li>
-<li><p><strong>Máximo</strong>: maior valor observado<br>
-<span class="math display">\[
+\]</span></p>
+<p>Define o limite inferior dos dados e auxilia na identificação de valores extremos.</p>
+</div>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1.2</p>
+</div>
+<p>O valor máximo corresponde ao maior valor observado em um conjunto de dados.</p>
+<p><span class="math display">\[
 \max(x)
-\]</span></p></li>
-</ul>
+\]</span></p>
+<p>Define o limite superior da amostra.</p>
+</div>
 <p>Essas medidas permitem identificar a amplitude dos dados e possíveis valores extremos.</p>
-<hr>
-</section>
-<section id="quartis" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="quartis"><span class="header-section-number">3.4.2</span> Quartis</h3>
-<p>Os quartis dividem os dados ordenados em quatro partes iguais:</p>
-<ul>
-<li><strong>1º Quartil (Q1)</strong>: 25% dos dados estão abaixo<br>
-</li>
-<li><strong>3º Quartil (Q3)</strong>: 75% dos dados estão abaixo</li>
-</ul>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1.3</p>
+</div>
+<p>Os quartis são medidas que dividem os dados ordenados em quatro partes iguais.</p>
+<p><span class="math display">\[
+Q_1, Q_2, Q_3
+\]</span></p>
+<p>O primeiro quartil (Q1) corresponde a 25% dos dados, o segundo (mediana) a 50% e o terceiro (Q3) a 75%.</p>
+</div>
 <p>São úteis para análise de dispersão e identificação de outliers.</p>
-<hr>
-</section>
-<section id="mediana" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="mediana"><span class="header-section-number">3.4.3</span> Mediana</h3>
-<p>Valor central dos dados ordenados:</p>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1.4</p>
+</div>
+<p>A mediana é o valor central de um conjunto de dados ordenados.</p>
 <p><span class="math display">\[
 \text{Mediana} =
 \begin{cases}
@@ -389,75 +376,84 @@ x_{\left(\frac{n+1}{2}\right)}, &amp; \text{se } n \text{ ímpar} \\
 \frac{x_{(n/2)} + x_{(n/2+1)}}{2}, &amp; \text{se } n \text{ par}
 \end{cases}
 \]</span></p>
-<p>A mediana é uma medida robusta, pouco afetada por valores extremos.</p>
-<hr>
-</section>
-<section id="média" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="média"><span class="header-section-number">3.4.4</span> Média</h3>
+<p>É uma medida robusta, pouco sensível a valores extremos.</p>
+</div>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1.5</p>
+</div>
+<p>A média aritmética representa o valor médio dos dados.</p>
 <p><span class="math display">\[
 \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
 \]</span></p>
-<p>Representa o centro de gravidade dos dados, mas é sensível a outliers.</p>
-<hr>
-</section>
-<section id="soma" class="level3" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="soma"><span class="header-section-number">3.4.5</span> Soma</h3>
+<p>É amplamente utilizada, porém sensível à presença de outliers.</p>
+</div>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.1.6</p>
+</div>
+<p>A soma corresponde ao total acumulado dos valores observados.</p>
 <p><span class="math display">\[
-\text{Soma} = \sum_{i=1}^{n} x_i
+\sum_{i=1}^{n} x_i
 \]</span></p>
-<p>Útil em contextos acumulativos, como faturamento total ou produção.</p>
-<hr>
+<p>É útil em análises de quantidades totais.</p>
+</div>
 </section>
-</section>
-<section id="medidas-de-dispersão" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">3.5</span> Medidas de Dispersão</h2>
-<section id="variância" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="variância"><span class="header-section-number">3.5.1</span> 5.1 Variância</h3>
+<section id="medidas-de-dispersão" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">3.2.2</span> Medidas de Dispersão</h3>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.2.1</p>
+</div>
+<p>A variância mede a dispersão dos dados em torno da média.</p>
 <p><span class="math display">\[
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
 \]</span></p>
-</section>
-<section id="desvio-padrão" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="desvio-padrão"><span class="header-section-number">3.5.2</span> 5.2 Desvio Padrão</h3>
+<p>Valores maiores indicam maior variabilidade.</p>
+</div>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.2.2</p>
+</div>
+<p>O desvio padrão é a raiz quadrada da variância.</p>
 <p><span class="math display">\[
 s = \sqrt{s^2}
 \]</span></p>
-<p>Essas medidas indicam o grau de variabilidade dos dados.</p>
-<hr>
-</section>
-</section>
-<section id="erro-padrão-e-intervalo-de-confiança" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="erro-padrão-e-intervalo-de-confiança"><span class="header-section-number">3.6</span> Erro Padrão e Intervalo de Confiança</h2>
-<section id="erro-padrão-da-média-se-mean" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1" class="anchored" data-anchor-id="erro-padrão-da-média-se-mean"><span class="header-section-number">3.6.1</span> Erro Padrão da Média (SE Mean)</h3>
+<p>Expressa a dispersão na mesma unidade da variável.</p>
+</div>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.2.3</p>
+</div>
+<p>O erro padrão da média mede a variabilidade da média amostral.</p>
 <p><span class="math display">\[
 SE = \frac{s}{\sqrt{n}}
 \]</span></p>
-<p>Mede a precisão da média amostral como estimativa da média populacional.</p>
-<hr>
-</section>
-<section id="intervalo-de-confiança-da-média" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2" class="anchored" data-anchor-id="intervalo-de-confiança-da-média"><span class="header-section-number">3.6.2</span> Intervalo de Confiança da Média</h3>
-<p>Para um nível de confiança <span class="math inline">\((1 - \alpha)\)</span>:</p>
+<p>Indica a precisão da estimativa da média populacional.</p>
+</div>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.2.4</p>
+</div>
+<p>O intervalo de confiança fornece uma faixa de valores plausíveis para a média populacional.</p>
 <p><span class="math display">\[
 \bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}
 \]</span></p>
-<ul>
-<li><strong>LCL (Lower Confidence Limit)</strong>: limite inferior<br>
-</li>
-<li><strong>UCL (Upper Confidence Limit)</strong>: limite superior</li>
-</ul>
-<p>Permite inferir um intervalo plausível para a média populacional.</p>
-<hr>
+<p>Permite inferência estatística com um nível de confiança especificado.</p>
+</div>
 </section>
-</section>
-<section id="medidas-de-forma-da-distribuição" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="medidas-de-forma-da-distribuição"><span class="header-section-number">3.7</span> Medidas de Forma da Distribuição</h2>
-<section id="assimetria-skewness" class="level3" data-number="3.7.1">
-<h3 data-number="3.7.1" class="anchored" data-anchor-id="assimetria-skewness"><span class="header-section-number">3.7.1</span> Assimetria (Skewness)</h3>
+<section id="medidas-de-forma-da-distribuição" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="medidas-de-forma-da-distribuição"><span class="header-section-number">3.2.3</span> Medidas de Forma da Distribuição</h3>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.3.1</p>
+</div>
+<p>A assimetria mede o grau de inclinação da distribuição dos dados.</p>
 <p><span class="math display">\[
 \text{Skewness} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^3
 \]</span></p>
+<p>Indica se a distribuição é simétrica ou possui caudas assimétricas.</p>
+</div>
 <p>Interpretação:</p>
 <ul>
 <li>Skewness = 0 → distribuição simétrica<br>
@@ -466,13 +462,16 @@ SE = \frac{s}{\sqrt{n}}
 </li>
 <li>Skewness &lt; 0 → cauda à esquerda</li>
 </ul>
-<hr>
-</section>
-<section id="curtose-excesso-de-curtose" class="level3" data-number="3.7.2">
-<h3 data-number="3.7.2" class="anchored" data-anchor-id="curtose-excesso-de-curtose"><span class="header-section-number">3.7.2</span> Curtose (Excesso de Curtose)</h3>
+<div class="definicao">
+<div class="definicao-title">
+<p>Definição 3.2.3.2</p>
+</div>
+<p>A curtose avalia o peso das caudas da distribuição.</p>
 <p><span class="math display">\[
 \text{Kurtosis} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^4 - 3
 \]</span></p>
+<p>Permite identificar distribuições com caudas pesadas ou leves.</p>
+</div>
 <p>Interpretação:</p>
 <ul>
 <li>Kurtosis ≈ 0 → distribuição normal<br>
@@ -481,11 +480,10 @@ SE = \frac{s}{\sqrt{n}}
 </li>
 <li>Kurtosis &lt; 0 → caudas leves</li>
 </ul>
-<hr>
 </section>
 </section>
-<section id="interpretação-conjunta" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="interpretação-conjunta"><span class="header-section-number">3.8</span> Interpretação Conjunta</h2>
+<section id="interpretação-conjunta" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="interpretação-conjunta"><span class="header-section-number">3.3</span> Interpretação Conjunta</h2>
 <p>Ao analisar essas medidas em conjunto, é possível:</p>
 <ul>
 <li>Detectar <strong>outliers</strong>;</li>
@@ -494,19 +492,17 @@ SE = \frac{s}{\sqrt{n}}
 <li>Entender o <strong>formato da distribuição</strong>;</li>
 <li>Verificar a <strong>qualidade dos dados</strong>.</li>
 </ul>
-<hr>
 </section>
-<section id="aplicações-práticas" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="aplicações-práticas"><span class="header-section-number">3.9</span> Aplicações Práticas</h2>
+<section id="aplicações-práticas" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="aplicações-práticas"><span class="header-section-number">3.4</span> Aplicações Práticas</h2>
 <p>Esse conjunto de estatísticas é amplamente utilizado em:</p>
 <ul>
 <li>Análise exploratória de dados (EDA);</li>
 <li>Relatórios estatísticos;</li>
 <li>Controle de qualidade;</li>
 <li>Economia e finanças;</li>
-<li>Ciências sociais e biomédicas.</li>
+<li>Ciências sociais e biomédicas. ::::</li>
 </ul>
-<hr>
 
 
 </section>

@@ -10,7 +10,7 @@ format:
         </div>
 ---
 
-## Introdução à Estatística {#sec-intro}
+## Introdução {#sec-intro}
 
 Neste capítulo inicial, estabeleceremos as bases fundamentais da estatística, diferenciando a análise puramente descritiva da inferência, e definindo os tipos de dados com os quais trabalharemos ao longo deste livro.
 

@@ -2,8 +2,7 @@
 title: "Medidas Descritivas"
 output:
     pdf_document:
-        includes:
-            in_header: mystyles.sty
+        includes: null
 editor: 
   markdown: 
     wrap: 72
@@ -34,13 +33,15 @@ para cada medida e uma coluna para cada variável.
 
 ------------------------------------------------------------------------
 
-## Estrutura do Resumo Estatístico
+## Medidas
 
-Considere um conjunto de dados com $p$ variáveis. O resumo estatístico é
-uma tabela onde:
+Considere um conjunto de dados com $p$ variáveis, onde:
 
 -   Cada **coluna** representa uma variável;
 -   Cada **linha** representa uma medida descritiva.
+
+![Figura 7: conjunto de dados estruturado.](images/fig7.png){#fig3
+fig-align="center" width="549"}
 
 As medidas analisadas são:
 

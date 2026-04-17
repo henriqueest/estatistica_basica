@@ -1,9 +1,13 @@
 ---
-title: "Introdução: conceitos básicos"
-output:
-    pdf_document:
-        includes:
-            in_header: mystyles.sty
+title: "Conceitos básicos"
+author: "Henrique José de Paula Alves"
+format:
+  html:
+    include-before-body:
+      text: |
+        <div style="float: right; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; z-index: 999; position: relative;">
+          <img src="images/fig3.png" style="width: 300px; height: 178px; opacity: 1 !important; filter: none !important; -webkit-filter: none !important;">
+        </div>
 ---
 
 ## Introdução à Estatística {#sec-intro}

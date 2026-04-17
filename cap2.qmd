@@ -33,7 +33,7 @@ para cada medida e uma coluna para cada variável.
 
 ------------------------------------------------------------------------
 
-## Medidas
+## Medida
 
 Considere um conjunto de dados com $p$ variáveis, onde:
 

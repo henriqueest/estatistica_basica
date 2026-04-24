@@ -1,323 +1,259 @@
 ---
-title: "Medidas Descritivas"
-output:
-    pdf_document:
-        includes: null
-editor: 
-  markdown: 
-    wrap: 72
+title: "Classificação de Variáveis"
+author: "Henrique José de Paula Alves"
+format:
+  html:
+    include-before-body:
+      text: |
+        <div style="float: right; margin-top: 35px; margin-right: 10px; margin-bottom: 10px; z-index: 999; position: relative;">
+          <img src="images/fig2.png" style="width: 300px; height: 178px; opacity: 1 !important; filter: none !important; -webkit-filter: none !important;">
+        </div>
 ---
 
 ## Introdução
 
-A análise exploratória de dados tem como objetivo sintetizar, descrever
-e compreender as principais características de um conjunto de dados. Uma
-forma clássica de fazer isso é por meio de um **resumo estatístico**, no
-qual cada variável (coluna) é descrita por um conjunto padronizado de
-medidas.
+Em linhas gerais, a **análise exploratória de dados (AED)** tem ligação direta com a organização e descrição dos dados, reunindo um conjunto de ferramentas que auxiliam na interpretação dos valores observados. No entanto, a utilidade dessas ferramentas — seja para avaliar como as observações se distribuem, onde estão posicionadas ou como se associam — é condicionada pela **natureza da variável** em estudo.
 
-Essas medidas permitem identificar:
+Antes de calcular uma média ou construir um gráfico, o estatístico deve responder: "O que este dado representa?". A resposta a essa pergunta nos leva à classificação das variáveis, um passo fundamental que dita quais métodos de exploração são válidos e quais são estatisticamente incorretos.
 
--   Tendência central (onde os dados se concentram);
--   Dispersão (o quanto os dados variam);
--   Forma da distribuição (simetria e caudas);
--   Presença de valores ausentes.
+Neste capítulo, introduziremos os conceitos de classificação e os métodos de exploração adequados para cada tipo, estabelecendo a base para análises estatísticas avançadas.
 
-![Figura 6: sumário das principais medidas
-descritivas.](images/fig6.png){#fig6 fig-align="center"
-width="549"}
+Em linhas gerais, trata-se de uma característica medida na população ou na amostra. Como exemplos, apresentam-se a altura de um indivíduo, o peso, a temperatura, a cor dos olhos, o número de filhos, a cor das folhas de uma planta, entre outros. São representadas por letras maiúsculas do nosso alfabeto: X, Y, A, B, W.
 
-Neste capítulo, estudamos um conjunto completo de estatísticas
-frequentemente organizadas em um *data frame resumo*, contendo uma linha
-para cada medida e uma coluna para cada variável.
+A Figura 2 apresenta um esquema de classificação das variáveis.
 
-------------------------------------------------------------------------
+![Figura 2: Esquema de classificação de variáveis.](images/fig3.png){fig-align="center" width="549"}
 
-## Medidas
+#### Variável Qualitativa Nominal
 
-Considere um conjunto de dados com $p$ variáveis, onde:
+As variáveis qualitativas nominais apresentam o menor grau de informação dentre os quatro tipos apresentados. É possível apenas a avaliação de frequências e ordenações arbitrárias. O sexo, a religião, a raça, a cor preferida, são exemplos desse tipo de variável.
 
--   Cada **coluna** representa uma variável;
--   Cada **linha** representa uma medida descritiva.
+:::: exemplo
+Exemplo 1: Sexo de uma pessoa
 
-![Figura 7: conjunto de dados estruturado.](images/fig7.png){#fig3
-fig-align="center" width="549"}
+::: exemplo-title
+Suponha uma pesquisa com aplicação de um questionário on-line, onde o sexo dos entrevistados é perguntado. Suponha ainda que a variável *Sexo de uma pessoa* seja representada por X, as observações podem ser:
 
-As medidas analisadas são:
-
--   Número de observações ($n$)
--   Número de valores ausentes (NAs)
--   Mínimo e máximo
--   Quartis
--   Média, mediana e soma
--   Erro padrão e intervalo de confiança da média
--   Variância e desvio padrão
--   Assimetria (skewness)
--   Curtose (kurtosis)
-
-:::: definicao
-::: definicao-title
-Definição 3.2.1
+X:{Masculino, Masculino, Feminino, Masculino, ..., Feminino}
 :::
-
-O número de observações corresponde à quantidade de valores válidos (não
-ausentes) em uma variável.
-
-$$
-n = \text{número de observações disponíveis}
-$$ Essa medida indica o volume efetivo de dados utilizados na análise,
-influenciando diretamente a confiabilidade dos resultados.
 ::::
 
-O número de observações, usualmente representado por $n$, indica a
-quantidade de dados efetivamente disponíveis para análise. Essa medida é
-fundamental, pois influencia diretamente a confiabilidade das
-estimativas estatísticas e a robustez das conclusões obtidas. Em geral,
-quanto maior o valor de $n$, maior tende a ser a estabilidade dos
-resultados.
+:::: exemplo
+Exemplo 2: Raça de um indivíduo entrevistado
 
-:::: definicao
-::: definicao-title
-Definição 3.2.2
+::: exemplo-title
+Nessa mesma pesquisa, suponha agora que o desejo é conhecer a raça declarada de um indivíduo. Supondo que Y seja essa variável, as possíveis observações são:
+
+Y:{branco, Negro, Pardo, Negro, Indígena, Branco,...,Pardo}
 :::
-
-Valores ausentes representam dados não observados ou não registrados em
-uma variável.
-
-$$
-\text{NAs} = \text{número total de valores ausentes}
-$$
-
-A presença de valores ausentes pode reduzir o tamanho efetivo da amostra
-e introduzir vieses na análise.
 ::::
 
-Valores ausentes correspondem a informações não registradas ou
-indisponíveis em um conjunto de dados. A presença desses valores pode
-comprometer análises estatísticas, reduzindo o tamanho efetivo da
-amostra e potencialmente introduzindo vieses. Por isso, é essencial
-identificá-los e tratá-los adequadamente antes de proceder com a
-análise.
+Agora, apresenta-se um exemplo um pouco mais complexo, que pode causar confundimento com a classificação de variável qualitativa ordinal.
 
-Essas medidas são fundamentais para avaliar a **qualidade dos dados**.
-Um grande número de valores ausentes pode comprometer análises
-posteriores.
+:::: exemplo
+Exemplo 3: Causa do óbito ou diagnóstico clínico
 
-### Medidas de Posição
+::: exemplo-title
+Em estudos epidemiológicos, suponha uma variável W representando as causas de óbitos ou diagnóstico clínico. Assim:
 
-:::: definicao
-::: definicao-title
-Definição 3.2.1.1
+W:{Doença cardiovascular, Câncer, Causas externas (acidentes), Doenças infecciosas}
 :::
-
-O valor mínimo corresponde ao menor valor observado em um conjunto de
-dados.
-
-$$
-\min(x)
-$$
-
-Define o limite inferior dos dados e auxilia na identificação de valores
-extremos.
 ::::
 
-:::: definicao
-::: definicao-title
-Definição 3.2.1.2
+Nessa situação alguém poderia tentar ordenar por gravidade ou letalidade e, portanto, uma nova variável deve ser criada e, a partir disso, uma possível ordenação pode ser realizada. É necessário lembrar que a letalidade muda conforme a idade do paciente, a região, as condições de atendimento imediato, entre outros. Como não existe uma classificação natural única para essas patologias, essa variável é classificada como qualitativa nominal.
+
+O mesmo raciocínio ocorre quando consideramos a área de formação acadêmica. Ordenar por oferta de emprego, maior salário, etc, não é uma ordenação natural nem tampouco única e, portanto, essas são classificadas como qualitativas nominais.
+
+É preciso salientar que nos exemplos citados, assim como tantos outros nessa classificação de variável, não são passíveis de ordenação natural nem representam quantidades ou medidas.
+
+#### Variável Qualitativa Ordinal
+
+As variáveis qualitativas ordinais apresentam um grau de informação maior em relação as nominais porque apresentam duas características extremamente importantes: **ordenação natural e única**. Nesse, caso, é permitdio a comparações entre observações. Algumas carcaterísticas como "grau de escolaridade", "classificação de grau de severidade de uma patologia" são exemplos de variáveis dessa natureza.
+
+:::: exemplo
+Exemplo 4: Diagnóstico Clínico de Câncer
+
+::: exemplo-title
+Como mencionado no exemplo 3, suponha agora que, para pacientes com câncer, seja interessante medir o grau de avanço (estágio) da doença, representado por um variável X.
+
+X:{0, 1, 2, 3, 4}
+
+ou
+
+X:{gravidade muito baixa (curável), gravidade baixa, gravidade moderada, gravidade alta,gravidade muito alta}
 :::
-
-O valor máximo corresponde ao maior valor observado em um conjunto de
-dados.
-
-$$
-\max(x)
-$$
-
-Define o limite superior da amostra.
 ::::
 
-Essas medidas permitem identificar a amplitude dos dados e possíveis
-valores extremos.
+O exemplo 4 é interessante por dois motivos: os números 0, 1, 2, 3, 4, representam uma ordenação natural e única do estágio de avanço de um determinado câncer; segundo, é interessante notar que mesmo sendo uma variável qualitativa, ela pode ser codificada e representada por números. Esse tipo de apresentação é muito comum em variáveis qualitativas ordinárias: são os chamados *scores.*
 
-:::: definicao
-::: definicao-title
-Definição 3.2.1.3
+Outro fato interessante e muito comum é o uso da ***escala Likert*** (Likert, 1982) nesse tipo de variável, como apresentado no próximo exemplo.
+
+:::: exemplo
+Exemplo 5: Escala Likert
+
+::: exemplo-title
+Quando o desejo do pesquisador é medir, por exemplo, o grau de satisfação dos clientes em relação a algum bem ou serviço, a escala Likert em *k* níveis é uma ferramenta interessante.
+
+Y:{1, 2, 3, 4, 5}
+
+ou
+
+X:{Péssimo, Ruim, Regular, Bom, Ótimo}
 :::
-Os quartis são medidas que dividem os dados ordenados em quatro partes
-iguais.
-
-$$
-Q_1, Q_2, Q_3
-$$
-
-O primeiro quartil (Q1) corresponde a 25% dos dados, o segundo (mediana)
-a 50% e o terceiro (Q3) a 75%.
 ::::
 
-São úteis para análise de dispersão e identificação de outliers.
+Em resumo, variáveis ordinais informam a ordem única e natural das observações e não sua magnitude. Esse fato é importante para definirmos quais medidas estatísticas resumidoras devem ser utilizadas nesse tipo de variável.
+
+Segundo (Thorndike et al. 1926), as vantagens e limitações do uso desse tipo de variável são:
+
+1.  Ambiguidade nas respostas: não se sabe o que está sendo medido;
+
+2.  Arbitrariedade nas unidades: não se sabe o quão apropriado é operar com as medidas obtidas;
+
+3.  Ambiiguidade na significância: não se sabe o que as medidas obtidas siginficam em relação ao intelecto.
+
+Antes de partirmos para a classificação de variáveis quantitativas, é preciso relembrar, da Teoria dos Conjuntos, o que são conjunto enumeráveis e não enumeráveis finitos e infinitos. Faremos isso de uma maneira bem informal.
 
 :::: definicao
+Definição 1: Conjuntos Finitos (sempre são enumeráveis)
+
 ::: definicao-title
-Definição 3.2.1.4
+Imagine uma caixa de ovos. Nesse caso, conseguimos apontar o primeiro, o segundo, o terceiro, ..., o último. De modo prático, esses conjuntos tem um fim e são passíveis de ordenação (podemos dizer quem é o próximo elemento desse conjunto). Como exemplos, podemos citar o jogadores de futebol de um time, as letras do alfabeto, os dedos das mãos, etc. Em resumo, são enumeráveis porque, mesmo que se encontre dificuldades, é possível contar um por um ordenadamente até o último.
 :::
-
-A mediana é o valor central de um conjunto de dados ordenados.
-
-$$
-\text{Mediana} =
-\begin{cases}
-x_{\left(\frac{n+1}{2}\right)}, & \text{se } n \text{ ímpar} \\
-\frac{x_{(n/2)} + x_{(n/2+1)}}{2}, & \text{se } n \text{ par}
-\end{cases}
-$$
-
-É uma medida robusta, pouco sensível a valores extremos.
 ::::
 
 :::: definicao
+Definição 2: Conjuntos Infinitos Enumeráveis
+
 ::: definicao-title
-Definição 3.2.1.5
+Aqui é onde a mente começa a dar um nó, mas a lógica é simples: o conjunto não tem fim, mas se tem uma **estratégia de contagem** (uma receita) que garante que sempre se chega em qualquer número. Como exemplo podemos citar o conjunto dos números naturais e, embora seja "estranho" do ponto de vista intuitivo, o conjunto dos números irracionais. Esse último é um resultado matemático importantíssimo atribuido ao matemático alemão Georg Cantor.
 :::
-
-A média aritmética representa o valor médio dos dados.
-
-$$
-\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
-$$
-
-É amplamente utilizada, porém sensível à presença de outliers.
 ::::
 
+Como regra de ouro, se for possível colocar os elementos de um conjunto infinito em uma fila (primeiro, segundo, ....) sem saltar o próximo elemento, ele é enumerável.
+
 :::: definicao
+Definição 3: Conjuntos Infinitos Não Enumeráveis
+
 ::: definicao-title
-Definição 3.2.1.6
+Nesse conjunto, a ideia de "o próximo elemento" não existe. Entre dois elementos quaisquer, existem infinitos "outros elementos", e a tentativa de fazer uma fila fracassa. O exemplo mais comum e abrangente é o conjunto dos números reais e qualquer subconjunto desse.
 :::
-
-A soma corresponde ao total acumulado dos valores observados.
-
-$$
-\sum_{i=1}^{n} x_i
-$$
-
-É útil em análises de quantidades totais.
 ::::
 
-### Medidas de Dispersão
+De forma bem intuitiva, a ideia de ser "enumerável" é como subir uma escada: primeiro degrau, segundo degrau, e por ai em diante, e a ideia de "não enumerável" é como tentar subir uma rampa de vidro sem atrito, ou seja, inteiramente lisa. Não há como apoiar os pés e subir para o próximo.
 
-:::: definicao
-::: definicao-title
-Definição 3.2.2.1
+De posse dessas informações de "enumerável" e "não enumerável", podemos agora apresentar as variáveis quantitativas discretas e contínuas.
+
+#### Variável Quantitativa Discreta
+
+Esse tipo de variável, em geral, assume valores inteiros. Do ponto de vista matemático rigoroso, essas variáveis são caracterizadas por conjuntos enumeráveis finitos ou infinitos. Portanto, as palavras-chave são: conjuntos numéricos enumeráveis. **Em geral representam quantidades ou contagens**. É possível avaliar relações matemáticas entre os valores observados.
+
+:::: exemplo
+Exemplo 6: Número de filhos
+
+::: exemplo-title
+Suponha que o interesse seja observar o número de filhos de determinadas famílias de uma região. Sendo F essa variável de interesse, os possíveis valores abservados são:
+
+F:{0, 1, 2, 3, 4, 5, ..., k}
 :::
-
-A variância mede a dispersão dos dados em torno da média.
-
-$$
-s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
-$$
-
-Valores maiores indicam maior variabilidade.
 ::::
 
-:::: definicao
-::: definicao-title
-Definição 3.2.2.2
+É imprescindível notar que os números 0, 1, 2, 3, etc, representam quantidades e não classificações como nas variáveis qualitativas ordinais.
+
+:::: exemplo
+Exemplo 7: Número de caras obtidas ao lançarmos um dado k vezes
+
+::: exemplo-title
+Suponha k lançamentos de um dado. Sendo W a variável de interesse
+
+W:{0, 1, 2, 3, 4, 5, ..., k}
 :::
-
-O desvio padrão é a raiz quadrada da variância.
-
-$$
-s = \sqrt{s^2}
-$$
-
-Expressa a dispersão na mesma unidade da variável.
 ::::
 
-:::: definicao
-::: definicao-title
-Definição 3.2.2.3
+#### Variável Quantitativa Contínua
+
+De maneira curta e direta, esta relacionada a conjuntos infinitos não enumeráveis. Avalia medidas como tempo, distâncias, áreas, volumes. altura, entre outras. As relações matemáticas entre os valores observados são possíveis de serem avaliadas.
+
+:::: exemplo
+Exemplo 8: Temperatura média de um motor de trator em um experimento agrícola
+
+::: exemplo-title
+Suponha que o interesse seja medir a temperatura média diária de um motor de um trator em um experimento agrícola. Seja Y essa variável de interesse.
+
+Y:{85,4ºC, 84,9ºC, ...}
 :::
-
-O erro padrão da média mede a variabilidade da média amostral.
-
-$$
-SE = \frac{s}{\sqrt{n}}
-$$
-
-Indica a precisão da estimativa da média populacional.
 ::::
 
-:::: definicao
-::: definicao-title
-Definição 3.2.2.4
+Note que, embora possamos arredondar para números inteiros para facilitar a leitura, a natureza do fenômeno físico é um fluxo ininterrupto de valores (não enumerável), o que a define como **contínua**.
+
+No próximo capítulo, apresentaremos as possíveis medidas descritoras para cada um desses tipos de classificação de variáveis.
+
+:::: exercicio
+Exercício 1: Análises de Cenários e Conceitos
+
+::: exercicio-title
+*Classifique as variáveis abaixo em: **Qualitativa Nominal**, **Qualitativa Ordinal**, **Quantitativa Discreta** ou **Quantitativa Contínua**.*
+
+1.  Cor das folhas de uma planta de soja.
+
+2.  Número de grãos em uma espiga de milho.
+
+3.  Pressão arterial medida em mmHg.
+
+4.  Grau de satisfação com um atendimento (Escala de 1 a 5).
+
+5.  Raça de um animal de estimação.
+
+6.  Tempo de germinação de uma semente.
+
+7.  Número de máquinas em manutenção em uma fábrica.
+
+8.  Religião declarada em um censo.
+
+9.  Estágio de maturação de um fruto (Verde, Maduro, Passado).
+
+10. Temperatura da água em um processo industrial.
+
+11. Letras do alfabeto usadas em um código.
+
+12. Área ocupada por uma pastagem (em hectares).
+
+13. Número de filhos de uma família.
+
+14. Diagnóstico médico (Doença A, Doença B, Doença C).
+
+15. Ranking de um atleta em uma competição (1º lugar, 2º lugar...).
 :::
-
-O intervalo de confiança fornece uma faixa de valores plausíveis para a
-média populacional.
-
-$$
-\bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}
-$$
-
-Permite inferência estatística com um nível de confiança especificado.
 ::::
 
-### Medidas de Forma da Distribuição
+:::: exercicio
+Exercicio 2: Teoria de Conjuntos e Enumerabilidade
 
-:::: definicao
-::: definicao-title
-Definição 3.2.3.1
+*Responda às questões com base na lógica de classificação apresentada no texto.*
+
+::: exercicio-title
+1.  Por que o **Sexo** de uma pessoa é classificado como Nominal e não como Ordinal?
+
+2.  No Exemplo 3, por que a **Causa de Óbito** é Nominal, mesmo que algumas causas pareçam "mais graves" que outras?
+
+3.  Explique a diferença fundamental entre uma variável **Qualitativa Ordinal** e uma **Quantitativa Discreta**.
+
+4.  O que caracteriza uma variável como **Quantitativa Contínua** mesmo quando anotamos os valores de forma arredondada?
+
+5.  Na **Escala Likert**, os números 1, 2, 3, 4 e 5 representam magnitudes (quantidades) ou ordens? Justifique.
+
+6.  Por que a variável "Área de formação acadêmica" é considerada nominal?
+
+7.  Dê um exemplo de uma variável que, dependendo de como é medida, pode ser Ordinal ou Discreta.
 :::
-A assimetria mede o grau de inclinação da distribuição dos dados.
+::::
 
-$$
-\text{Skewness} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^3
-$$
+:::: exercicio
+Exercício 3: Desafio de aplicação
 
-Indica se a distribuição é simétrica ou possui caudas assimétricas.
+::: exercicio-title
+1.  Imagine que você está medindo a "Velocidade de um carro". Classifique essa variável e explique se ela é baseada em um conjunto enumerável ou não enumerável.
+
+2.  Um pesquisador decide codificar a variável "Cor dos Olhos" como: 1-Azul, 2-Castanho, 3-Verde. Essa codificação transforma a variável em Quantitativa? Justifique sua resposta com base no texto.
 :::
-
-Interpretação:
-
--   Skewness = 0 → distribuição simétrica\
--   Skewness \> 0 → cauda à direita\
--   Skewness \< 0 → cauda à esquerda
-
-:::: definicao
-::: definicao-title
-Definição 3.2.3.2
-:::
-
-A curtose avalia o peso das caudas da distribuição.
-
-$$
-\text{Kurtosis} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^4 - 3
-$$
-
-Permite identificar distribuições com caudas pesadas ou leves.
-:::
-
-Interpretação:
-
--   Kurtosis ≈ 0 → distribuição normal\
--   Kurtosis \> 0 → caudas pesadas\
--   Kurtosis \< 0 → caudas leves
-
-## Interpretação Conjunta
-
-Ao analisar essas medidas em conjunto, é possível:
-
--   Detectar **outliers**;
--   Avaliar **dispersão**;
--   Identificar **assimetria**;
--   Entender o **formato da distribuição**;
--   Verificar a **qualidade dos dados**.
-
-## Aplicações Práticas
-
-Esse conjunto de estatísticas é amplamente utilizado em:
-
--   Análise exploratória de dados (EDA);
--   Relatórios estatísticos;
--   Controle de qualidade;
--   Economia e finanças;
--   Ciências sociais e biomédicas. ::::
+::::

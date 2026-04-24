@@ -12,7 +12,7 @@ book:
   chapters:
     - index.qmd
     - preface.qmd
-    - summary.qmd
+    #- summary.qmd
     - part: "Capítulos"
       numbered: true
       chapters:
@@ -41,13 +41,13 @@ format:
       light: theme-dark.scss
       dark: cosmo
   # pdf:
-  #   documentclass: krantz
+  #   documentclass: book
   #   keep-md: true
   #   keep-tex: true
+  #   code-copy: true
+  #   toc: true                # Sugestão: Adiciona sumário, comum em livros (Krantz)
+  #   number-sections: true    # Sugestão: Numeração de seções para documentos técnicos
   #   
-    code-copy: true
-
-
 
 engine: knitr   
     

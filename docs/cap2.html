@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Henrique José de Paula Alves">
 
-<title>3&nbsp; Medidas Descritivas – Estatística Básica: conceitos e aplicações no R</title>
+<title>2&nbsp; Classificação de Variáveis – Estatística Básica: conceitos e aplicações no R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-80e32e9fde537d5e29225fb26c36e619.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-dark-629e21d4e4465a027b94bc54bad23390.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-295bd5a6f65cf0b4ae59eef937c02780.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-ea6fa5f394daea520e08be51114da933.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -111,7 +83,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Classificação de Variáveis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,19 +131,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visão Geral</span></a>
+ <span class="menu-text">O poder dos dados em um mundo incerto</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./preface.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumo</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -186,13 +152,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introducao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Conceitos básicos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceitos básicos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cap2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Classificação de Variáveis</span></span></a>
   </div>
 </li>
       </ul>
@@ -209,7 +175,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./consfinais.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Considerações finais</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Considerações finais</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -230,30 +196,31 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">3.1</span> Introdução</a></li>
-  <li><a href="#medidas" id="toc-medidas" class="nav-link" data-scroll-target="#medidas"><span class="header-section-number">3.2</span> Medidas</a>
-  <ul class="collapse">
-  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="header-section-number">3.2.1</span> Medidas de Posição</a></li>
-  <li><a href="#medidas-de-dispersão" id="toc-medidas-de-dispersão" class="nav-link" data-scroll-target="#medidas-de-dispersão"><span class="header-section-number">3.2.2</span> Medidas de Dispersão</a></li>
-  <li><a href="#medidas-de-forma-da-distribuição" id="toc-medidas-de-forma-da-distribuição" class="nav-link" data-scroll-target="#medidas-de-forma-da-distribuição"><span class="header-section-number">3.2.3</span> Medidas de Forma da Distribuição</a></li>
-  </ul></li>
-  <li><a href="#interpretação-conjunta" id="toc-interpretação-conjunta" class="nav-link" data-scroll-target="#interpretação-conjunta"><span class="header-section-number">3.3</span> Interpretação Conjunta</a></li>
-  <li><a href="#aplicações-práticas" id="toc-aplicações-práticas" class="nav-link" data-scroll-target="#aplicações-práticas"><span class="header-section-number">3.4</span> Aplicações Práticas</a></li>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">2.1</span> Introdução</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<div style="float: right; margin-top: 35px; margin-right: 10px; margin-bottom: 10px; z-index: 999; position: relative;">
+  <img src="images/fig2.png" style="width: 300px; height: 178px; opacity: 1 !important; filter: none !important; -webkit-filter: none !important;">
+</div>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introducao.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Classificação de Variáveis</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas Descritivas</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Classificação de Variáveis</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Henrique José de Paula Alves </p>
+          </div>
+  </div>
     
   
     
@@ -264,247 +231,182 @@ window.Quarto = {
 </header>
 
 
-<section id="introdução" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">3.1</span> Introdução</h2>
-<p>A análise exploratória de dados tem como objetivo sintetizar, descrever e compreender as principais características de um conjunto de dados. Uma forma clássica de fazer isso é por meio de um <strong>resumo estatístico</strong>, no qual cada variável (coluna) é descrita por um conjunto padronizado de medidas.</p>
-<p>Essas medidas permitem identificar:</p>
-<ul>
-<li>Tendência central (onde os dados se concentram);</li>
-<li>Dispersão (o quanto os dados variam);</li>
-<li>Forma da distribuição (simetria e caudas);</li>
-<li>Presença de valores ausentes.</li>
-</ul>
-<div id="fig6" class="quarto-figure quarto-figure-center anchored">
+<section id="introdução" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">2.1</span> Introdução</h2>
+<p>Em linhas gerais, a <strong>análise exploratória de dados (AED)</strong> tem ligação direta com a organização e descrição dos dados, reunindo um conjunto de ferramentas que auxiliam na interpretação dos valores observados. No entanto, a utilidade dessas ferramentas — seja para avaliar como as observações se distribuem, onde estão posicionadas ou como se associam — é condicionada pela <strong>natureza da variável</strong> em estudo.</p>
+<p>Antes de calcular uma média ou construir um gráfico, o estatístico deve responder: “O que este dado representa?”. A resposta a essa pergunta nos leva à classificação das variáveis, um passo fundamental que dita quais métodos de exploração são válidos e quais são estatisticamente incorretos.</p>
+<p>Neste capítulo, introduziremos os conceitos de classificação e os métodos de exploração adequados para cada tipo, estabelecendo a base para análises estatísticas avançadas.</p>
+<p>Em linhas gerais, trata-se de uma característica medida na população ou na amostra. Como exemplos, apresentam-se a altura de um indivíduo, o peso, a temperatura, a cor dos olhos, o número de filhos, a cor das folhas de uma planta, entre outros. São representadas por letras maiúsculas do nosso alfabeto: X, Y, A, B, W.</p>
+<p>A Figura 2 apresenta um esquema de classificação das variáveis.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/fig6.png" class="img-fluid figure-img" width="549"></p>
-<figcaption>Figura 6: sumário das principais medidas descritivas.</figcaption>
+<p><img src="images/fig3.png" class="img-fluid figure-img" width="549"></p>
+<figcaption>Figura 2: Esquema de classificação de variáveis.</figcaption>
 </figure>
 </div>
-<p>Neste capítulo, estudamos um conjunto completo de estatísticas frequentemente organizadas em um <em>data frame resumo</em>, contendo uma linha para cada medida e uma coluna para cada variável.</p>
-<hr>
+<section id="variável-qualitativa-nominal" class="level4" data-number="2.1.0.1">
+<h4 data-number="2.1.0.1" class="anchored" data-anchor-id="variável-qualitativa-nominal"><span class="header-section-number">2.1.0.1</span> Variável Qualitativa Nominal</h4>
+<p>As variáveis qualitativas nominais apresentam o menor grau de informação dentre os quatro tipos apresentados. É possível apenas a avaliação de frequências e ordenações arbitrárias. O sexo, a religião, a raça, a cor preferida, são exemplos desse tipo de variável.</p>
+<div class="exemplo">
+<p>Exemplo 1: Sexo de uma pessoa</p>
+<div class="exemplo-title">
+<p>Suponha uma pesquisa com aplicação de um questionário on-line, onde o sexo dos entrevistados é perguntado. Suponha ainda que a variável <em>Sexo de uma pessoa</em> seja representada por X, as observações podem ser:</p>
+<p>X:{Masculino, Masculino, Feminino, Masculino, …, Feminino}</p>
+</div>
+</div>
+<div class="exemplo">
+<p>Exemplo 2: Raça de um indivíduo entrevistado</p>
+<div class="exemplo-title">
+<p>Nessa mesma pesquisa, suponha agora que o desejo é conhecer a raça declarada de um indivíduo. Supondo que Y seja essa variável, as possíveis observações são:</p>
+<p>Y:{branco, Negro, Pardo, Negro, Indígena, Branco,…,Pardo}</p>
+</div>
+</div>
+<p>Agora, apresenta-se um exemplo um pouco mais complexo, que pode causar confundimento com a classificação de variável qualitativa ordinal.</p>
+<div class="exemplo">
+<p>Exemplo 3: Causa do óbito ou diagnóstico clínico</p>
+<div class="exemplo-title">
+<p>Em estudos epidemiológicos, suponha uma variável W representando as causas de óbitos ou diagnóstico clínico. Assim:</p>
+<p>W:{Doença cardiovascular, Câncer, Causas externas (acidentes), Doenças infecciosas}</p>
+</div>
+</div>
+<p>Nessa situação alguém poderia tentar ordenar por gravidade ou letalidade e, portanto, uma nova variável deve ser criada e, a partir disso, uma possível ordenação pode ser realizada. É necessário lembrar que a letalidade muda conforme a idade do paciente, a região, as condições de atendimento imediato, entre outros. Como não existe uma classificação natural única para essas patologias, essa variável é classificada como qualitativa nominal.</p>
+<p>O mesmo raciocínio ocorre quando consideramos a área de formação acadêmica. Ordenar por oferta de emprego, maior salário, etc, não é uma ordenação natural nem tampouco única e, portanto, essas são classificadas como qualitativas nominais.</p>
+<p>É preciso salientar que nos exemplos citados, assim como tantos outros nessa classificação de variável, não são passíveis de ordenação natural nem representam quantidades ou medidas.</p>
 </section>
-<section id="medidas" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="medidas"><span class="header-section-number">3.2</span> Medidas</h2>
-<p>Considere um conjunto de dados com <span class="math inline">\(p\)</span> variáveis, onde:</p>
-<ul>
-<li>Cada <strong>coluna</strong> representa uma variável;</li>
-<li>Cada <strong>linha</strong> representa uma medida descritiva.</li>
-</ul>
-<div id="fig3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/fig7.png" class="img-fluid figure-img" width="549"></p>
-<figcaption>Figura 7: conjunto de dados estruturado.</figcaption>
-</figure>
+<section id="variável-qualitativa-ordinal" class="level4" data-number="2.1.0.2">
+<h4 data-number="2.1.0.2" class="anchored" data-anchor-id="variável-qualitativa-ordinal"><span class="header-section-number">2.1.0.2</span> Variável Qualitativa Ordinal</h4>
+<p>As variáveis qualitativas ordinais apresentam um grau de informação maior em relação as nominais porque apresentam duas características extremamente importantes: <strong>ordenação natural e única</strong>. Nesse, caso, é permitdio a comparações entre observações. Algumas carcaterísticas como “grau de escolaridade”, “classificação de grau de severidade de uma patologia” são exemplos de variáveis dessa natureza.</p>
+<div class="exemplo">
+<p>Exemplo 4: Diagnóstico Clínico de Câncer</p>
+<div class="exemplo-title">
+<p>Como mencionado no exemplo 3, suponha agora que, para pacientes com câncer, seja interessante medir o grau de avanço (estágio) da doença, representado por um variável X.</p>
+<p>X:{0, 1, 2, 3, 4}</p>
+<p>ou</p>
+<p>X:{gravidade muito baixa (curável), gravidade baixa, gravidade moderada, gravidade alta,gravidade muito alta}</p>
 </div>
-<p>As medidas analisadas são:</p>
-<ul>
-<li>Número de observações (<span class="math inline">\(n\)</span>)</li>
-<li>Número de valores ausentes (NAs)</li>
-<li>Mínimo e máximo</li>
-<li>Quartis</li>
-<li>Média, mediana e soma</li>
-<li>Erro padrão e intervalo de confiança da média</li>
-<li>Variância e desvio padrão</li>
-<li>Assimetria (skewness)</li>
-<li>Curtose (kurtosis)</li>
-</ul>
+</div>
+<p>O exemplo 4 é interessante por dois motivos: os números 0, 1, 2, 3, 4, representam uma ordenação natural e única do estágio de avanço de um determinado câncer; segundo, é interessante notar que mesmo sendo uma variável qualitativa, ela pode ser codificada e representada por números. Esse tipo de apresentação é muito comum em variáveis qualitativas ordinárias: são os chamados <em>scores.</em></p>
+<p>Outro fato interessante e muito comum é o uso da <strong><em>escala Likert</em></strong> (Likert, 1982) nesse tipo de variável, como apresentado no próximo exemplo.</p>
+<div class="exemplo">
+<p>Exemplo 5: Escala Likert</p>
+<div class="exemplo-title">
+<p>Quando o desejo do pesquisador é medir, por exemplo, o grau de satisfação dos clientes em relação a algum bem ou serviço, a escala Likert em <em>k</em> níveis é uma ferramenta interessante.</p>
+<p>Y:{1, 2, 3, 4, 5}</p>
+<p>ou</p>
+<p>X:{Péssimo, Ruim, Regular, Bom, Ótimo}</p>
+</div>
+</div>
+<p>Em resumo, variáveis ordinais informam a ordem única e natural das observações e não sua magnitude. Esse fato é importante para definirmos quais medidas estatísticas resumidoras devem ser utilizadas nesse tipo de variável.</p>
+<p>Segundo (Thorndike et al.&nbsp;1926), as vantagens e limitações do uso desse tipo de variável são:</p>
+<ol type="1">
+<li><p>Ambiguidade nas respostas: não se sabe o que está sendo medido;</p></li>
+<li><p>Arbitrariedade nas unidades: não se sabe o quão apropriado é operar com as medidas obtidas;</p></li>
+<li><p>Ambiiguidade na significância: não se sabe o que as medidas obtidas siginficam em relação ao intelecto.</p></li>
+</ol>
+<p>Antes de partirmos para a classificação de variáveis quantitativas, é preciso relembrar, da Teoria dos Conjuntos, o que são conjunto enumeráveis e não enumeráveis finitos e infinitos. Faremos isso de uma maneira bem informal.</p>
 <div class="definicao">
+<p>Definição 1: Conjuntos Finitos (sempre são enumeráveis)</p>
 <div class="definicao-title">
-<p>Definição 3.2.1</p>
+<p>Imagine uma caixa de ovos. Nesse caso, conseguimos apontar o primeiro, o segundo, o terceiro, …, o último. De modo prático, esses conjuntos tem um fim e são passíveis de ordenação (podemos dizer quem é o próximo elemento desse conjunto). Como exemplos, podemos citar o jogadores de futebol de um time, as letras do alfabeto, os dedos das mãos, etc. Em resumo, são enumeráveis porque, mesmo que se encontre dificuldades, é possível contar um por um ordenadamente até o último.</p>
 </div>
-<p>O número de observações corresponde à quantidade de valores válidos (não ausentes) em uma variável.</p>
-<p><span class="math display">\[
-n = \text{número de observações disponíveis}
-\]</span> Essa medida indica o volume efetivo de dados utilizados na análise, influenciando diretamente a confiabilidade dos resultados.</p>
-</div>
-<p>O número de observações, usualmente representado por <span class="math inline">\(n\)</span>, indica a quantidade de dados efetivamente disponíveis para análise. Essa medida é fundamental, pois influencia diretamente a confiabilidade das estimativas estatísticas e a robustez das conclusões obtidas. Em geral, quanto maior o valor de <span class="math inline">\(n\)</span>, maior tende a ser a estabilidade dos resultados.</p>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.2</p>
-</div>
-<p>Valores ausentes representam dados não observados ou não registrados em uma variável.</p>
-<p><span class="math display">\[
-\text{NAs} = \text{número total de valores ausentes}
-\]</span></p>
-<p>A presença de valores ausentes pode reduzir o tamanho efetivo da amostra e introduzir vieses na análise.</p>
-</div>
-<p>Valores ausentes correspondem a informações não registradas ou indisponíveis em um conjunto de dados. A presença desses valores pode comprometer análises estatísticas, reduzindo o tamanho efetivo da amostra e potencialmente introduzindo vieses. Por isso, é essencial identificá-los e tratá-los adequadamente antes de proceder com a análise.</p>
-<p>Essas medidas são fundamentais para avaliar a <strong>qualidade dos dados</strong>. Um grande número de valores ausentes pode comprometer análises posteriores.</p>
-<section id="medidas-de-posição" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">3.2.1</span> Medidas de Posição</h3>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.1.1</p>
-</div>
-<p>O valor mínimo corresponde ao menor valor observado em um conjunto de dados.</p>
-<p><span class="math display">\[
-\min(x)
-\]</span></p>
-<p>Define o limite inferior dos dados e auxilia na identificação de valores extremos.</p>
 </div>
 <div class="definicao">
+<p>Definição 2: Conjuntos Infinitos Enumeráveis</p>
 <div class="definicao-title">
-<p>Definição 3.2.1.2</p>
+<p>Aqui é onde a mente começa a dar um nó, mas a lógica é simples: o conjunto não tem fim, mas se tem uma <strong>estratégia de contagem</strong> (uma receita) que garante que sempre se chega em qualquer número. Como exemplo podemos citar o conjunto dos números naturais e, embora seja “estranho” do ponto de vista intuitivo, o conjunto dos números irracionais. Esse último é um resultado matemático importantíssimo atribuido ao matemático alemão Georg Cantor.</p>
 </div>
-<p>O valor máximo corresponde ao maior valor observado em um conjunto de dados.</p>
-<p><span class="math display">\[
-\max(x)
-\]</span></p>
-<p>Define o limite superior da amostra.</p>
 </div>
-<p>Essas medidas permitem identificar a amplitude dos dados e possíveis valores extremos.</p>
+<p>Como regra de ouro, se for possível colocar os elementos de um conjunto infinito em uma fila (primeiro, segundo, ….) sem saltar o próximo elemento, ele é enumerável.</p>
 <div class="definicao">
+<p>Definição 3: Conjuntos Infinitos Não Enumeráveis</p>
 <div class="definicao-title">
-<p>Definição 3.2.1.3</p>
+<p>Nesse conjunto, a ideia de “o próximo elemento” não existe. Entre dois elementos quaisquer, existem infinitos “outros elementos”, e a tentativa de fazer uma fila fracassa. O exemplo mais comum e abrangente é o conjunto dos números reais e qualquer subconjunto desse.</p>
 </div>
-<p>Os quartis são medidas que dividem os dados ordenados em quatro partes iguais.</p>
-<p><span class="math display">\[
-Q_1, Q_2, Q_3
-\]</span></p>
-<p>O primeiro quartil (Q1) corresponde a 25% dos dados, o segundo (mediana) a 50% e o terceiro (Q3) a 75%.</p>
 </div>
-<p>São úteis para análise de dispersão e identificação de outliers.</p>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.1.4</p>
+<p>De forma bem intuitiva, a ideia de ser “enumerável” é como subir uma escada: primeiro degrau, segundo degrau, e por ai em diante, e a ideia de “não enumerável” é como tentar subir uma rampa de vidro sem atrito, ou seja, inteiramente lisa. Não há como apoiar os pés e subir para o próximo.</p>
+<p>De posse dessas informações de “enumerável” e “não enumerável”, podemos agora apresentar as variáveis quantitativas discretas e contínuas.</p>
+</section>
+<section id="variável-quantitativa-discreta" class="level4" data-number="2.1.0.3">
+<h4 data-number="2.1.0.3" class="anchored" data-anchor-id="variável-quantitativa-discreta"><span class="header-section-number">2.1.0.3</span> Variável Quantitativa Discreta</h4>
+<p>Esse tipo de variável, em geral, assume valores inteiros. Do ponto de vista matemático rigoroso, essas variáveis são caracterizadas por conjuntos enumeráveis finitos ou infinitos. Portanto, as palavras-chave são: conjuntos numéricos enumeráveis. <strong>Em geral representam quantidades ou contagens</strong>. É possível avaliar relações matemáticas entre os valores observados.</p>
+<div class="exemplo">
+<p>Exemplo 6: Número de filhos</p>
+<div class="exemplo-title">
+<p>Suponha que o interesse seja observar o número de filhos de determinadas famílias de uma região. Sendo F essa variável de interesse, os possíveis valores abservados são:</p>
+<p>F:{0, 1, 2, 3, 4, 5, …, k}</p>
 </div>
-<p>A mediana é o valor central de um conjunto de dados ordenados.</p>
-<p><span class="math display">\[
-\text{Mediana} =
-\begin{cases}
-x_{\left(\frac{n+1}{2}\right)}, &amp; \text{se } n \text{ ímpar} \\
-\frac{x_{(n/2)} + x_{(n/2+1)}}{2}, &amp; \text{se } n \text{ par}
-\end{cases}
-\]</span></p>
-<p>É uma medida robusta, pouco sensível a valores extremos.</p>
 </div>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.1.5</p>
+<p>É imprescindível notar que os números 0, 1, 2, 3, etc, representam quantidades e não classificações como nas variáveis qualitativas ordinais.</p>
+<div class="exemplo">
+<p>Exemplo 7: Número de caras obtidas ao lançarmos um dado k vezes</p>
+<div class="exemplo-title">
+<p>Suponha k lançamentos de um dado. Sendo W a variável de interesse</p>
+<p>W:{0, 1, 2, 3, 4, 5, …, k}</p>
 </div>
-<p>A média aritmética representa o valor médio dos dados.</p>
-<p><span class="math display">\[
-\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
-\]</span></p>
-<p>É amplamente utilizada, porém sensível à presença de outliers.</p>
-</div>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.1.6</p>
-</div>
-<p>A soma corresponde ao total acumulado dos valores observados.</p>
-<p><span class="math display">\[
-\sum_{i=1}^{n} x_i
-\]</span></p>
-<p>É útil em análises de quantidades totais.</p>
 </div>
 </section>
-<section id="medidas-de-dispersão" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">3.2.2</span> Medidas de Dispersão</h3>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.2.1</p>
+<section id="variável-quantitativa-contínua" class="level4" data-number="2.1.0.4">
+<h4 data-number="2.1.0.4" class="anchored" data-anchor-id="variável-quantitativa-contínua"><span class="header-section-number">2.1.0.4</span> Variável Quantitativa Contínua</h4>
+<p>De maneira curta e direta, esta relacionada a conjuntos infinitos não enumeráveis. Avalia medidas como tempo, distâncias, áreas, volumes. altura, entre outras. As relações matemáticas entre os valores observados são possíveis de serem avaliadas.</p>
+<div class="exemplo">
+<p>Exemplo 8: Temperatura média de um motor de trator em um experimento agrícola</p>
+<div class="exemplo-title">
+<p>Suponha que o interesse seja medir a temperatura média diária de um motor de um trator em um experimento agrícola. Seja Y essa variável de interesse.</p>
+<p>Y:{85,4ºC, 84,9ºC, …}</p>
 </div>
-<p>A variância mede a dispersão dos dados em torno da média.</p>
-<p><span class="math display">\[
-s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
-\]</span></p>
-<p>Valores maiores indicam maior variabilidade.</p>
 </div>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.2.2</p>
+<p>Note que, embora possamos arredondar para números inteiros para facilitar a leitura, a natureza do fenômeno físico é um fluxo ininterrupto de valores (não enumerável), o que a define como <strong>contínua</strong>.</p>
+<p>No próximo capítulo, apresentaremos as possíveis medidas descritoras para cada um desses tipos de classificação de variáveis.</p>
+<div class="exercicio">
+<p>Exercício 1: Análises de Cenários e Conceitos</p>
+<div class="exercicio-title">
+<p><em>Classifique as variáveis abaixo em: <strong>Qualitativa Nominal</strong>, <strong>Qualitativa Ordinal</strong>, <strong>Quantitativa Discreta</strong> ou <strong>Quantitativa Contínua</strong>.</em></p>
+<ol type="1">
+<li><p>Cor das folhas de uma planta de soja.</p></li>
+<li><p>Número de grãos em uma espiga de milho.</p></li>
+<li><p>Pressão arterial medida em mmHg.</p></li>
+<li><p>Grau de satisfação com um atendimento (Escala de 1 a 5).</p></li>
+<li><p>Raça de um animal de estimação.</p></li>
+<li><p>Tempo de germinação de uma semente.</p></li>
+<li><p>Número de máquinas em manutenção em uma fábrica.</p></li>
+<li><p>Religião declarada em um censo.</p></li>
+<li><p>Estágio de maturação de um fruto (Verde, Maduro, Passado).</p></li>
+<li><p>Temperatura da água em um processo industrial.</p></li>
+<li><p>Letras do alfabeto usadas em um código.</p></li>
+<li><p>Área ocupada por uma pastagem (em hectares).</p></li>
+<li><p>Número de filhos de uma família.</p></li>
+<li><p>Diagnóstico médico (Doença A, Doença B, Doença C).</p></li>
+<li><p>Ranking de um atleta em uma competição (1º lugar, 2º lugar…).</p></li>
+</ol>
 </div>
-<p>O desvio padrão é a raiz quadrada da variância.</p>
-<p><span class="math display">\[
-s = \sqrt{s^2}
-\]</span></p>
-<p>Expressa a dispersão na mesma unidade da variável.</p>
 </div>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.2.3</p>
+<div class="exercicio">
+<p>Exercicio 2: Teoria de Conjuntos e Enumerabilidade</p>
+<p><em>Responda às questões com base na lógica de classificação apresentada no texto.</em></p>
+<div class="exercicio-title">
+<ol type="1">
+<li><p>Por que o <strong>Sexo</strong> de uma pessoa é classificado como Nominal e não como Ordinal?</p></li>
+<li><p>No Exemplo 3, por que a <strong>Causa de Óbito</strong> é Nominal, mesmo que algumas causas pareçam “mais graves” que outras?</p></li>
+<li><p>Explique a diferença fundamental entre uma variável <strong>Qualitativa Ordinal</strong> e uma <strong>Quantitativa Discreta</strong>.</p></li>
+<li><p>O que caracteriza uma variável como <strong>Quantitativa Contínua</strong> mesmo quando anotamos os valores de forma arredondada?</p></li>
+<li><p>Na <strong>Escala Likert</strong>, os números 1, 2, 3, 4 e 5 representam magnitudes (quantidades) ou ordens? Justifique.</p></li>
+<li><p>Por que a variável “Área de formação acadêmica” é considerada nominal?</p></li>
+<li><p>Dê um exemplo de uma variável que, dependendo de como é medida, pode ser Ordinal ou Discreta.</p></li>
+</ol>
 </div>
-<p>O erro padrão da média mede a variabilidade da média amostral.</p>
-<p><span class="math display">\[
-SE = \frac{s}{\sqrt{n}}
-\]</span></p>
-<p>Indica a precisão da estimativa da média populacional.</p>
 </div>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.2.4</p>
+<div class="exercicio">
+<p>Exercício 3: Desafio de aplicação</p>
+<div class="exercicio-title">
+<ol type="1">
+<li><p>Imagine que você está medindo a “Velocidade de um carro”. Classifique essa variável e explique se ela é baseada em um conjunto enumerável ou não enumerável.</p></li>
+<li><p>Um pesquisador decide codificar a variável “Cor dos Olhos” como: 1-Azul, 2-Castanho, 3-Verde. Essa codificação transforma a variável em Quantitativa? Justifique sua resposta com base no texto.</p></li>
+</ol>
 </div>
-<p>O intervalo de confiança fornece uma faixa de valores plausíveis para a média populacional.</p>
-<p><span class="math display">\[
-\bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}
-\]</span></p>
-<p>Permite inferência estatística com um nível de confiança especificado.</p>
 </div>
-</section>
-<section id="medidas-de-forma-da-distribuição" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="medidas-de-forma-da-distribuição"><span class="header-section-number">3.2.3</span> Medidas de Forma da Distribuição</h3>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.3.1</p>
-</div>
-<p>A assimetria mede o grau de inclinação da distribuição dos dados.</p>
-<p><span class="math display">\[
-\text{Skewness} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^3
-\]</span></p>
-<p>Indica se a distribuição é simétrica ou possui caudas assimétricas.</p>
-</div>
-<p>Interpretação:</p>
-<ul>
-<li>Skewness = 0 → distribuição simétrica<br>
-</li>
-<li>Skewness &gt; 0 → cauda à direita<br>
-</li>
-<li>Skewness &lt; 0 → cauda à esquerda</li>
-</ul>
-<div class="definicao">
-<div class="definicao-title">
-<p>Definição 3.2.3.2</p>
-</div>
-<p>A curtose avalia o peso das caudas da distribuição.</p>
-<p><span class="math display">\[
-\text{Kurtosis} = \frac{1}{n} \sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^4 - 3
-\]</span></p>
-<p>Permite identificar distribuições com caudas pesadas ou leves.</p>
-</div>
-<p>Interpretação:</p>
-<ul>
-<li>Kurtosis ≈ 0 → distribuição normal<br>
-</li>
-<li>Kurtosis &gt; 0 → caudas pesadas<br>
-</li>
-<li>Kurtosis &lt; 0 → caudas leves</li>
-</ul>
-</section>
-</section>
-<section id="interpretação-conjunta" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="interpretação-conjunta"><span class="header-section-number">3.3</span> Interpretação Conjunta</h2>
-<p>Ao analisar essas medidas em conjunto, é possível:</p>
-<ul>
-<li>Detectar <strong>outliers</strong>;</li>
-<li>Avaliar <strong>dispersão</strong>;</li>
-<li>Identificar <strong>assimetria</strong>;</li>
-<li>Entender o <strong>formato da distribuição</strong>;</li>
-<li>Verificar a <strong>qualidade dos dados</strong>.</li>
-</ul>
-</section>
-<section id="aplicações-práticas" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="aplicações-práticas"><span class="header-section-number">3.4</span> Aplicações Práticas</h2>
-<p>Esse conjunto de estatísticas é amplamente utilizado em:</p>
-<ul>
-<li>Análise exploratória de dados (EDA);</li>
-<li>Relatórios estatísticos;</li>
-<li>Controle de qualidade;</li>
-<li>Economia e finanças;</li>
-<li>Ciências sociais e biomédicas. ::::</li>
-</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1072,12 +974,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./introducao.html" class="pagination-link" aria-label="Conceitos básicos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Conceitos básicos</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceitos básicos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./consfinais.html" class="pagination-link" aria-label="Considerações finais">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Considerações finais</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Considerações finais</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

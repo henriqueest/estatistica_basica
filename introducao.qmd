@@ -16,61 +16,148 @@ Neste capítulo inicial, estabeleceremos as bases fundamentais da estatística, 
 
 ### O que é Estatística?
 
-A estatística pode ser definida como a ciência que utiliza a probabilidade para lidar com a incerteza. Em um mundo inundado por dados, ela fornece as ferramentas para transformar observações brutas em conhecimento científico e suporte à decisão.
+A Estatística pode ser definida como a ciência que utiliza a probabilidade para lidar com a incerteza. Em um mundo inundado por dados, ela fornece as ferramentas para transformar observações brutas em conhecimento científico e suporte à decisão.
 
 Podemos dividir a estatística em três grandes pilares:
 
-1.  **Estatística Descritiva:** Etapa de organização, resumo e visualização dos dados.
-2.  **Probabilidade:** O modelo matemático que quantifica a incerteza.
-3.  **Estatística Inferencial:** O processo de tirar conclusões sobre uma população a partir de uma amostra.
+1.  **Descritiva:** Resume e organiza os dados históricos para descrever o que aconteceu, sem tirar conclusões externas
+
+2.  **Inferencial:** Usa amostras para tirar conclusões e generalizar propriedades sobre uma população inteira sob incerteza.
+
+3.  **Preditiva**: utiliza algoritmos estatísticos e técnicas de machine learning para definir a probabilidade de eventos futuros com base em padrões encontrados em dados do passado.
+
+De modo geral, a Estatística engloba ferramentas teóricas e práticas visando entender ou analisar o comportamento de informações quantitativas e/ou qualitativas, medindo incertezas e, dessa forma, auxiliando na tomada de decisão.
 
 ### Conceitos Fundamentais
 
 Antes de avançarmos para os cálculos, precisamos definir os objetos de estudo:
 
 -   **População:** O conjunto total de elementos que compartilham pelo menos uma característica comum (ex: todos os domicílios do Brasil).
--   **Amostra:** Um subconjunto representativo da população.
--   **Parâmetro:** Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como $\mu$ ou $\sigma$).
+
+-   **Parâmetro:** Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como $\mu$, $\sigma$).
+
+-   **Amostra:** Um subconjunto representativo da população ($\bar{X}$, $S$)
+
 -   **Estimativa (ou Estatística):** Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.
 
-![Figura 1: população, amostra, parâmetros e estatísticas.](images/fig2.png){#fig1 fig-align="center" width="549"}
+![Figura 1: O Fluxo da Inferência Estatística entre População e Amostra.](images/clipboard-3880653047.png){fig-align="center" width="549"}
 
-### Classificação de Variáveis
+Alguns conceitos e definições matemáticas bem como suas propriedades são de extrema importância para um bom entendimento das técnicas de análise estatística. Entretanto, não será apresentado um capítulo a parte sobre esses conceitos e definições. Ao longo do livro, à medida que for sendo necessário, estes serão apresentados da forma mais simples possível, sem o rigor matemático. No próximo capítulo, vamos tratar da análise exploratória de dados.
 
-A escolha da técnica estatística ou do modelo depende inteiramente da natureza da variável. As variáveis podem ser classificadas conforme o esquema abaixo:
+#### Tipos de População
 
-#### Qualitativas (ou Categóricas)
+##### População Finita
 
-Representam atributos ou qualidades que não possuem valor numérico intrínseco.
+É aquela que possui um número **determinado** e **limitado** de elementos. Em outras palavras, se você tivesse tempo e recursos infinitos, conseguiria contar todos os itens e chegar a um número final (N).
 
--   **Nominais:** Não existe uma ordem natural (ex: Sexo, Estado Civil, Cor/Raça).
+-   **A característica chave:** A contagem termina.
 
--   **Ordinais:** Existe uma hierarquia ou ordenação (ex: Nível de escolaridade, Classe socioeconômica).
+-   **Exemplos:**
 
-#### Quantitativas (ou Numéricas)
+    -   O número de alunos matriculados em uma escola em 2026.
 
-Representam contagens ou mensurações.
+    -   A quantidade de parafusos produzidos por uma máquina em um turno de 8 horas.
 
--   **Discretas:** Valores provenientes de contagem, geralmente números inteiros (ex: Número de filhos, total de crimes em uma região).
+    -   O número de páginas de um livro de estatística.
 
--   **Contínuas:** Valores que podem assumir qualquer número real em um intervalo (ex: Renda, Peso, Altura).
+    -   Os habitantes de uma cidade específica.
 
-![Figura 2: visão geral das variáveis - qualitativas e quantitativas.](images/fig3.png){#fig2 fig-align="center" width="549"}
+##### População Infinita
 
-### O Fluxo da Análise Estatística
+É aquela que possui um número de elementos tão grande que é **impossível listar todos**, ou cujos elementos ainda estão sendo gerados (processo contínuo). Na estatística, também tratamos como infinita uma população que é tecnicamente finita, mas tão vasta que o tamanho total não influencia no cálculo da amostra.
 
-Uma análise rigorosa geralmente segue o ciclo de vida dos dados:
+-   **A característica chave:** A contagem nunca termina ou é meramente teórica.
 
-1.  **Definição do Problema:** Identificação do objetivo da pesquisa.
+-   **Exemplos:**
 
-2.  **Coleta de Dados:** Utilizando métodos como pesquisas e observações.
+    -   O número de vezes que uma moeda pode ser lançada (processo infinito).
 
-3.  **Processamento de Dados:** Preparação e limpeza para análise.
+    -   O conjunto de todos os números reais entre 0 e 1 (infinito não enumerável).
 
-4.  **Análise Descritiva:** Uso de gráficos e medidas (onde as variáveis qualitativas e quantitativas da imagem anterior são aplicadas).
+    -   O número de estrelas no universo observável (tão vasto que é tratado como infinito).
 
-5.  **Análise Inferencial:** Testes de hipóteses e modelagem.
+    -   A produção futura de uma fábrica que ainda não parou de operar.
 
-6.  **Interpretação e Relatório:** Conclusões e apresentação dos resultados (achados).
+:::: exercicio
+Exercício 1: identificação de População e Amostra
 
-No próximo capítulo, exploraremos como utilizar o R para realizar a **Análise Exploratória de Dados**, focando em medidas de tendência central e dispersão.
+::: exercicio-title
+*Para cada cenário abaixo, identifique a **População** e a **Amostra**.*
+
+1.  Um pesquisador quer saber a altura média dos alunos de uma universidade com 20.000 estudantes e entrevista 500 deles.
+
+2.  Para testar a qualidade de um lote de 10.000 lâmpadas, uma fábrica seleciona 100 para teste de durabilidade.
+
+3.  Um inspetor de alimentos analisa 5 latas de conserva de um carregamento que chegou ao supermercado.
+
+4.  Um sociólogo entrevista 1.200 brasileiros para entender a opinião do país sobre o trabalho remoto.
+
+5.  Em um hospital, o médico analisa o exame de sangue (uma gota) de um paciente para verificar o nível de glicose.
+
+6.  Um analista de dados examina 200 transações de um banco que processa milhões de operações por dia para detectar fraudes.
+
+7.  Um biólogo estuda 50 árvores de uma floresta nacional para estimar a idade média da vegetação local.
+
+8.  Uma loja de roupas quer saber a satisfação dos seus 5.000 clientes e envia um formulário que é respondido por 300 pessoas.
+
+9.  Para verificar a eficácia de uma nova vacina, cientistas acompanham um grupo de 10.000 voluntários ao redor do mundo.
+
+10. Um controle de qualidade de vinhos testa três garrafas de uma safra anual de 50.000 garrafas.
+:::
+::::
+
+:::: exercicio
+Exercício 2: Identificação de Parâmetro e Estimativa
+
+::: exercicio-title
+*Classifique o valor em destaque como **Parâmetro** (referente à população) ou **Estimativa** (referente à amostra).*
+
+1.  O **Censo do IBGE** revelou que a idade média da população brasileira aumentou.
+
+2.  Uma **pesquisa eleitoral** indica que 35% dos entrevistados pretendem votar no Candidato A.
+
+3.  O gerente de uma loja verificou **todas as notas fiscais** do dia e viu que o gasto médio foi de R\$ 150,00.
+
+4.  Com base em 40 laranjas testadas, um agrônomo afirmou que **aquelas laranjas** possuem 12% de açúcar.
+
+5.  O registro oficial de **todos os funcionários** de uma empresa mostra que 60% são mulheres.
+
+6.  Um teste de colisão com **5 carros de um modelo** indica que a segurança do modelo é nota 9.
+
+7.  A média de gols de **toda a história da Copa do Mundo** é de 2,8 por partida.
+
+8.  Em um estudo com **100 fumantes**, observou-se que 20% desenvolveram problemas respiratórios.
+
+9.  O Banco Central divulgou a taxa oficial de inflação acumulada de **todo o ano anterior**.
+
+10. Após provar **uma colher** de sopa, o cozinheiro disse: "Falta sal".
+:::
+::::
+
+:::: exercicio
+Exercício 3: Aplicação
+
+::: exercicio-title
+*Responda com base nos conceitos aprendidos.*
+
+1.  Por que, no caso do exame de sangue, usamos uma amostra e não a população total?
+
+2.  Se um pesquisador consegue entrevistar **todos** os elementos de um grupo, ele está realizando um Censo ou uma Amostragem?
+
+3.  Explique por que uma estimativa pode variar de uma amostra para outra, enquanto o parâmetro é um valor único e fixo (em um dado momento).
+
+4.  Imagine que você quer saber a opinião dos brasileiros sobre futebol. Entrevistar apenas pessoas na porta de um estádio geraria uma amostra fiel? Por quê?
+
+5.  Um parâmetro é geralmente um valor conhecido ou desconhecido na prática científica? Justifique.
+
+6.  Qual a principal vantagem de usar uma amostra em vez de investigar toda a população em uma fábrica de fogos de artifício?
+
+7.  Se aumentarmos o tamanho de uma amostra, o que se espera que aconteça com a diferença entre a estimativa e o parâmetro?
+
+8.  Dê um exemplo de uma situação onde a população é **infinita**.
+
+9.  Dê um exemplo de uma situação onde a população é **finita**, mas o uso de amostra é obrigatório por questões de custo.
+
+10. Crie um cenário original identificando os quatro conceitos: População, Parâmetro, Amostra e Estimativa.
+:::
+::::

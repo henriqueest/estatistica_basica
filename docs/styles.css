@@ -3,7 +3,7 @@
    ========================================= */
 
 /* Estilo Geral dos Blocos com Margens Laterais */
-.definicao, .teorema, .exemplo {
+.definicao, .exercicio, .exemplo {
     border-radius: 6px;
     overflow: hidden;
     /* Margem: 1.5em (cima/baixo) e 2em (esquerda/direita) */
@@ -16,29 +16,46 @@
 
 /* --- DEFINIÇÃO --- */
 .definicao {
-    background-color: #4A6984; /* Fundo do corpo (verde claro) */
-    color: #FAF0E6;
+    background-color: #1D3557; /* Cor de fundo do corpo do exemplo (ajustada para contraste) */
+    color: white;
+    margin: 20px 0;          /* Margem superior/inferior, 0 nas laterais para alargar */
+    width: 100%;             /* Garante que ocupe a largura total do container pai */
+    border-radius: 15px;      /* Arredondamento opcional */
+    overflow: hidden;        /* Garante que o título não escape do arredondamento */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra leve para destaque */
+    padding: 20px; /* Isso dará "corpo" à caixa */
+    min-height: 50px; /* Garante uma altura mínima */
 }
 
 /* Estiliza o Título (a primeira linha ou elemento com classe -title) */
 .definicao-title {
-    background-color: #12264D; /* Verde escuro */
-    color: #E3DAC9;
-    padding: 10px 15px;
+    background-color: #E9ECEF; /* Azul escuro (inverti com o body para melhor leitura) */
+    color: #363636;
+    padding: 12px 15px;
     font-weight: bold;
     display: block;
     margin: 0;
 }
 
 /* --- TEOREMA --- */
-.teorema {
-    background-color: #8da9c4; /* Azul claro */
+.exercicio {
+    background-color: #1D3557; /* Cor de fundo do corpo do exemplo (ajustada para contraste) */
     color: white;
+    margin: 20px 0;          /* Margem superior/inferior, 0 nas laterais para alargar */
+    width: 100%;             /* Garante que ocupe a largura total do container pai */
+    border-radius: 15px;      /* Arredondamento opcional */
+    overflow: hidden;        /* Garante que o título não escape do arredondamento */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra leve para destaque */
+    padding: 20px; /* Isso dará "corpo" à caixa */
+    min-height: 50px; /* Garante uma altura mínima */
 }
 
-.teorema-title {
-    background-color: #1D3557; /* Azul escuro */
-    padding: 10px 15px;
+.exercicio-title {
+   background-color: #E9ECEF; /* Azul escuro (inverti com o body para melhor leitura) */
+    color: #363636;
+    padding: 12px 15px;
     font-weight: bold;
     display: block;
     margin: 0;
@@ -46,20 +63,35 @@
 
 /* --- EXEMPLO --- */
 .exemplo {
-    background-color: #d8b382; /* Bege/Laranja claro */
+    background-color: #1D3557; /* Cor de fundo do corpo do exemplo (ajustada para contraste) */
     color: white;
+    margin: 20px 0;          /* Margem superior/inferior, 0 nas laterais para alargar */
+    width: 100%;             /* Garante que ocupe a largura total do container pai */
+    border-radius: 15px;      /* Arredondamento opcional */
+    overflow: hidden;        /* Garante que o título não escape do arredondamento */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra leve para destaque */
 }
 
 .exemplo-title {
-    background-color: #c97b00; /* Laranja escuro */
-    padding: 10px 15px;
+    background-color: #E9ECEF; /* Azul escuro (inverti com o body para melhor leitura) */
+    color: #363636;
+    padding: 12px 15px;
     font-weight: bold;
     display: block;
     margin: 0;
 }
 
+.exemplo-body {
+    padding: 20px;           /* Espaçamento interno do texto */
+}
+
 /* Ajuste do conteúdo interno para não ficar colado nas bordas */
-.definicao p, .teorema p, .exemplo p,
-.definicao .math, .teorema .math, .exemplo .math {
+.definicao p, .exercicio p, .exemplo p,
+.definicao .math, .exercicio .math, .exemplo .math {
     padding: 5px 15px;
+}
+
+p {
+  text-align: justify;
 }

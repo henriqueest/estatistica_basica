@@ -1,0 +1,7 @@
+---
+title: "Considerações finais"
+output:
+    pdf_document:
+        includes:
+            in_header: mystyles.sty
+---

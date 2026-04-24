@@ -2,14 +2,14 @@
 // 🎨 PALETA DASHBOARD
 $body-bg: transparent;
 $body-color: #e5e7eb;   // texto claro
-$link-color: #3b82f6;   // azul moderno
+$link-color: rgba(99,86,136, 0.9);   // azul moderno
 
 
 /* 🌄 FUNDO GERAL ESCURO */
 body {
   background: linear-gradient(
-    rgba(15, 23, 42, 0.9),
-    rgba(15, 23, 42, 0.95)
+    rgba(204,204,204, 0.9),
+    rgba(204,204,204, 0.95)
   ),
   url("fundo.png");
 
@@ -41,7 +41,7 @@ body {
 
 /* 🧭 SIDEBAR ESTILO APP */
 .sidebar {
-  background: rgba(15, 23, 42, 0.85) !important;
+  background: rgba(108,123,139, 0.85) !important;
   backdrop-filter: blur(8px);
 
   border-right: 1px solid rgba(255,255,255,0.08);

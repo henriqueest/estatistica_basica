@@ -3,8 +3,8 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  a4paper,
-]{scrbook}
+  letterpaper,
+]{book}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -38,7 +38,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[top=30mm,left=20mm]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -65,46 +64,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -166,8 +125,6 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{tcolorbox}
-\newtcolorbox{mybox}{colback=red!5!white,colframe=red!75!black}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -218,14 +175,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Manual Avançado de Quarto},
-  pdfauthor={Sua Identidade},
+  pdftitle={Estatística Básica: conceitos e aplicações no R},
+  pdfauthor={Henrique José de Paula Alves},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Manual Avançado de Quarto}
-\author{Sua Identidade}
+\title{Estatística Básica: conceitos e aplicações no R}
+\author{Henrique José de Paula Alves}
 \date{2026-04-15}
 
 \begin{document}
@@ -241,61 +198,222 @@
 \mainmatter
 \bookmarksetup{startatroot}
 
-\chapter*{Preface}\label{preface}
-\addcontentsline{toc}{chapter}{Preface}
+\chapter*{O poder dos dados em um mundo
+incerto}\label{o-poder-dos-dados-em-um-mundo-incerto}
+\addcontentsline{toc}{chapter}{O poder dos dados em um mundo incerto}
 
-\markboth{Preface}{Preface}
+\markboth{O poder dos dados em um mundo incerto}{O poder dos dados em um
+mundo incerto}
 
-This is a Quarto book.
+Vivemos em uma era definida pela abundância de informação. A cada
+segundo, uma quantidade sem precedentes de dados é gerada, capturando
+desde os nossos hábitos de consumo até os movimentos mais sutis do clima
+global. No entanto, dados brutos, por si só, são apenas ruído. Para
+transformá-los em conhecimento e ação, precisamos de uma ferramenta
+fundamental: a \textbf{Estatística}.
 
-To learn more about Quarto books visit
-\url{https://quarto.org/docs/books}.
+Muitas vezes, somos tentados a confiar em nossa intuição ou no famoso
+``instinto'' para tomar decisões. No entanto, a ciência moderna e a
+economia comportamental já demonstraram os riscos dessa abordagem.
+Decisões baseadas puramente no ``sentimento'' podem ser obscurecidas por
+preconceitos e experiências limitadas. A estatística surge como o
+antídoto para esse subjetivismo, oferecendo uma estrutura lógica e
+rigorosa para separar fatos de suposições.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
+A importância da estatística transcende as salas de aula e os
+laboratórios de pesquisa. Ela é a espinha dorsal da tomada de decisão
+baseada em evidências em praticamente todos os setores da sociedade:
 
-\begin{verbatim}
-[1] 2
-\end{verbatim}
+\begin{itemize}
+\item
+  \textbf{Na Saúde:} É através dela que novos tratamentos são testados e
+  padrões de doenças são identificados para salvar vidas.
+\item
+  \textbf{Nos Negócios:} Permite que empresas compreendam tendências de
+  mercado e otimizem cadeias de suprimentos, substituindo o palpite pela
+  estratégia baseada em números.
+\item
+  \textbf{No Governo e Sociedade:} Orienta a criação de políticas
+  públicas eficazes, desde o planejamento urbano até a resposta a crises
+  econômicas.
+\item
+  \textbf{No Esporte:} Como demonstrado pela famosa revolução do
+  \emph{Moneyball}, a análise de dados transformou a maneira como
+  equipes são montadas e como o desempenho é avaliado.
+\end{itemize}
 
-\part{Sumário}
+Este livro convida você a explorar a estatística não apenas como uma
+disciplina matemática, mas como uma linguagem universal para entender o
+mundo. Ao longo destas páginas, veremos como os métodos estatísticos
+funcionam como uma rede de segurança, fornecendo a confiança necessária
+para navegar pela incerteza e para fazer escolhas que impactam o
+presente e moldam o futuro.
 
-\chapter{Summary}\label{summary}
+Seja você um estudante, um profissional ou um curioso sobre como o mundo
+funciona, compreender a estatística é adquirir a habilidade de enxergar
+padrões onde outros veem apenas caos. Bem-vindo à ciência que transforma
+dados em inteligência.
 
-In summary, this book has no content whatsoever.
+\bookmarksetup{startatroot}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
+\chapter*{Prefácio}\label{prefuxe1cio}
+\addcontentsline{toc}{chapter}{Prefácio}
 
-\begin{verbatim}
-[1] 2
-\end{verbatim}
+\markboth{Prefácio}{Prefácio}
 
-\part{Introdução}
+\textsc{``Lies, damned lies, and statistics''. (Mark Twain, 1891)}
 
-\chapter{Introduction}\label{introduction}
+A famosa frase atribuída a Mark Twain resume o medo que muitas pessoas
+têm desta disciplina. Este livro foi escrito para provar que a
+estatística não é um bicho de sete cabeças, mas sim um superpoder para
+entender o mundo.
 
-This is a book created from markdown and executable code.
+Escrevi este texto pensando no pesquisador de humanas, no gestor de
+marketing e no curioso que deseja entender as notícias sobre pesquisas
+eleitorais ou eficácia de medicamentos. Aqui, as equações são mantidas
+ao mínimo necessário. Em vez de decorar fórmulas, vamos focar em como
+não ser enganado por gráficos tendenciosos e como entender o que a
+variabilidade realmente significa.
 
-See @knuth84 for additional discussion of literate programming.
+A estatística é, antes de tudo, a arte de aprender com a experiência.
+Vamos começar?
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
+\part{Capítulos}
 
-\begin{verbatim}
-[1] 2
-\end{verbatim}
+\chapter{Conceitos básicos}\label{conceitos-buxe1sicos}
 
-\part{referências}
+\section{Introdução}\label{sec-intro}
+
+Neste capítulo inicial, estabeleceremos as bases fundamentais da
+estatística, diferenciando a análise puramente descritiva da inferência,
+e definindo os tipos de dados com os quais trabalharemos ao longo deste
+livro.
+
+\subsection{O que é Estatística?}\label{o-que-uxe9-estatuxedstica}
+
+A Estatística pode ser definida como a ciência que utiliza a
+probabilidade para lidar com a incerteza. Em um mundo inundado por
+dados, ela fornece as ferramentas para transformar observações brutas em
+conhecimento científico e suporte à decisão.
+
+Podemos dividir a estatística em três grandes pilares:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Descritiva:} Resume e organiza os dados históricos para
+  descrever o que aconteceu, sem tirar conclusões externas
+\item
+  \textbf{Inferencial:} Usa amostras para tirar conclusões e generalizar
+  propriedades sobre uma população inteira sob incerteza.
+\item
+  \textbf{Preditiva}: utiliza algoritmos estatísticos e técnicas de
+  machine learning para definir a probabilidade de eventos futuros com
+  base em padrões encontrados em dados do passado.
+\end{enumerate}
+
+De modo geral, a Estatística engloba ferramentas teóricas e práticas
+visando entender ou analisar o comportamento de informações
+quantitativas e/ou qualitativas, medindo incertezas e, dessa forma,
+auxiliando na tomada de decisão.
+
+\subsection{Conceitos Fundamentais}\label{conceitos-fundamentais}
+
+Antes de avançarmos para os cálculos, precisamos definir os objetos de
+estudo:
+
+\begin{itemize}
+\item
+  \textbf{População:} O conjunto total de elementos que compartilham
+  pelo menos uma característica comum (ex: todos os domicílios do
+  Brasil).
+\item
+  \textbf{Parâmetro:} Uma medida numérica que descreve uma
+  característica da população (geralmente desconhecida e representada
+  por letras gregas como \(\mu\), \(\sigma\)).
+\item
+  \textbf{Amostra:} Um subconjunto representativo da população
+  (\(\bar{X}\), \(S\))
+\item
+  \textbf{Estimativa (ou Estatística):} Uma medida numérica calculada a
+  partir de dados amostrais para estimar um parâmetro.
+\end{itemize}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=5.71875in,height=\textheight,keepaspectratio]{images/clipboard-3880653047.png}
+
+}
+
+\caption{Figura 1: O Fluxo da Inferência Estatística entre População e
+Amostra.}
+
+\end{figure}%
+
+Alguns conceitos e definições matemáticas bem como suas propriedades são
+de extrema importância para um bom entendimento das técnicas de análise
+estatística. Entretanto, não será apresentado um capítulo a parte sobre
+esses conceitos e definições. Ao longo do livro, à medida que for sendo
+necessário, estes serão apresentados da forma mais simples possível, sem
+o rigor matemático. No próximo capítulo, vamos tratar da análise
+exploratória de dados.
+
+\chapter{Análise Exploratória}\label{anuxe1lise-exploratuxf3ria}
+
+\section{Introdução}\label{introduuxe7uxe3o}
+
+Em linhas gerais, a análise exploratória de dados tem ligação direta com
+a organização e descrição dos dados, reunindo uma quantidade razoável de
+ferramentas e recursos que auxiliam na interpretação dos valores
+observados ou amostrados. Exemplificando sua utilidade, a avaliação de
+como as observações se distribuem, bem como onde estão posicionadas e,
+ainda, como se apresentam em termos de dispersão e associação.
+
+Neste capítulo, será introduzido conceitos e métodos de exploração de
+dados, um passo fundamental para análises estatísticas completas e
+avançadas.
+
+\subsection{Variáveis}\label{variuxe1veis}
+
+Em linhas gerais, trata-se de uma característica medida na população ou
+na amostra. Como exemplos, apresentam-se a altura de um indivíduo, o
+peso, a temperatura, a cor dos olhos, o número de filhos, a cor das
+folhas de uma planta, entre outros. São representadas por letras
+maiúsculas do nosso alfabeto: X, Y, A, B, W.
+
+A Figura 2 apresenta um esquema de classificação das variáveis.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=5.71875in,height=\textheight,keepaspectratio]{images/fig3.png}
+
+}
+
+\caption{Figura 2: Esquema de classificação de variáveis.}
+
+\end{figure}%
+
+\subsubsection{Variável Qualitativa
+Nominal}\label{variuxe1vel-qualitativa-nominal}
+
+As variáveis qualitativas nominais apresentam o menor grau de informação
+dentre os quatro tipos apresentados. É possível apenas a avaliação de
+frequências e ordenações arbitrárias. O sexo, a religião, a raça, a cor
+preferida, são exemplos desse tipo de variável
+
+Exemplo: Sexo de uma pessoa
+
+Suponha uma pesquisa com aplicação de um questionário on-line, onde o
+sexo dos entrevistados é perguntado. Suponha ainda que a variável
+\emph{Sexo de uma pessoa} seja representada por X, as observações podem
+ser:
+
+X:\{Masculino, Masculino, Feminino, Masculino, Feminino, Feminino,
+\ldots, Feminino\}
+
+\part{final.qmd}
+
+\chapter{Considerações finais}\label{considerauxe7uxf5es-finais}
 
 \chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}

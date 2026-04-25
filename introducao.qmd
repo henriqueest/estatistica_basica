@@ -234,7 +234,7 @@ Aqui, o objetivo é a **eficiência e baixo custo**. É ideal quando a populaç�
 
 No Quadro 1, apresentamos a distinção técnica entre os dois principais métodos de seleção por grupos, focando na composição interna e na lógica de sorteio.
 
-| Característica | Amostragem Estratificada | Amostragem por Conglomerados |
+| Característica | Amostragem Aleatória Estratificada | Amostragem por Conglomerados |
 |:-----------------------|:-----------------------|:-----------------------|
 | **Dentro do Grupo** | Elementos **Homogêneos** (parecidos entre si) | Elementos **Heterogêneos** (diversos entre si) |
 | **Entre os Grupos** | Grupos **Heterogêneos** (diferentes entre si) | Grupos **Homogêneos** (parecidos entre si) |

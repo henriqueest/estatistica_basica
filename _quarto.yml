@@ -37,6 +37,8 @@ book:
 format:
   html:
     css: styles.css
+    toc: true
+    code-overflow: wrap
     theme: 
       light: theme-dark.scss
       dark: cosmo

@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -41,8 +75,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-295bd5a6f65cf0b4ae59eef937c02780.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-dark-ea6fa5f394daea520e08be51114da933.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-76f27e4871d5b2de8d21b2bb1b758dbd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-634a32f035a122c283b8669568a2f189.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -229,7 +263,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#o-que-é-estatística" id="toc-o-que-é-estatística" class="nav-link" data-scroll-target="#o-que-é-estatística"><span class="header-section-number">1.1.1</span> O que é Estatística?</a></li>
   <li><a href="#conceitos-fundamentais" id="toc-conceitos-fundamentais" class="nav-link" data-scroll-target="#conceitos-fundamentais"><span class="header-section-number">1.1.2</span> Conceitos Fundamentais</a></li>
+  <li><a href="#aplicações-em-r" id="toc-aplicações-em-r" class="nav-link" data-scroll-target="#aplicações-em-r"><span class="header-section-number">1.1.3</span> Aplicações em R</a></li>
+  <li><a href="#amostragem-estratificada-um-pouco-de-cada" id="toc-amostragem-estratificada-um-pouco-de-cada" class="nav-link" data-scroll-target="#amostragem-estratificada-um-pouco-de-cada"><span class="header-section-number">1.1.4</span> 1. Amostragem Estratificada: “Um pouco de cada”</a></li>
+  <li><a href="#amostragem-por-conglomerados-tudo-de-alguns" id="toc-amostragem-por-conglomerados-tudo-de-alguns" class="nav-link" data-scroll-target="#amostragem-por-conglomerados-tudo-de-alguns"><span class="header-section-number">1.1.5</span> 2. Amostragem por Conglomerados: “Tudo de alguns”</a></li>
   </ul></li>
+  <li><a href="#comparação-entre-métodos-de-amostragem" id="toc-comparação-entre-métodos-de-amostragem" class="nav-link" data-scroll-target="#comparação-entre-métodos-de-amostragem"><span class="header-section-number">1.2</span> Comparação entre Métodos de Amostragem</a></li>
   </ul>
 </nav>
     </div>
@@ -272,7 +310,7 @@ window.Quarto = {
 <p>A Estatística pode ser definida como a ciência que utiliza a probabilidade para lidar com a incerteza. Em um mundo inundado por dados, ela fornece as ferramentas para transformar observações brutas em conhecimento científico e suporte à decisão.</p>
 <p>Podemos dividir a estatística em três grandes pilares:</p>
 <ol type="1">
-<li><p><strong>Descritiva:</strong> Resume e organiza os dados históricos para descrever o que aconteceu, sem tirar conclusões externas</p></li>
+<li><p><strong>Descritiva:</strong> Resume e organiza os dados históricos para descrever o que aconteceu, sem tirar conclusões externas.</p></li>
 <li><p><strong>Inferencial:</strong> Usa amostras para tirar conclusões e generalizar propriedades sobre uma população inteira sob incerteza.</p></li>
 <li><p><strong>Preditiva</strong>: utiliza algoritmos estatísticos e técnicas de machine learning para definir a probabilidade de eventos futuros com base em padrões encontrados em dados do passado.</p></li>
 </ol>
@@ -280,12 +318,12 @@ window.Quarto = {
 </section>
 <section id="conceitos-fundamentais" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="conceitos-fundamentais"><span class="header-section-number">1.1.2</span> Conceitos Fundamentais</h3>
-<p>Antes de avançarmos para os cálculos, precisamos definir os objetos de estudo:</p>
+<p>Antes de avançarmos para a análise prática, precisamos definir os objetos de estudo:</p>
 <ul>
 <li><p><strong>População:</strong> O conjunto total de elementos que compartilham pelo menos uma característica comum (ex: todos os domicílios do Brasil).</p></li>
 <li><p><strong>Parâmetro:</strong> Uma medida numérica que descreve uma característica da população (geralmente desconhecida e representada por letras gregas como <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>).</p></li>
-<li><p><strong>Amostra:</strong> Um subconjunto representativo da população (<span class="math inline">\(\bar{X}\)</span>, <span class="math inline">\(S\)</span>)</p></li>
-<li><p><strong>Estimativa (ou Estatística):</strong> Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro.</p></li>
+<li><p><strong>Amostra:</strong> Um subconjunto representativo da população.</p></li>
+<li><p>E<strong>stimativa (ou Estatística):</strong> Uma medida numérica calculada a partir de dados amostrais para estimar um parâmetro, geralmente representada por letras maiúsculas (<span class="math inline">\(\bar{X}\)</span>, <span class="math inline">\(S\)</span>).</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -293,7 +331,7 @@ window.Quarto = {
 <figcaption>Figura 1: O Fluxo da Inferência Estatística entre População e Amostra.</figcaption>
 </figure>
 </div>
-<p>Alguns conceitos e definições matemáticas bem como suas propriedades são de extrema importância para um bom entendimento das técnicas de análise estatística. Entretanto, não será apresentado um capítulo a parte sobre esses conceitos e definições. Ao longo do livro, à medida que for sendo necessário, estes serão apresentados da forma mais simples possível, sem o rigor matemático. No próximo capítulo, vamos tratar da análise exploratória de dados.</p>
+<p>Alguns conceitos e definições matemáticas bem como suas propriedades são de extrema importância para um bom entendimento das técnicas de análise estatística. Entretanto, não será apresentado um capítulo a parte sobre esses conceitos e definições. Ao longo do livro, à medida que for sendo necessário, estes serão apresentados da forma mais simples possível, sem o rigor matemático.</p>
 <section id="tipos-de-população" class="level4" data-number="1.1.2.1">
 <h4 data-number="1.1.2.1" class="anchored" data-anchor-id="tipos-de-população"><span class="header-section-number">1.1.2.1</span> Tipos de População</h4>
 <section id="população-finita" class="level5" data-number="1.1.2.1.1">
@@ -323,6 +361,244 @@ window.Quarto = {
 <li><p>A produção futura de uma fábrica que ainda não parou de operar.</p></li>
 </ul></li>
 </ul>
+</section>
+</section>
+<section id="tipos-de-amostragem-probabilística-vs.-não-probabilística" class="level4" data-number="1.1.2.2">
+<h4 data-number="1.1.2.2" class="anchored" data-anchor-id="tipos-de-amostragem-probabilística-vs.-não-probabilística"><span class="header-section-number">1.1.2.2</span> Tipos de Amostragem: Probabilística vs.&nbsp;Não Probabilística</h4>
+<p>A amostragem é o processo de selecionar um subconjunto de indivíduos de uma população para estimar características do todo. A principal diferença entre os métodos reside na forma como os elementos são escolhidos.</p>
+<section id="amostragem-probabilística" class="level5" data-number="1.1.2.2.1">
+<h5 data-number="1.1.2.2.1" class="anchored" data-anchor-id="amostragem-probabilística"><span class="header-section-number">1.1.2.2.1</span> Amostragem Probabilística</h5>
+<p>Na amostragem probabilística, todos os elementos da população têm uma probabilidade conhecida e diferente de zero de serem selecionados. Isso permite a generalização dos resultados com rigor estatístico.</p>
+<ul>
+<li><p><strong>Amostragem Aleatória Simples (AAS):</strong> Todos os itens têm a mesma chance de seleção. É como um sorteio de nomes em uma urna.</p>
+<ul>
+<li><em>Exemplo:</em> Sortear 10 números de matrícula em uma lista de 100 alunos.</li>
+</ul></li>
+<li><p><strong>Amostragem Estratificada:</strong> A população é dividida em grupos (estratos) com características semelhantes, e uma amostra é coletada de cada estrato.</p>
+<ul>
+<li><em>Exemplo:</em> Dividir uma empresa por departamentos e selecionar funcionários de cada área proporcionalmente.</li>
+</ul></li>
+<li><p><strong>Amostragem Sistemática:</strong> Os elementos são escolhidos seguindo um intervalo fixo (o enésimo termo).</p>
+<ul>
+<li><em>Exemplo:</em> Selecionar cada 10ª peça que sai de uma linha de produção.</li>
+</ul></li>
+<li><p><strong>Amostragem por Conglomerados (Clusters):</strong> A população é dividida em grupos heterogêneos (conglomerados), e alguns desses grupos são escolhidos para estudo integral.</p>
+<ul>
+<li><em>Exemplo:</em> Selecionar aleatoriamente 5 bairros de uma cidade e entrevistar todos os moradores desses bairros.</li>
+</ul></li>
+</ul>
+</section>
+<section id="amostragem-não-probabilística" class="level5" data-number="1.1.2.2.2">
+<h5 data-number="1.1.2.2.2" class="anchored" data-anchor-id="amostragem-não-probabilística"><span class="header-section-number">1.1.2.2.2</span> Amostragem Não Probabilística</h5>
+<p>Aqui, a seleção depende do julgamento do pesquisador ou de critérios de conveniência. Não é possível calcular o erro amostral, e os resultados não podem ser extrapolados para toda a população com precisão estatística.</p>
+<ul>
+<li><p><strong>Amostragem por Conveniência:</strong> Os dados são coletados de pessoas que estão “à mão”.</p>
+<ul>
+<li><em>Exemplo:</em> Entrevistar pessoas que passam na porta de um shopping em um determinado horário.</li>
+</ul></li>
+<li><p><strong>Amostragem por Cotas:</strong> Semelhante à estratificada, mas a escolha dos indivíduos dentro de cada grupo não é aleatória.</p>
+<ul>
+<li><em>Exemplo:</em> O pesquisador precisa entrevistar 50 homens e 50 mulheres, escolhendo os primeiros que encontrar.</li>
+</ul></li>
+<li><p><strong>Amostragem por Julgamento (ou Intencional):</strong> O pesquisador escolhe casos que considera “típicos” ou especialistas no assunto.</p>
+<ul>
+<li><em>Exemplo:</em> Entrevistar apenas diretores de RH para entender tendências de contratação.</li>
+</ul></li>
+<li><p><strong>Amostragem Bola de Neve (Snowball):</strong> Os primeiros participantes indicam novos participantes. Muito usada em populações de difícil acesso.</p>
+<ul>
+<li><em>Exemplo:</em> Pesquisas com colecionadores de itens raros ou grupos sociais restritos.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="aplicações-em-r" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="aplicações-em-r"><span class="header-section-number">1.1.3</span> Aplicações em R</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># carregando o pacote dplyr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reprodutibilidade</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando os dados da população</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>populacao <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">departamento =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"TI"</span>, <span class="st">"RH"</span>, <span class="st">"Vendas"</span>, <span class="st">"Finanças"</span>), <span class="at">each =</span> <span class="dv">250</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">experiencia =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem probabilísticas</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem aleatória simples</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>amostra_simples <span class="ot">&lt;-</span> populacao <span class="sc">%&gt;%</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">100</span>) <span class="co"># Seleciona 100 funcionários ao acaso</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem estratificada</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>amostra_estratificada <span class="ot">&lt;-</span> populacao <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(departamento) <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.1</span>) <span class="co"># Seleciona 10% de cada departamento</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem sistemática</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(populacao)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>salto <span class="ot">&lt;-</span> N <span class="sc">/</span> n</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>inicio <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>salto, <span class="dv">1</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>indices <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> inicio, <span class="at">to =</span> N, <span class="at">by =</span> salto)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>amostra_sistematica <span class="ot">&lt;-</span> populacao[indices, ]</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem por conglomerados</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Amostragem por Conglomerados (Cluster Sampling) ---</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Definimos nossos conglomerados (neste caso, os Departamentos)</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>conglomerados_disponiveis <span class="ot">&lt;-</span> <span class="fu">unique</span>(populacao<span class="sc">$</span>departamento)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Sorteamos quais conglomerados farão parte da amostra</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Vamos sortear 2 departamentos dos 4 existentes</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>conglomerados_sorteados <span class="ot">&lt;-</span> <span class="fu">sample</span>(conglomerados_disponiveis, <span class="at">size =</span> <span class="dv">2</span>)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Incluímos TODOS os indivíduos dos departamentos sorteados</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>amostra_conglomerados <span class="ot">&lt;-</span> populacao <span class="sc">%&gt;%</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(departamento <span class="sc">%in%</span> conglomerados_sorteados)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificação:</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Departamentos sorteados:"</span>, conglomerados_sorteados, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Departamentos sorteados: TI Finanças </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(amostra_conglomerados<span class="sc">$</span>departamento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Finanças       TI 
+     250      250 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostras não probabilísticas</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem por conveniência</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>amostra_conveniencia <span class="ot">&lt;-</span> populacao <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">50</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Amostragem por cotas</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>amostra_cotas <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  populacao <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(departamento <span class="sc">==</span> <span class="st">"TI"</span>) <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  populacao <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(departamento <span class="sc">==</span> <span class="st">"Vendas"</span>) <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparação das médias das amostras geradas</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Metodo =</span> <span class="fu">c</span>(<span class="st">"População Total"</span>, <span class="st">"Aleatória Simples"</span>, <span class="st">"Estratificada"</span>, <span class="st">"Conveniência"</span>),</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Media_Exp =</span> <span class="fu">c</span>(</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(populacao<span class="sc">$</span>experiencia),</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(amostra_simples<span class="sc">$</span>experiencia),</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(amostra_estratificada<span class="sc">$</span>experiencia),</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(amostra_conveniencia<span class="sc">$</span>experiencia)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Metodo Media_Exp
+1   População Total  5.032256
+2 Aleatória Simples  5.137247
+3     Estratificada  4.825907
+4      Conveniência  5.068807</code></pre>
+</div>
+</div>
+<section id="o-duelo-dos-grupos-estratificada-vs.-conglomerados" class="level6" data-number="1.1.3.0.0.1">
+<h6 data-number="1.1.3.0.0.1" class="anchored" data-anchor-id="o-duelo-dos-grupos-estratificada-vs.-conglomerados"><span class="header-section-number">1.1.3.0.0.1</span> O Duelo dos Grupos: Estratificada vs.&nbsp;Conglomerados</h6>
+<p>Embora ambas dividam a população em subgrupos, a lógica de funcionamento é inversa. A escolha entre uma ou outra depende do seu objetivo: precisão estatística ou economia logística.</p>
+</section>
+</section>
+<section id="amostragem-estratificada-um-pouco-de-cada" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="amostragem-estratificada-um-pouco-de-cada"><span class="header-section-number">1.1.4</span> 1. Amostragem Estratificada: “Um pouco de cada”</h3>
+<p>Aqui, o objetivo é a <strong>precisão</strong>. Queremos garantir que nenhum subgrupo importante (estrato) fique de fora.</p>
+<ul>
+<li><p><strong>Composição:</strong> Os estratos são <strong>homogêneos internamente</strong> (as pessoas dentro do grupo são parecidas, ex: apenas mulheres) e <strong>heterogêneos entre si</strong> (os grupos são bem diferentes uns dos outros).</p></li>
+<li><p><strong>O Sorteio:</strong> Todos os estratos participam. O sorteio (AAS) acontece <strong>dentro</strong> de cada um deles.</p></li>
+<li><p><strong>Exemplo:</strong> Para entender a renda de um país, dividimos a população por classes sociais (A, B, C…). Sorteamos pessoas de todas as classes para garantir que a classe A não seja esquecida.</p></li>
+</ul>
+</section>
+<section id="amostragem-por-conglomerados-tudo-de-alguns" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="amostragem-por-conglomerados-tudo-de-alguns"><span class="header-section-number">1.1.5</span> 2. Amostragem por Conglomerados: “Tudo de alguns”</h3>
+<p>Aqui, o objetivo é a <strong>eficiência e baixo custo</strong>. É ideal quando a população está muito dispersa.</p>
+<ul>
+<li><p><strong>Composição:</strong> Os conglomerados são <strong>heterogêneos internamente</strong> (cada grupo é uma “mini população” com diversidade) e <strong>homogêneos entre si</strong> (um grupo é muito parecido com o outro).</p></li>
+<li><p><strong>O Sorteio:</strong> O sorteio acontece na <strong>unidade do grupo</strong>. Selecionamos alguns conglomerados e estudamos <strong>todos</strong> os indivíduos dentro deles.</p></li>
+<li><p><strong>Exemplo:</strong> Para pesquisar a saúde de alunos em uma cidade, sorteamos 10 escolas (conglomerados) e entrevistamos todos os alunos dessas 10 escolas, em vez de viajar a todas as centenas de escolas da cidade.</p></li>
+</ul>
+</section>
+</section>
+<section id="comparação-entre-métodos-de-amostragem" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="comparação-entre-métodos-de-amostragem"><span class="header-section-number">1.2</span> Comparação entre Métodos de Amostragem</h2>
+<p>No Quadro 1, apresentamos a distinção técnica entre os dois principais métodos de seleção por grupos, focando na composição interna e na lógica de sorteio.</p>
+<div id="tbl-amostragem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-amostragem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.1: Quadro 1: Amostragem estratificada e amostragem por conglomerados.
+</figcaption>
+<div aria-describedby="tbl-amostragem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Amostragem Estratificada</th>
+<th style="text-align: left;">Amostragem por Conglomerados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Dentro do Grupo</strong></td>
+<td style="text-align: left;">Elementos <strong>Homogêneos</strong> (parecidos entre si)</td>
+<td style="text-align: left;">Elementos <strong>Heterogêneos</strong> (diversos entre si)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Entre os Grupos</strong></td>
+<td style="text-align: left;">Grupos <strong>Heterogêneos</strong> (diferentes entre si)</td>
+<td style="text-align: left;">Grupos <strong>Homogêneos</strong> (parecidos entre si)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Unidade de Sorteio</strong></td>
+<td style="text-align: left;">O <strong>indivíduo</strong> (dentro de cada estrato)</td>
+<td style="text-align: left;">O <strong>conglomerado</strong> (o grupo como um todo)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Presença na Amostra</strong></td>
+<td style="text-align: left;"><strong>Todos</strong> os estratos são representados</td>
+<td style="text-align: left;"><strong>Apenas alguns</strong> conglomerados são sorteados</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Objetivo Principal</strong></td>
+<td style="text-align: left;">Aumentar a <strong>precisão</strong> dos estimadores</td>
+<td style="text-align: left;">Reduzir <strong>custos e logística</strong> de coleta</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>No próximo capítulo, vamos tratar da análise exploratória de dados.</p>
 <div class="exercicio">
 <p>Exercício 1: identificação de População e Amostra</p>
 <div class="exercicio-title">
@@ -379,9 +655,6 @@ window.Quarto = {
 </div>
 
 
-</section>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

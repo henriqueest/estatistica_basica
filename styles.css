@@ -3,15 +3,13 @@
    ========================================= */
 
 /* Estilo Geral dos Blocos com Margens Laterais */
-.definicao, .exercicio, .exemplo {
+.definicao, .exercicio, .exemplo, .quadro, .tabela {
     border-radius: 6px;
     overflow: hidden;
-    /* Margem: 1.5em (cima/baixo) e 2em (esquerda/direita) */
-    margin: 1.5em 4em; 
-    padding: 0 !important; 
+    margin: 1.5em 4em;
+    padding: 0 !important;
     border: none;
-    /* Garante que o bloco não "quebre" em telas pequenas */
-    max-width: 100%; 
+    max-width: 100%;
 }
 
 /* --- DEFINIÇÃO --- */
@@ -86,9 +84,61 @@
     padding: 20px;           /* Espaçamento interno do texto */
 }
 
+/* --- QUADRO --- */
+.quadro {
+    background-color: #1D3557; /* Cor de fundo do corpo do exemplo (ajustada para contraste) */
+    color: white;
+    margin: 20px 0;          /* Margem superior/inferior, 0 nas laterais para alargar */
+    width: 100%;             /* Garante que ocupe a largura total do container pai */
+    border-radius: 15px;      /* Arredondamento opcional */
+    overflow: hidden;        /* Garante que o título não escape do arredondamento */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra leve para destaque */
+}
+
+.quadro-title {
+    background-color: #E9ECEF; /* Azul escuro (inverti com o body para melhor leitura) */
+    color: #363636;
+    padding: 12px 15px;
+    font-weight: bold;
+    display: block;
+    margin: 0;
+}
+
+.quadro-body {
+    padding: 20px;
+}
+
+/* --- TABELA --- */
+.tabela {
+    background-color: #1D3557;
+    color: white;
+    margin: 20px 0;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.tabela-title {
+    background-color: #E9ECEF;
+    color: #363636;
+    padding: 12px 15px;
+    font-weight: bold;
+    display: block;
+    margin: 0;
+}
+
+.tabela-body {
+    padding: 20px;
+}
+
+
 /* Ajuste do conteúdo interno para não ficar colado nas bordas */
-.definicao p, .exercicio p, .exemplo p,
-.definicao .math, .exercicio .math, .exemplo .math {
+.definicao p, .exercicio p, .exemplo p, .quadro p, .tabela p,
+.definicao .math, .exercicio .math, .exemplo .math,
+.quadro .math, .tabela .math {
     padding: 5px 15px;
 }
 

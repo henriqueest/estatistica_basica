@@ -18,7 +18,8 @@ book:
       chapters:
         - introducao.qmd
         - cap2.qmd
-    - part: final.qmd
+        - cap3.qmd
+    - part: "Considerações finais"
       chapters:
         - consfinais.qmd
         - references.qmd

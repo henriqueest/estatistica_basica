@@ -1,0 +1,783 @@
+---
+title: "Amostragem"
+author: "Henrique José de Paula Alves"
+format:
+  html:
+    include-before-body:
+      text: |
+        <div style="float: right; margin-top: 35px; margin-right: 10px; margin-bottom: 10px; z-index: 999; position: relative;">
+          <img src="images/fig10.png" style="width: 300px; height: 178px; opacity: 1 !important; filter: none !important; -webkit-filter: none !important;">
+        </div>
+---
+
+## Introdução
+
+A escolha do método de amostragem constitui uma das etapas mais importantes no planejamento de uma pesquisa, pois influencia diretamente a qualidade, a precisão, a confiabilidade e a possibilidade de generalização dos resultados obtidos. Conforme amplamente discutido na literatura clássica de amostragem, especialmente nas obras de **William G. Cochran**, **Sharon L. Lohr**, **Richard L. Scheaffer**, **Carl-Erik Särndal** e colaboradores, a seleção adequada da amostra é essencial para garantir estimativas representativas da população e reduzir vieses decorrentes do processo de seleção.
+
+Na prática, frequentemente torna-se inviável ou desnecessário coletar informações de todos os elementos da população, seja por limitações de tempo, custo, recursos humanos ou logística. Nesses casos, recorre-se à seleção de uma amostra que represente, da melhor forma possível, as características da população de interesse, permitindo que conclusões sejam obtidas com menor esforço operacional e elevado grau de confiabilidade.
+
+Os métodos de amostragem podem ser classificados em dois grandes grupos: **probabilísticos** e **não probabilísticos**. Na amostragem probabilística, a seleção dos elementos é realizada por meio de mecanismos aleatórios, garantindo que todos os indivíduos da população possuam uma probabilidade conhecida e diferente de zero de serem escolhidos. Essa característica possibilita a estimação do erro amostral, a construção de intervalos de confiança e a realização de inferências estatísticas para a população, princípios amplamente estabelecidos na teoria da amostragem desenvolvida por Cochran, Lohr, Scheaffer e Särndal.
+
+Por outro lado, na amostragem não probabilística, a escolha dos elementos não depende de um processo aleatório, mas de critérios definidos pelo pesquisador, como conveniência, acessibilidade, julgamento ou estabelecimento de cotas. Embora esses métodos sejam frequentemente mais rápidos, econômicos e adequados para estudos exploratórios ou qualitativos, apresentam limitações quanto à representatividade da amostra e à possibilidade de generalização dos resultados para a população, aspectos discutidos em obras de metodologia científica e pesquisa aplicada, como as de **John W. Creswell**, **Earl Babbie** e **Uma Sekaran**.
+
+Nas seções seguintes, serão apresentados os principais tipos de amostragem empregados em pesquisas científicas, destacando seus fundamentos teóricos, características, vantagens, limitações e exemplos práticos de aplicação, bem como os critérios para escolha do método mais adequado em diferentes contextos de investigação.
+
+## Tipos de Amostragem
+
+A amostragem é o processo de selecionar um subconjunto de indivíduos de uma população para estimar características do todo. A principal diferença entre os métodos reside na forma como os elementos são escolhidos.
+
+### Amostragem Probabilística
+
+Na amostragem probabilística, todos os elementos da população têm uma probabilidade conhecida e diferente de zero de serem selecionados. Isso permite a generalização dos resultados com rigor estatístico.
+
+**Amostragem Aleatória Simples (AAS)**: Todos os itens têm a mesma chance de seleção. É como um sorteio de nomes em uma urna.
+
+Exemplo: Sortear 10 números de matrícula em uma lista de 100 alunos.
+
+**Amostragem Estratificada**: A população é dividida em grupos (estratos) com características semelhantes, e uma amostra é coletada de cada estrato.
+
+Exemplo: Dividir uma empresa por departamentos e selecionar funcionários de cada área proporcionalmente.
+
+**Amostragem Sistemática**: Os elementos são escolhidos seguindo um intervalo fixo (o enésimo termo).
+
+Exemplo: Selecionar cada 10ª peça que sai de uma linha de produção.
+
+**Amostragem por Conglomerados (Clusters**): A população é dividida em grupos heterogêneos (conglomerados), e alguns desses grupos são escolhidos para estudo integral.
+
+Exemplo: Selecionar aleatoriamente 5 bairros de uma cidade e entrevistar todos os moradores desses bairros.
+
+### Amostragem Não Probabilística
+
+Aqui, a seleção depende do julgamento do pesquisador ou de critérios de conveniência. Não é possível calcular o erro amostral, e os resultados não podem ser extrapolados para toda a população com precisão estatística.
+
+**Amostragem por Conveniência**: Os dados são coletados de pessoas que estão "à mão".
+
+Exemplo: Entrevistar pessoas que passam na porta de um shopping em um determinado horário.
+
+**Amostragem por Cotas:** Semelhante à estratificada, mas a escolha dos indivíduos dentro de cada grupo não é aleatória.
+
+Exemplo: O pesquisador precisa entrevistar 50 homens e 50 mulheres, escolhendo os primeiros que encontrar.
+
+**Amostragem por Julgamento (ou Intencional)**: O pesquisador escolhe casos que considera "típicos" ou especialistas no assunto.
+
+Exemplo: Entrevistar apenas diretores de RH para entender tendências de contratação.
+
+## Aplicações em R
+
+```{r setup, include=TRUE, warning=FALSE, message=FALSE}
+
+library(dplyr) # carregando o pacote dplyr
+
+set.seed(123) # Para reprodutibilidade
+
+# Gerando os dados da população
+
+populacao <- data.frame( id = 1:1000, departamento = rep(c("TI", "RH", "Vendas", "Finanças"), each = 250), experiencia = rnorm(1000, mean = 5, sd = 2) )
+
+# Amostragem probabilísticas
+
+# Amostragem aleatória simples
+
+amostra_simples <- populacao %>% dplyr::slice_sample(n = 100) # Seleciona 100 funcionários ao acaso
+
+# Amostragem estratificada
+
+amostra_estratificada <- populacao %>% dplyr::group_by(departamento) %>% dplyr::slice_sample(prop = 0.1) # Seleciona 10% de cada departamento
+
+# Amostragem sistemática
+
+N <- nrow(populacao)
+
+n <- 100 
+
+salto <- N / n 
+
+inicio <- sample(1:salto, 1)
+
+indices <- seq(from = inicio, to = N, by = salto) 
+
+amostra_sistematica <- populacao[indices, ]
+
+# Amostragem por conglomerados
+
+# --- Amostragem por Conglomerados (Cluster Sampling) ---
+
+# Definimos nossos conglomerados (neste caso, os Departamentos)
+
+conglomerados_disponiveis <- unique(populacao$departamento)
+
+# Sorteamos quais conglomerados farão parte da amostra
+
+# Vamos sortear 2 departamentos dos 4 existentes
+
+set.seed(456) 
+
+conglomerados_sorteados <- sample(conglomerados_disponiveis, size = 2)
+
+# Incluímos TODOS os indivíduos dos departamentos sorteados
+
+amostra_conglomerados <- populacao %>% dplyr::filter(departamento %in% conglomerados_sorteados)
+
+# Verificação:
+
+cat("Departamentos sorteados:", conglomerados_sorteados, "\n") 
+
+table(amostra_conglomerados$departamento)
+
+# Amostras não probabilísticas
+
+# Amostragem por conveniência
+
+amostra_conveniencia <- populacao %>% head(50)
+
+# Amostragem por cotas
+
+amostra_cotas <- dplyr::bind_rows( populacao %>% dplyr::filter(departamento == "TI") %>% dplyr::slice_head(n = 20), populacao %>% dplyr::filter(departamento == "Vendas") %>% dplyr::slice_head(n = 20) )
+
+# Comparação das médias das amostras geradas
+
+data.frame( Metodo = c("População Total", "Aleatória Simples", "Estratificada", "Conveniência"), Media_Exp = c( mean(populacao$experiencia),
+    mean(amostra_simples$experiencia), mean(amostra_estratificada$experiencia),
+    mean(amostra_conveniencia$experiencia) ) )
+```
+
+## O Duelo dos Grupos: Estratificada vs. Conglomerados
+
+Embora ambas dividam a população em subgrupos, a lógica de funcionamento é inversa. A escolha entre uma ou outra depende do seu objetivo: precisão estatística ou economia logística.
+
+1.  **Amostragem Estratificada**: "Um pouco de cada"
+
+Aqui, o objetivo é a precisão. Queremos garantir que nenhum subgrupo importante (estrato) fique de fora.
+
+Composição: Os estratos são homogêneos internamente (as pessoas dentro do grupo são parecidas, ex: apenas mulheres) e heterogêneos entre si (os grupos são bem diferentes uns dos outros).
+
+O Sorteio: Todos os estratos participam. O sorteio (AAS) acontece dentro de cada um deles.
+
+Exemplo: Para entender a renda de um país, dividimos a população por classes sociais (A, B, C...). Sorteamos pessoas de todas as classes para garantir que a classe A não seja esquecida.
+
+2.  **Amostragem por Conglomerados**: "Tudo de alguns"
+
+Aqui, o objetivo é a eficiência e baixo custo. É ideal quando a população está muito dispersa.
+
+Composição: Os conglomerados são heterogêneos internamente (cada grupo é uma "mini população" com diversidade) e homogêneos entre si (um grupo é muito parecido com o outro).
+
+O Sorteio: O sorteio acontece na unidade do grupo. Selecionamos alguns conglomerados e estudamos todos os indivíduos dentro deles.
+
+Exemplo: Para pesquisar a saúde de alunos em uma cidade, sorteamos 10 escolas (conglomerados) e entrevistamos todos os alunos dessas 10 escolas, em vez de viajar a todas as centenas de escolas da cidade.
+
+### Comparação entre Métodos de Amostragem
+
+No Quadro 1, apresentamos a distinção técnica entre os dois principais métodos de seleção por grupos, focando na composição interna e na lógica de sorteio.
+
+:::: quadro
+Quadro 1. Amostragem estratificada e amostragem por conglomerados
+
+::: quadro-title
+| **Característica** | **Amostragem Estratificada** | **Amostragem por Conglomerados** |
+|------------------|--------------------------|----------------------------|
+| **Dentro do Grupo** | Elementos homogêneos (parecidos entre si) | Elementos heterogêneos (diversos entre si) |
+| **Entre os Grupos** | Grupos heterogêneos (diferentes entre si) | Grupos homogêneos (parecidos entre si) |
+| **Unidade de Sorteio** | O indivíduo (dentro de cada estrato) | O conglomerado (o grupo como um todo) |
+| **Presença na Amostra** | Todos os estratos são representados | Apenas alguns conglomerados são sorteados |
+| **Objetivo Principal** | Aumentar a precisão dos estimadores | Reduzir custos e facilitar a logística da coleta |
+:::
+::::
+
+## Dimensionamento da Amostra e Estimativa do Erro Amostral
+
+A determinação do tamanho da amostra é uma etapa essencial no planejamento de qualquer pesquisa. Uma amostra inadequadamente dimensionada pode produzir estimativas imprecisas ou elevar desnecessariamente os custos da coleta de dados. Além disso, a possibilidade de estimar o erro amostral depende diretamente do método de amostragem adotado.
+
+De maneira geral, apenas as **amostragens probabilísticas** permitem calcular o erro amostral e construir intervalos de confiança, uma vez que cada elemento da população possui uma probabilidade conhecida de seleção. Nas **amostragens não probabilísticas**, essa probabilidade é desconhecida, impossibilitando a obtenção de estimativas estatisticamente válidas para o erro de amostragem.
+
+### Dimensionamento da Amostra em Amostragens Probabilísticas
+
+O cálculo do tamanho da amostra depende do objetivo da pesquisa, do tipo de variável analisada e da precisão desejada.
+
+### População Infinita ou Muito Grande
+
+Quando a população é muito grande (ou desconhecida), utiliza-se a seguinte expressão:
+
+$$
+n=\frac{Z^2pq}{E^2}
+$$
+
+em que
+
+-   $n$: tamanho da amostra;
+
+-   $Z$: valor crítico da distribuição Normal correspondente ao nível de confiança;
+
+-   $p$: proporção esperada da característica de interesse;
+
+-   $q=1-p$;
+
+-   $E$: erro máximo admissível (margem de erro).
+
+Quando não existe informação prévia sobre a proporção populacional, adota-se
+
+$$
+p=q=0,5,
+$$
+
+pois essa escolha produz a maior variabilidade possível e, consequentemente, o maior tamanho amostral.
+
+#### Correção para População Finita
+
+Quando o tamanho da população é conhecido e relativamente pequeno, aplica-se a correção para população finita:
+
+$$
+n_f=\frac{nN}{N+n-1}
+$$
+
+em que
+
+-   $N$: tamanho da população;
+
+-   $n$: tamanho obtido para população infinita;
+
+-   $n_f$: tamanho corrigido da amostra.
+
+Essa correção reduz o tamanho necessário da amostra quando uma parcela significativa da população será investigada.
+
+### Dimensionamento nos Principais Tipos de Amostragem Probabilística
+
+#### Amostragem Aleatória Simples (AAS)
+
+O tamanho amostral é obtido diretamente pelas fórmulas apresentadas anteriormente.
+
+O erro-padrão da estimativa da média é dado por
+
+$$
+EP(\bar{x})=\sqrt{\frac{S^2}{n}\left(1-\frac{n}{N}\right)}
+$$
+
+e, para proporções,
+
+$$
+EP(\hat p)=\sqrt{\frac{pq}{n}\left(1-\frac{n}{N}\right)}.
+$$
+
+A margem de erro é
+
+$$
+E=Z\times EP.
+$$
+
+:::: exemplo
+Exemplo: Amostragem Aleatória Simples (AAS)
+
+::: exemplo-title
+Suponha uma empresa com 1000 funcionários, cujo salário médio será estimado por meio de uma amostra aleatória simples de 100 funcionários.
+
+```{r populacao, include=TRUE, warning=FALSE, message=FALSE}
+set.seed(123)
+
+N <- 1000
+
+populacao <- data.frame(
+  id = 1:N,
+  salario = rnorm(N, mean = 3500, sd = 600)
+)
+
+n <- 100
+
+amostra <- populacao[sample(N, n), ]
+
+head(amostra)
+```
+
+A estimativa da média salarial é
+
+```{r media, include=TRUE, warning=FALSE, message=FALSE}
+mean(amostra$salario)
+```
+
+O erro-padrão da média é
+
+```{r erro_padrao, include=TRUE, warning=FALSE, message=FALSE}
+S <- sd(amostra$salario)
+
+EP <- sqrt((S^2/n)*(1-n/N))
+
+EP
+```
+
+A margem de erro para 95% de confiança é
+
+```{r margem_erro, include=TRUE, warning=FALSE, message=FALSE}
+Z <- qnorm(0.975)
+
+E <- Z*EP
+
+E
+```
+:::
+::::
+
+#### Amostragem Estratificada
+
+O tamanho total da amostra pode ser calculado pelas mesmas expressões da AAS.
+
+Posteriormente, distribui-se a amostra entre os estratos.
+
+#### Alocação proporcional
+
+$$
+n_h=n\frac{N_h}{N}
+$$
+
+onde
+
+-   $n_h$: tamanho da amostra no estrato $h$;
+-   $N_h$: tamanho do estrato;
+-   $N$: população total.
+
+#### Alocação ótima de Neyman
+
+Quando os estratos apresentam variabilidades diferentes,
+
+$$
+n_h=n
+\frac{N_hS_h}
+{\sum N_hS_h}
+$$
+
+onde (S_h) representa o desvio-padrão do estrato.
+
+O erro amostral da média estratificada é
+
+$$
+EP(\bar{x}*{est})=
+\sqrt{
+\sum*{h=1}^{L}
+W_h^2
+\frac{S_h^2}{n_h}
+\left(1-\frac{n_h}{N_h}\right)
+},
+$$
+
+em que
+
+$$
+W_h=\frac{N_h}{N}.
+$$
+
+:::: exemplo
+Exemplo: Amostragem Aleatória Estratificada
+
+::: exemplo-title
+Alocação proporcional
+
+| Departamento  | Funcionários |
+|---------------|--------------|
+| Produção      | 500          |
+| Administração | 300          |
+| Vendas        | 200          |
+
+```{r pop-estrato, include=TRUE, warning=FALSE, message=FALSE}
+set.seed(123)
+
+estrato <- c(rep("Produção",500),
+             rep("Administração",300),
+             rep("Vendas",200))
+
+salario <- c(rnorm(500,3200,450),
+             rnorm(300,4200,500),
+             rnorm(200,3800,700))
+
+pop <- data.frame(
+  id=1:1000,
+  estrato,
+  salario
+)
+
+table(pop$estrato)
+```
+
+```{r estrato, include=TRUE, warning=FALSE, message=FALSE}
+N <- 1000
+n <- 120
+
+Nh <- table(pop$estrato)
+
+nh <- round(n*Nh/N)
+
+nh
+```
+
+Selecionando a amostra
+
+```{r amostra-estrato, include=TRUE, warning=FALSE, message=FALSE}
+library(dplyr)
+
+amostra <- pop %>%
+  group_by(estrato) %>%
+  slice_sample(n = nh[match(first(estrato), names(nh))])
+
+table(amostra$estrato)
+```
+
+Estimativa da média
+
+```{r media-estrato, include=TRUE, warning=FALSE, message=FALSE}
+mean(amostra$salario)
+```
+:::
+::::
+
+#### Amostragem Sistemática
+
+Na prática, utiliza-se praticamente o mesmo tamanho amostral calculado para a AAS.
+
+Calcula-se inicialmente o intervalo de seleção
+
+$$
+k=\frac{N}{n}.
+$$
+
+Seleciona-se aleatoriamente um elemento entre (1) e (k), escolhendo posteriormente cada (k)-ésimo elemento.
+
+Quando não existe periodicidade na população, o erro amostral aproxima-se daquele obtido na AAS.
+
+:::: exemplo
+Amostragem Sistemática
+
+::: exemplo-title
+Suponha uma lista ordenada de 1000 funcionários
+
+```{r sistemática, include=TRUE, warning=FALSE, message=FALSE}
+set.seed(123)
+
+N <- 1000
+
+populacao <- data.frame(
+  id = 1:N,
+  salario = rnorm(N, mean = 3500, sd = 600)
+)
+
+N <- 1000
+n <- 100
+
+k <- N/n
+
+k
+```
+
+Escolhe-se aleatoriamente o primeiro elemento.
+
+```{r inicio, include=TRUE, warning=FALSE, message=FALSE}
+inicio <- sample(1:k,1)
+
+inicio
+```
+
+Selecionando cada décimo funcionário.
+
+```{r indices, include=TRUE, warning=FALSE, message=FALSE}
+indices <- seq(inicio,N,by=k)
+
+length(indices)
+
+head(indices)
+```
+Obtendo a amostra
+
+```{r amostra-sistematica, include=TRUE, warning=FALSE, message=FALSE}
+amostra <- populacao[indices,]
+
+head(amostra)
+```
+
+Estimando a média
+
+```{r media-sistemática, include=TRUE, warning=FALSE, message=FALSE}
+mean(amostra$salario)
+```
+:::
+::::
+
+
+#### Amostragem por Conglomerados
+
+Nesse caso, o dimensionamento depende da homogeneidade existente dentro dos conglomerados.
+
+Utiliza-se frequentemente o **efeito do desenho (Design Effect)**:
+
+$$
+n'=n\times Deff
+$$
+
+em que
+
+-   $n$: tamanho obtido para AAS;
+
+-   $Deff$: efeito do plano amostral.
+
+Quanto maior a semelhança entre os indivíduos de um mesmo conglomerado, maior será o valor de $Deff$ e, consequentemente, maior deverá ser a amostra.
+
+:::: exemplo
+Amostragem por Conglomerados
+
+::: exemplo-title
+Exemplo prático
+
+```{r pop-conglomerado, include=TRUE, warning=FALSE, message=FALSE}
+set.seed(321)
+
+filial <- rep(1:20, each=50)
+
+pop <- data.frame(
+  id=1:1000,
+  filial,
+  salario=rnorm(1000,3500,500)
+)
+```
+
+Selecionando quatro filiais.
+
+```{r filiais-conglomerado, include=TRUE, warning=FALSE, message=FALSE}
+conglomerados <- sample(1:20,4)
+
+conglomerados
+```
+
+Todos os funcionários dessas filiais são incluídos.
+
+```{r amostra-conglomerado, include=TRUE, warning=FALSE, message=FALSE}
+amostra <- subset(pop,
+                  filial %in% conglomerados)
+
+nrow(amostra)
+```
+
+Estimativa da média
+
+```{r media-conglomerado, include=TRUE, warning=FALSE, message=FALSE}
+mean(amostra$salario)
+```
+
+Supondo que o tamanho calculado para AAS tenha sido 100 indivíduos e que o efeito do desenho seja igual a 1,8.
+
+```{r designeffect-conglomerado, include=TRUE, warning=FALSE, message=FALSE}
+n <- 100
+
+Deff <- 1.8
+
+n_corrigido <- n*Deff
+
+n_corrigido
+```
+:::
+::::
+
+#### Estimativa do Erro Amostral nas Amostragens Probabilísticas
+
+A margem de erro de uma estimativa é obtida por
+
+$$
+E=Z\times EP.
+$$
+
+Assim, um intervalo de confiança para a média populacional é dado por
+
+$$
+\bar{x}\pm Z\times EP(\bar{x}),
+$$
+
+enquanto, para proporções,
+
+$$
+\hat p\pm Z\times EP(\hat p).
+$$
+
+:::: tabela
+Tabela 1: Os valores mais utilizados para o nível de confiança.
+
+::: tabela-title
+| Nível de confiança | Valor de (Z) |
+|-------------------:|:------------:|
+|                90% |    1,645     |
+|                95% |     1,96     |
+|                99% |    2,576     |
+:::
+::::
+
+## Dimensionamento da Amostra em Amostragens Não Probabilísticas
+
+Nas amostragens não probabilísticas não existe um mecanismo aleatório de seleção dos elementos da população. Dessa forma, não é possível determinar matematicamente a probabilidade de inclusão de cada unidade.
+
+Consequentemente,
+
+-   não existe fórmula estatística para obtenção do tamanho ótimo da amostra;
+-   não é possível calcular erro amostral;
+-   não podem ser construídos intervalos de confiança válidos para inferência à população.
+
+Nesses casos, o tamanho da amostra é determinado principalmente por critérios metodológicos, práticos ou operacionais.
+
+### Amostragem por Conveniência
+
+O número de participantes depende da disponibilidade dos indivíduos e dos recursos disponíveis para a pesquisa.
+
+Em estudos exploratórios, frequentemente utilizam-se entre 30 e 100 participantes, embora esse número possa variar substancialmente.
+
+### Amostragem por Cotas
+
+Inicialmente definem-se as proporções desejadas para cada grupo.
+
+Por exemplo,
+
+-   60% mulheres;
+-   40% homens.
+
+Se a amostra possuir 500 indivíduos,
+
+$$
+300 \text{ mulheres}
+$$
+
+e
+
+$$
+200 \text{ homens}.
+$$
+
+A escolha dos participantes dentro de cada grupo continua sendo não aleatória.
+
+### Amostragem por Julgamento (Intencional)
+
+O pesquisador seleciona indivíduos considerados especialistas ou representativos do fenômeno investigado.
+
+O tamanho da amostra normalmente depende da experiência do pesquisador e da saturação das informações coletadas, especialmente em pesquisas qualitativas.
+
+### Existe erro amostral nas amostragens não probabilísticas?
+
+Embora qualquer pesquisa esteja sujeita a erros, o chamado **erro amostral**, definido como a variabilidade decorrente da seleção aleatória da amostra, **não pode ser estimado** em amostragens não probabilísticas.
+
+Os principais problemas observados nessas amostras são:
+
+-   viés de seleção;
+-   viés de cobertura;
+-   viés de resposta;
+-   falta de representatividade.
+
+Assim, os resultados devem ser interpretados com cautela, restringindo-se, em geral, ao grupo efetivamente estudado, sem extrapolações estatísticas para toda a população.
+
+No próximo capítulo, daremos início, de fato, a análise descritiva dos dados.
+
+:::: exercicio
+Exercicio 1
+
+::: exercicio-title
+Defina população e amostra. Explique por que a utilização de uma amostra é, na maioria das pesquisas, preferível ao estudo de toda a população.
+
+Explique a diferença entre amostragem probabilística e amostragem não probabilística.
+:::
+::::
+
+:::: exercicio
+Exercício 2
+
+::: exercicio-title
+Entre os métodos apresentados, identifique quais são probabilísticos e quais são não probabilísticos.
+
+a\) Amostragem Aleatória Simples
+
+b\) Amostragem Estratificada
+
+c\) Amostragem Sistemática
+
+d\) Amostragem por Conglomerados
+
+e\) Amostragem por Conveniência
+
+f\) Amostragem por Cotas
+
+g\) Amostragem por Julgamento
+:::
+::::
+
+:::: exercicio
+Exercício 3
+
+::: exercicio-title
+Uma empresa possui funcionários distribuídos em quatro departamentos. O pesquisador deseja garantir que todos os departamentos sejam representados na pesquisa.
+
+Qual método de amostragem é o mais indicado? Justifique.
+
+Explique a diferença entre amostragem estratificada e amostragem por conglomerados quanto:
+
+a\) à composição dos grupos;
+
+b\) à unidade de sorteio;
+
+c\) ao objetivo principal.
+:::
+::::
+
+:::: exercicio
+Exercício 4
+
+::: exercicio-title
+Explique por que a amostragem por conveniência não permite inferências estatísticas para toda a população.
+
+Considere as situações abaixo. Indique o método de amostragem mais adequado.
+
+a\) Selecionar cada 20º cliente de um supermercado.
+
+b\) Escolher aleatoriamente cinco escolas e entrevistar todos os alunos.
+
+c\) Selecionar proporcionalmente alunos de cada curso universitário.
+
+d\) Entrevistar pessoas que passam em frente a uma estação de metrô.
+:::
+::::
+
+:::: exercicio
+Exercício 5
+
+::: exercicio-title
+Cite duas vantagens e duas limitações da amostragem aleatória simples.
+
+Em uma pesquisa eleitoral, o pesquisador deseja entrevistar exatamente 200 homens e 200 mulheres, escolhendo os primeiros eleitores encontrados.
+
+Esse procedimento caracteriza qual tipo de amostragem?
+
+Justifique.
+
+Explique por que o erro amostral pode ser estimado apenas em amostragens probabilísticas.
+:::
+::::
+
+:::: exercicio
+Exercício 6
+
+::: exercicio-title
+Uma universidade deseja realizar uma pesquisa sobre satisfação dos alunos.
+
+Considere que existem quatro cursos:
+
+-   Estatística;
+
+-   Administração;
+
+-   Engenharia;
+
+-   Direito.
+
+Elabore um plano de amostragem respondendo:
+
+1.  Qual método de amostragem você utilizaria?
+
+2.  Justifique sua escolha.
+
+3.  Como seria realizado o sorteio?
+
+4.  Qual seria a unidade amostral?
+
+5.  Quais seriam as vantagens desse método?
+
+6.  Quais seriam suas limitações?
+
+7.  Escreva um código em **R** simulando esse processo de amostragem.
+:::
+::::
